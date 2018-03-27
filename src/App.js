@@ -14,7 +14,7 @@ class App extends Component {
           </div>
           <Switch>
             <Route exact path="/">
-              <div>Chore Chart Here</div>
+              <div>Chore Chart Here Now</div>
             </Route>
           </Switch>
         </div>
