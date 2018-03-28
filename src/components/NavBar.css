@@ -1,0 +1,32 @@
+.navContainer {
+  background: rgba(0, 186, 255, 0.3);
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+  color: rgba(61, 80, 153, 1);
+  margin-left: 20px;
+  font-size: 40px;
+}
+
+.headerLink {
+    text-decoration: none;
+}
+
+.navLink {
+  text-decoration: none;
+  padding-right: 25px;
+  padding-bottom: 20px;
+  font-size: 18px;
+  color: rgba(61, 80, 153, 1);
+}
+
+.navWide {
+  position: absolute;
+  right: 0;
+  top: 20px;
+}
