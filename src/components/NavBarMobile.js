@@ -5,11 +5,15 @@ import NavDrawer from "./NavDrawer"
 // import { withRouter } from 'react-router'
 
 export class NavBarMobile extends Component {
-  
-state = {
-  drawerOpen: false
-}
+  constructor(props) {
+    super(props)
 
+    this.onClick = this.onClick.bind(this)
+
+    this.state = {
+      drawerOpen: false
+    }
+  }
   onClick() {
     this.setState({
       drawerOpen: !this.state.drawerOpen
@@ -23,7 +27,7 @@ render() {
         </Link>
         <nav>
           <div className={styles.hamburgerIcon} onClick={() => {this.onClick()}}>☰</div>
-          <NavDrawer drawerOpen={this.state.drawerOpen} />
+          <NavDrawer action={this.onClick} drawerOpen={this.state.drawerOpen} />
         </nav>
     </div>
   )
