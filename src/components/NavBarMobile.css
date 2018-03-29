@@ -1,11 +1,12 @@
 .navContainer {
   background: rgba(185, 233, 254, 1);
   height: 60px;
-  width: 100%;
+  width: 100vw;
   position: fixed;
   display: flex;
   align-items: center;
   top: 0;
+
 }
 
 h1 {
@@ -30,4 +31,18 @@ h1 {
   position: absolute;
   right: 0;
   top: 20px;
+}
+
+.hamburgerIcon {
+  color: rgba(61, 80, 153, 1);
+  font-size: 50px;
+  position: fixed;
+  right: 10px;
+  top: -6px;
+}
+
+@media only screen and (min-width: 640px) {
+  .navContainer {
+    display: none;
+  }
 }
