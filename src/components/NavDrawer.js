@@ -25,4 +25,8 @@ if (this.props.drawerOpen) {
 }
 }
 
-export default connect()(NavDrawer);
+export const mapStateToProps = state => ({
+  drawerOpen: state.drawer.drawerOpen
+})
+
+export default connect(mapStateToProps)(NavDrawer);
