@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import styles from "./NavDrawer.css"
+import styles from "../componentStyles/NavDrawer.css"
 import {connect} from "react-redux"
 import {expandMenu} from "../actions"
 
@@ -26,7 +26,7 @@ if (this.props.drawerOpen) {
 }
 
 export const mapStateToProps = state => ({
-  drawerOpen: state.drawer.drawerOpen
+  drawerOpen: state.chart.drawerOpen
 })
 
 export default connect(mapStateToProps)(NavDrawer);

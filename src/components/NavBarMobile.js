@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import styles from "./NavBarMobile.css"
+import styles from "../componentStyles/NavBarMobile.css"
 import NavDrawer from "./NavDrawer"
 import {connect} from "react-redux"
 import {expandMenu} from "../actions"

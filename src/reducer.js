@@ -4,8 +4,7 @@ const initialState = {
   drawerOpen: false
 };
 
-export const drawerReducer = (state=initialState, action) => {
-let drawerOpen;
+export const choreReducer = (state=initialState, action) => {
   if (action.type === EXPAND_MENU) {
     return Object.assign({}, state, {
       drawerOpen: !state.drawerOpen
