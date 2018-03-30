@@ -1,7 +1,8 @@
 import React, {Component} from "react"
-import {reduxForm, Field} from "redux-form"
+import {reducer as formReducer, reduxForm, Field} from "redux-form"
 
-export class HouseHoldForm extends React.Component {
+
+export class HouseHoldMemberForm extends React.Component {
   onSubmit(name) {
     console.log(name)
   }
@@ -20,4 +21,4 @@ export class HouseHoldForm extends React.Component {
   }
 }
 
-export default HouseHoldForm;
+export default reduxForm({form: formReducer})(HouseHoldMemberForm);
