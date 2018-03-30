@@ -1,4 +1,4 @@
-###Chorely
+# Chorely
 
 A responsive web app that gamifies household chores and creates a visual record or who's doing what.
 

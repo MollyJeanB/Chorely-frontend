@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styles from "../componentStyles/NavDrawer.css"
 import {connect} from "react-redux"
-import {expandMenu} from "../actions"
+import {expandMenu} from "../actions/actions"
 
 export class NavDrawer extends Component {
   onClick() {

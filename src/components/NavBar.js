@@ -1,9 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styles from "../componentStyles/NavBar.css"
 
-export class NavBar extends Component {
-render() {
+export default function NavBar(props) {
   return(
       <div className={styles.navContainer}>
         <Link to="/" className={styles.headerLink}>
@@ -19,6 +18,3 @@ render() {
     </div>
   )
 }
-}
-
-export default NavBar;

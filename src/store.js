@@ -1,6 +1,6 @@
 import {createStore, combineReducers} from "redux"
 import {reducer as formReducer} from "redux-form"
-import {choreReducer} from "./reducer"
+import {choreReducer} from "./reducers/reducer"
 
 export default createStore(
   combineReducers({

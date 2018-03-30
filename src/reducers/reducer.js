@@ -1,4 +1,4 @@
-import { EXPAND_MENU } from "./actions";
+import { EXPAND_MENU } from "../actions/actions";
 
 const initialState = {
   drawerOpen: false
