@@ -1,5 +1,5 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 import NavDrawer from './NavDrawer';
 import {shallow} from "enzyme";
 import configure from "../setupTests"
