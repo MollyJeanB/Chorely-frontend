@@ -1,11 +1,11 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
-import App from './App';
+import NavDrawer from './NavDrawer';
 import {shallow} from "enzyme";
 import configure from "../setupTests"
 
-describe("App", () => {
+describe("NavDrawer", () => {
   it("Renders without crashing", () => {
-    shallow(<App />)
+    shallow(<NavDrawer drawerOpen={true} />)
   })
 })

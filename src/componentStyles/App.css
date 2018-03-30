@@ -7,5 +7,8 @@
   padding: 0;
   border: 0;
   outline: 0;
-  font-family: 'Raleway', sans-serif;
+}
+
+.fontAll {
+    font-family: 'Raleway', sans-serif;
 }

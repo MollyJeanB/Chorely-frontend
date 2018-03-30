@@ -1,11 +1,11 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
-import App from './App';
+import NavBarMobile from './NavBarMobile';
 import {shallow} from "enzyme";
 import configure from "../setupTests"
 
-describe("App", () => {
+describe("NavBarMobile", () => {
   it("Renders without crashing", () => {
-    shallow(<App />)
+    shallow(<NavBarMobile />)
   })
 })
