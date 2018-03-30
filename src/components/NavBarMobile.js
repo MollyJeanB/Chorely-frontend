@@ -1,23 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import styles from "./NavBarMobile.css"
+import styles from "../componentStyles/NavBarMobile.css"
 import NavDrawer from "./NavDrawer"
-// import { withRouter } from 'react-router'
+import {connect} from "react-redux"
+import {expandMenu} from "../actions/actions"
 
 export class NavBarMobile extends Component {
-  constructor(props) {
-    super(props)
-
-    this.onClick = this.onClick.bind(this)
-
-    this.state = {
-      drawerOpen: false
-    }
-  }
   onClick() {
-    this.setState({
-      drawerOpen: !this.state.drawerOpen
-    })
+    this.props.dispatch(expandMenu())
   }
 render() {
   return(
@@ -27,11 +17,15 @@ render() {
         </Link>
         <nav>
           <div className={styles.hamburgerIcon} onClick={() => {this.onClick()}}>☰</div>
-          <NavDrawer action={this.onClick} drawerOpen={this.state.drawerOpen} />
+          <NavDrawer />
         </nav>
     </div>
   )
 }
 }
 
-export default NavBarMobile;
+export const mapStateToProps = state => ({
+  drawerOpen: state.chart.drawerOpen
+})
+
+export default connect(mapStateToProps)(NavBarMobile);
