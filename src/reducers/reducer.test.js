@@ -1,6 +1,6 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
-import choreReducer from './reducer';
+import {choreReducer} from './reducer';
 import { expandMenu } from "../actions/actions"
 import configure from "../setupTests"
 
