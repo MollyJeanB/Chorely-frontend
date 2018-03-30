@@ -1,5 +1,6 @@
-import React, {Component} from "react"
-import {reduxForm, Field} from "redux-form"
+import React from "react"
+import { reduxForm, Field } from "redux-form"
+import { reducer as formReducer } from "redux-form"
 
 export class HouseHoldForm extends React.Component {
   onSubmit(name) {
@@ -8,9 +9,8 @@ export class HouseHoldForm extends React.Component {
   render() {
     return (
       <form>
-        <Field />
         <Field name="colorSelect" component="select">
-          <option></option>
+          <option />
           <option value="#ff0000">Red</option>
           <option value="#00ff00">Green</option>
           <option value="#0000ff">Blue</option>
@@ -20,4 +20,4 @@ export class HouseHoldForm extends React.Component {
   }
 }
 
-export default HouseHoldForm;
+export default reduxForm({ form: formReducer })(HouseHoldForm)
