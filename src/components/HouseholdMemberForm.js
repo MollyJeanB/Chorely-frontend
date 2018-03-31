@@ -10,17 +10,19 @@ export class HouseholdMemberForm extends React.Component {
     return (
       <div className={styles.membersContainer}>
         <div className={styles.newPersonContainer}>
-          <div className={styles.housemateIconContainer}><img className={styles.housemateIcon} src={require("../images/housemate.png")}></img></div>
-          <div className={styles.addPerson}>Add Person</div>
+          <div className={styles.housemateIconContainer}>
+            <img className={styles.housemateIcon} src={require("../images/housemate.png")}></img>
+            <div className={styles.addPerson}>Add Person</div>
+          </div>
         </div>
-        <form>
+        {/* <form>
         <Field name="colorSelect" component="select">
           <option />
           <option value="#ff0000">Red</option>
           <option value="#00ff00">Green</option>
           <option value="#0000ff">Blue</option>
         </Field>
-      </form>
+      </form> */}
     </div>
     )
   }
