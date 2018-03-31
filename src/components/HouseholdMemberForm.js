@@ -1,6 +1,6 @@
 import React from "react"
 import { reduxForm, Field } from "redux-form"
-
+import styles from "../componentStyles/HouseholdMemberForm.css"
 
 export class HouseholdMemberForm extends React.Component {
   onSubmit(name) {
@@ -8,7 +8,12 @@ export class HouseholdMemberForm extends React.Component {
   }
   render() {
     return (
-      <form>
+      <div className={styles.membersContainer}>
+        <div className={styles.newPersonContainer}>
+          <div className={styles.housemateIconContainer}><img className={styles.housemateIcon} src={require("../images/housemate.png")}></img></div>
+          <div className={styles.addPerson}>Add Person</div>
+        </div>
+        <form>
         <Field name="colorSelect" component="select">
           <option />
           <option value="#ff0000">Red</option>
@@ -16,6 +21,7 @@ export class HouseholdMemberForm extends React.Component {
           <option value="#0000ff">Blue</option>
         </Field>
       </form>
+    </div>
     )
   }
 }
