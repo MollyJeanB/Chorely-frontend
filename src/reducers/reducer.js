@@ -1,7 +1,9 @@
 import { EXPAND_MENU } from "../actions/actions";
 
 const initialState = {
-  drawerOpen: false
+  drawerOpen: false,
+  // memberFormDisplayed: false,
+  // members: []
 };
 
 export const choreReducer = (state=initialState, action) => {

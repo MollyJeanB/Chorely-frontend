@@ -1,3 +1,4 @@
+
 .membersContainer {
   margin-top: 60px;
   width: 100vw;
@@ -7,6 +8,7 @@
 
 .newPersonContainer {
   height: 50px;
+  position: relative;
 }
 
 .housemateIconContainer {
@@ -24,9 +26,51 @@
   font-size: 18px;
   margin-left: 10px;
   margin-top: 15px;
-  display: inline;
+  display: inline-block;
   position: absolute;
 }
+
+.nameField, option, button, .selectColor {
+  font-family: 'Raleway', sans-serif;
+}
+
+.selectColor {
+  width: 80px;
+  font-size: 14px;
+}
+
+.formBox {
+  display: inline-block;
+  position: absolute;
+}
+
+.nameField {
+  height: 30px;
+  width: 120px;
+  font-size: 14px;
+  padding: 5px;
+  margin: 10px;
+
+}
+
+button {
+  padding: 3px;
+  background: none;
+  font-size: 12px;
+  display: block;
+  margin-left: 240px;
+  position: absolute;
+}
+
+.saveButton {
+  bottom: 25px;
+}
+
+.cancelButton {
+  bottom: 5px;
+
+}
+
 
 @media only screen and (min-width: 640px) {
 
