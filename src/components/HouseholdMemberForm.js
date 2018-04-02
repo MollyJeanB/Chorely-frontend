@@ -11,7 +11,7 @@ export class HouseholdMemberForm extends React.Component {
       <div className={styles.membersContainer}>
         <div className={styles.newPersonContainer}>
           <div className={styles.housemateIconContainer}>
-            <img className={styles.housemateIcon} src={require("../images/housemate.png")}></img>
+            <img className={styles.housemateIcon} alt="Person Icon" src={require("../images/housemate.png")}></img>
             <div className={styles.addPerson}>Add Person</div>
             <form className={styles.formBox}>
             <Field
@@ -21,22 +21,29 @@ export class HouseholdMemberForm extends React.Component {
               placeholder="Name"
               className={styles.nameField}
              />
-            <Field
-              name="colorSelect"
-              component="select"
-              className={styles.selectColor}>
-              <option value="">Color</option>
-              <option value="#ff0000">Red</option>
-              <option value="#00ff00">Green</option>
-              <option value="#0000ff">Blue</option>
-            </Field>
-            <button
-              type="submit"
-              className={styles.saveButton}
-              >Save</button>
-            <button
-              className={styles.cancelButton}
-              >Cancel</button>
+             <div className={styles.dropdown}>
+               <button className={styles.dropbtn}>Color</button>
+               <div className={styles.dropdownContent}>
+                 <div className={styles.red}></div>
+                 <div className={styles.orange}></div>
+                 <div className={styles.yellow}></div>
+                 <div className={styles.green}></div>
+                 <div className={styles.brightBlue}></div>
+                 <div className={styles.cornflowerBlue}></div>
+                 <div className={styles.purple}></div>
+                 <div className={styles.fuschia}></div>
+                 <div className={styles.pink}></div>
+               </div>
+             </div>
+             <div className={styles.buttonBox}>
+               <button
+                 type="submit"
+                 className={styles.saveButton}
+                 >Save</button>
+               <button
+                 className={styles.cancelButton}
+                 >Cancel</button>
+             </div>
           </form>
           </div>
         </div>

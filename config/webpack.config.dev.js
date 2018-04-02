@@ -160,7 +160,7 @@ module.exports = {
               {
                 loader: require.resolve("css-loader"),
                 options: {
-                  localIdentName: "[name]__[local]"
+                  localIdentName: "[name]__[local]",
                   importLoaders: 1,
                   modules: true
                 }

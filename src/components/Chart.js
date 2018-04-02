@@ -3,7 +3,7 @@ import styles from "../componentStyles/Chart.css"
 import HouseholdMemberForm from "./HouseholdMemberForm"
 
 export default props => (
-  <div>
+  <div className={styles.pageContainer}>
     <HouseholdMemberForm />
   </div>
 )
