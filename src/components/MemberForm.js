@@ -9,15 +9,7 @@ export class MemberForm extends React.Component {
     this.props.dispatch(showMemberForm())
   }
 
-
   render() {
-
-    let formClasses = [styles.formBox]
-    if (this.props.memberFormDisplayed) {
-      formClasses.push(styles.formBoxShow)
-    } else {formClasses = [styles.formBox]}
-
-
     return (
       <form className={styles.formBox}>
       <Field
