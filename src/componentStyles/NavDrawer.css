@@ -27,3 +27,7 @@ left: 0;
   text-align: right;
   padding: 24px 10px 20px;
 }
+
+.navLink:hover {
+  color: white;
+}

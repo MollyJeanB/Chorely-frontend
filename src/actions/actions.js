@@ -9,3 +9,9 @@ export const showMemberForm = memberFormDisplayed => ({
   type: SHOW_MEMBER_FORM,
   memberFormDisplayed
 })
+
+export const ADD_MEMBER = "ADD_MEMBER"
+export const addMember = members => ({
+  type: ADD_MEMBER,
+  members
+})
