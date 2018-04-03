@@ -1,9 +1,23 @@
 import React from "react"
 import { reduxForm, Field } from "redux-form";
 import styles from "../componentStyles/MemberForm.css"
+import {showMemberForm} from "../actions/actions"
 
 export class MemberForm extends React.Component {
+
+  onClick() {
+    this.props.dispatch(showMemberForm())
+  }
+
+
   render() {
+
+    let formClasses = [styles.formBox]
+    if (this.props.memberFormDisplayed) {
+      formClasses.push(styles.formBoxShow)
+    } else {formClasses = [styles.formBox]}
+
+
     return (
       <form className={styles.formBox}>
       <Field
@@ -34,6 +48,7 @@ export class MemberForm extends React.Component {
            >Save</button>
          <button
            className={styles.cancelButton}
+           onClick={() => {this.onClick()}}
            >Cancel</button>
        </div>
       </form>
@@ -41,4 +56,4 @@ export class MemberForm extends React.Component {
   }
 }
 
-export default reduxForm({ form: "formReducer" })(MemberForm)
+export default reduxForm({ form: "formReducer" })(MemberForm);

@@ -10,13 +10,19 @@
 }
 
 .formBox {
-  z-index: 2;
   position: absolute;
   height: 50px;
   display: flex;
+  /* display: none; */
   align-items: center;
   left: 60px;
   top: 0px;
+  z-index: 2;
+
+}
+
+.formBoxShow {
+display: flex
 }
 
 .nameField {
