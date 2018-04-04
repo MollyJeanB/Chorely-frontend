@@ -10,10 +10,10 @@ export class NavDrawer extends Component {
   }
 render() {
 
-let containerClasses = [styles.drawerContainer]
-if (this.props.drawerOpen) {
-  containerClasses.push(styles.open)
-} else {containerClasses = [styles.drawerContainer]}
+  let containerClasses = [styles.drawerContainer]
+  if (this.props.drawerOpen) {
+    containerClasses.push(styles.open)
+  } else {containerClasses = [styles.drawerContainer]}
 
   return(
           <div className={containerClasses.join(' ')}>

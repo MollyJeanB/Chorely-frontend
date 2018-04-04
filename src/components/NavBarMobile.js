@@ -24,8 +24,4 @@ render() {
 }
 }
 
-export const mapStateToProps = state => ({
-  drawerOpen: state.chart.drawerOpen
-})
-
-export default connect(mapStateToProps)(NavBarMobile);
+export default connect()(NavBarMobile);

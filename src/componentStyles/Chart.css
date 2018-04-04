@@ -1,7 +1,4 @@
-.chartContainer {
-  background: orange;
-  height: 200px;
-  width: 200px;
-  margin: 100px;
-  z-index: 1;
+.pageContainer {
+  z-index: -2;
+  position: absolute;
 }

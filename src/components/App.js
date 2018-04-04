@@ -13,12 +13,10 @@ class App extends Component {
         <div className={styles.fontAll}>
           <NavBar />
           <NavBarMobile />
-
             <div>
               <Route exact path="/" component={Chart} />
               <Route exact path="/stats" component={Stats} />
             </div>
-
         </div>
       </Router>
     )

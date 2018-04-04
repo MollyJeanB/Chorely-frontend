@@ -5,8 +5,7 @@
   position: fixed;
   display: flex;
   align-items: center;
-  top: 0;
-
+  top: 0; 
 }
 
 h1 {

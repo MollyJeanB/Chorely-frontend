@@ -1,0 +1,155 @@
+.nameField, option, button, .selectColor {
+  font-family: 'Raleway', sans-serif;
+}
+
+.selectColor {
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+  z-index: 2;
+}
+
+.formBox {
+  position: absolute;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  left: 60px;
+  top: 0px;
+  z-index: 2;
+}
+
+.nameField {
+  height: 30px;
+  width: 100px;
+  font-size: 14px;
+  margin: 0 10px 0px 8px;
+  padding: 5px;
+  border-bottom: 2px solid rgba(61, 80, 153, 1);
+  background: #ececed;
+}
+
+::placeholder {
+  color: rgba(61, 80, 153, 1);
+}
+
+button {
+  padding: 2px;
+  background: none;
+  font-size: 12px;
+  color: rgba(61, 80, 153, 1);
+}
+
+button:hover {
+  background: rgba(185, 233, 254, 1);
+}
+
+.buttonBox {
+ width: 50px;
+ height: 48px;
+ display: inline-block;
+ padding-top: 2px;
+}
+
+.dropbtn {
+    background-color: #4b6dff;
+    color: white;
+    padding: 5px;
+    font-size: 14px;
+    border: none;
+    height: 30px;
+    margin: 0px 10px 0 0;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdownContent {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdownContent div {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.red {
+  background: #CC4014;
+}
+
+.orange {
+  background: #FF8940;
+}
+
+.green {
+  background: #80CC1C;
+}
+
+.yellow {
+  background: #FFCE00;
+}
+
+.brightBlue {
+background: #00B6FF;
+}
+
+.cornflowerBlue {
+background: #4B6DFF;
+}
+
+.purple {
+  background: #A600FF;
+}
+
+.fuschia {
+  background: #993D78;
+}
+
+.pink {
+  background: #DA6DB3;
+}
+
+.dropdownContent div:hover {
+  border: 2px solid #3D4F99;
+}
+
+.dropdown:hover .dropdownContent {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: rgba(61, 80, 153, 1);
+}
+
+
+@media only screen and (min-width: 640px) {
+
+.formBox {
+  top: 125px;
+  left: 15px;
+  background: #ececed;
+}
+
+.buttonBox {
+ width: 78px;
+ padding-top: 0;
+ display: block;
+ position: absolute;
+ top: 50px;
+ left: 52px
+}
+
+.dropdownContent {
+  width: 160px;
+}
+
+}
