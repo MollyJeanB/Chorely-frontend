@@ -1,0 +1,123 @@
+.membersContainer {
+  margin-top: 60px;
+  width: 100vw;
+  position: relative;
+  z-index: -2;
+}
+
+.personContainer {
+  height: 50px;
+  position: relative;
+}
+
+.housemateIconContainer {
+    background: rgba(194, 194, 195, 1);
+}
+
+.housemateIcon {
+  height: 45px;
+  padding: 10px 10px 5px 20px;
+  display: inline;
+}
+
+.memberName {
+  color: white;
+  font-size: 16px;
+  display: inline-block;
+}
+
+.points {
+  color: white;
+  font-size: 16px;
+  margin-left: 15px;
+  display: inline-block;
+}
+
+.labelBox {
+position: absolute;
+z-index: 2;
+top: 15px;
+left: 70px;
+
+}
+
+.red {
+  background: #CC4014;
+}
+
+.orange {
+  background: #FF8940;
+}
+
+.green {
+  background: #80CC1C;
+}
+
+.yellow {
+  background: #FFCE00;
+}
+
+.brightBlue {
+background: #00B6FF;
+}
+
+.cornflowerBlue {
+background: #4B6DFF;
+}
+
+.purple {
+  background: #A600FF;
+}
+
+.fuschia {
+  background: #993D78;
+}
+
+.pink {
+  background: #DA6DB3;
+}
+
+@media only screen and (min-width: 640px) {
+
+  .membersContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .personContainer {
+    height: 180px;
+    position: relative;
+    display: inline-block;
+    padding: 20px 35px 80px 35px;
+  }
+
+  .housemateIconContainer {
+    border-radius: 100%;
+    height: 90px;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .housemateIcon {
+    height: 50px;
+    padding: 0;
+  }
+
+  .memberName, .points {
+  color: #262828;
+  width: 100px;
+  margin-left: 0;
+  text-align: center;
+}
+
+.labelBox {
+  top: 115px;
+  width: 100px;
+  left: 30px;
+}
+
+
+}

@@ -1,21 +1,21 @@
 import React from "react"
 import MemberForm from "./MemberForm"
-import styles from "../componentStyles/HouseholdMembers.css"
+import styles from "../componentStyles/AddMember.css"
 import {connect} from "react-redux"
 import {showMemberForm} from "../actions/actions"
 
-export class HouseholdMembers extends React.Component {
+export class AddMember extends React.Component {
 
   onClick() {
     this.props.dispatch(showMemberForm())
   }
   render() {
+
     let formComponent;
-if (this.props.memberFormDisplayed) {
-  formComponent = <MemberForm />;
+    if (this.props.memberFormDisplayed) {
+      formComponent = <MemberForm />;
 }
     return (
-      <div className={styles.membersContainer}>
         <div className={styles.newPersonContainer}>
           <div className={styles.housemateIconContainer}>
             <img className={styles.housemateIcon} alt="Person Icon" src={require("../images/housemate.png")} onClick={() => {this.onClick()}}></img>
@@ -24,7 +24,6 @@ if (this.props.memberFormDisplayed) {
             {formComponent}
           </div>
         </div>
-    </div>
     )
   }
 }
@@ -33,4 +32,4 @@ export const mapStateToProps = state => ({
   memberFormDisplayed: state.chart.memberFormDisplayed
 })
 
-export default connect(mapStateToProps)(HouseholdMembers);
+export default connect(mapStateToProps)(AddMember);

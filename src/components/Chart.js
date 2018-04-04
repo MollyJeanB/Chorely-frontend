@@ -1,9 +1,9 @@
 import React from "react"
 import styles from "../componentStyles/Chart.css"
-import HouseholdMembers from "./HouseholdMembers"
+import MemberList from "./MemberList"
 
 export default props => (
   <div className={styles.pageContainer}>
-    <HouseholdMembers />
+    <MemberList />
   </div>
 )
