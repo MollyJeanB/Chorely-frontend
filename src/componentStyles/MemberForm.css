@@ -11,7 +11,7 @@
 
 .formBox {
   position: absolute;
-  height: 50px;
+  height: 48px;
   display: flex;
   align-items: center;
   left: 60px;
@@ -49,6 +49,8 @@ button:hover {
  height: 48px;
  display: inline-block;
  padding-top: 2px;
+ position: relative;
+ z-index: 3;
 }
 
 .dropbtn {
@@ -59,11 +61,14 @@ button:hover {
     border: none;
     height: 30px;
     margin: 0px 10px 0 0;
+    position: relative;
+    z-index: 3;
 }
 
 .dropdown {
     position: relative;
     display: inline-block;
+    z-index: 4;
 }
 
 .dropdownContent {
@@ -72,7 +77,6 @@ button:hover {
     background-color: #f1f1f1;
     width: 100px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
 }
 
 .dropdownContent div {
@@ -80,6 +84,8 @@ button:hover {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    z-index: 4;
+    position: relative;
 }
 
 .red {
@@ -134,8 +140,8 @@ background: #4B6DFF;
 @media only screen and (min-width: 640px) {
 
 .formBox {
-  top: 125px;
-  left: 15px;
+  top: 115px;
+  left: 0px;
   background: #ececed;
 }
 

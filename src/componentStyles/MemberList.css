@@ -10,10 +10,6 @@
   position: relative;
 }
 
-.housemateIconContainer {
-    background: rgba(194, 194, 195, 1);
-}
-
 .housemateIcon {
   height: 45px;
   padding: 10px 10px 5px 20px;
@@ -23,58 +19,44 @@
 .memberName {
   color: white;
   font-size: 16px;
+  font-weight: 500;
   display: inline-block;
 }
 
 .points {
   color: white;
-  font-size: 16px;
-  margin-left: 15px;
+  font-size: 14px;
+  margin-left: 10px;
   display: inline-block;
 }
 
 .labelBox {
-position: absolute;
-z-index: 2;
-top: 15px;
+display: inline-block;
 left: 70px;
-
+top: 15px;
+position: absolute;
 }
 
-.red {
-  background: #CC4014;
+.iconBox {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 4px;
 }
 
-.orange {
-  background: #FF8940;
+.editButton, .trashButton {
+  background: rgba(194, 194, 195, .75);
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  display: inline-block;
+  margin: 5px;
 }
 
-.green {
-  background: #80CC1C;
-}
-
-.yellow {
-  background: #FFCE00;
-}
-
-.brightBlue {
-background: #00B6FF;
-}
-
-.cornflowerBlue {
-background: #4B6DFF;
-}
-
-.purple {
-  background: #A600FF;
-}
-
-.fuschia {
-  background: #993D78;
-}
-
-.pink {
-  background: #DA6DB3;
+.editIcon, .trashIcon {
+  height: 20px;
+  display: inline-block;
+  margin: 5px;
 }
 
 @media only screen and (min-width: 640px) {
@@ -89,7 +71,7 @@ background: #4B6DFF;
     height: 180px;
     position: relative;
     display: inline-block;
-    padding: 20px 35px 80px 35px;
+    padding: 20px 40px 80px 40px;
   }
 
   .housemateIconContainer {
@@ -116,7 +98,12 @@ background: #4B6DFF;
 .labelBox {
   top: 115px;
   width: 100px;
-  left: 30px;
+  left: 35px;
+}
+
+.iconBox {
+  top: 152px;
+  left: 45px;
 }
 
 

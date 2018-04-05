@@ -4,6 +4,7 @@ import styles from "../componentStyles/MemberList.css"
 import {connect} from "react-redux"
 import {showMemberForm} from "../actions/actions"
 import AddMember from "./AddMember"
+import Colors from "../colors"
 
 export class MemberList extends React.Component {
 
@@ -12,30 +13,40 @@ export class MemberList extends React.Component {
   }
 
   render() {
-    let formComponent;
-    if (this.props.memberFormDisplayed) {
-      formComponent = <MemberForm />;
-    }
 
-    let pointPlural;
+    const members = this.props.members.map((member, index) => {
+let pointPlural;
+member.weekPoints !== 1 ? pointPlural = "points" : pointPlural = "point"
 
-    for (var i = 0; i < this.props.members.length; i++) {
-      this.props.members[i].weekPoints !== 1 ? pointPlural = "points" : pointPlural = "point"
-    }
+let style = {backgroundColor: Colors[member.color]}
 
-    const members = this.props.members.map((member, index) => (
+let formComponent;
+if (member.memberFormDisplayed) {
+  formComponent = <MemberForm />;
+}
 
-      <div className={styles.personContainer} key={index}>
-        <div className={styles.housemateIconContainer}>
-          <img className={styles.housemateIcon} alt="Person Icon" src={require("../images/housemate.png")} onClick={() => {this.onClick()}}></img>
-          <div className={styles.labelBox}>
-            <div className={styles.memberName}>{member.name}</div>
-            <div className={styles.points}>{member.weekPoints} {pointPlural}</div>
+      return (
+
+        <div className={styles.personContainer} key={index}>
+          <div className={styles.housemateIconContainer} style={style}>
+            <img className={styles.housemateIcon} alt="Person Icon" src={require("../images/housemate.png")} onClick={() => {this.onClick()}}></img>
+              <div className={styles.labelBox}>
+                <div className={styles.memberName}>{member.name}</div>
+                <div className={styles.points}>{member.weekPoints} {pointPlural}</div>
+              </div>
+              <div className={styles.iconBox}>
+                <div className={styles.editButton}>
+                  <img className={styles.editIcon} alt="Edit" src={require("../images/edit.png")}></img>
+                </div>
+                <div className={styles.trashButton}>
+                  <img className={styles.trashIcon} alt="Delete" src={require("../images/trash.png")}></img>
+                </div>
+              </div>
+            {formComponent}
           </div>
-          {formComponent}
         </div>
-      </div>
-    ))
+      )
+    } )
 
     return (
       <div className={styles.membersContainer}>

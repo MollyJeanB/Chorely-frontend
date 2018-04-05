@@ -1,4 +1,4 @@
-import { EXPAND_MENU, SHOW_MEMBER_FORM } from "../actions/actions";
+import { EXPAND_MENU, SHOW_MEMBER_FORM, CHANGE_COLOR } from "../actions/actions";
 
 const initialState = {
   drawerOpen: false,
@@ -29,8 +29,8 @@ const initialState = {
       ]
     },
     {
-      name: "Mel",
-      color: "orange",
+      name: "Queen Flea",
+      color: "fuschia",
       weekPoints: 1,
       totalPoints: 17,
       choreCompletions: [
@@ -52,8 +52,8 @@ const initialState = {
       ]
     },
     {
-      name: "Mel",
-      color: "orange",
+      name: "Flea Peasant",
+      color: "cornflowerBlue",
       weekPoints: 1,
       totalPoints: 17,
       choreCompletions: [
@@ -157,6 +157,12 @@ export const choreReducer = (state=initialState, action) => {
 if (action.type === SHOW_MEMBER_FORM) {
   return Object.assign({}, state, {
     memberFormDisplayed: !state.memberFormDisplayed
+  })
+}
+
+if (action.type === CHANGE_COLOR) {
+  return Object.assign({}, state, {
+    memberColor: action.memberColor
   })
 }
 

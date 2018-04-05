@@ -1,7 +1,7 @@
 import React from "react"
 import { reduxForm, Field } from "redux-form";
 import styles from "../componentStyles/MemberForm.css"
-import {showMemberForm} from "../actions/actions"
+import {showMemberForm, submitNewMember, changeColor} from "../actions/actions"
 import {required, nonEmpty} from "../validators"
 
 export class MemberForm extends React.Component {
@@ -11,26 +11,21 @@ export class MemberForm extends React.Component {
   }
 
   chooseColor(event) {
-    debugger
     const color = event.target.getAttribute("data-color")
-    this.setState({
-      color: color
-    })
+    this.props.dispatch(changeColor(color))
+
   }
 
   onSubmit(values) {
-  debugger
+  this.props.dispatch(submitNewMember(values))
 
   }
 
   render() {
     return (
-      <form className={styles.formBox}
-        onSubmit={this.props.handleSubmit(values => {
-          values.color = this.state.color
-          debugger
-          return this.onSubmit(values)
-        })} >
+      <form
+        className={styles.formBox}
+        onSubmit={this.props.handleSubmit(this.onSubmit.bind(this))} >
       <Field
         name="enterName"
         type="text"
@@ -40,11 +35,12 @@ export class MemberForm extends React.Component {
         className={styles.nameField}
         validate={[required, nonEmpty]}
        />
-       <div className={styles.dropdown}
-         onClick={e => this.chooseColor(e)}
-         >
+       <div className={styles.dropdown}>
          <button className={styles.dropbtn}>Color</button>
-         <div className={styles.dropdownContent}>
+         <div
+           className={styles.dropdownContent}
+           onClick={e => this.chooseColor(e)}
+           >
            <div
              className={styles.red}
              data-color="red"
