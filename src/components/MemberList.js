@@ -10,7 +10,7 @@ export class MemberList extends React.Component {
 
   showEdit(event) {
     console.log("showEdit called")
-    this.props.dispatch(showMemberForm(event))
+    this.props.dispatch(showMemberForm(event, this.props.index))
   }
 
   render() {
