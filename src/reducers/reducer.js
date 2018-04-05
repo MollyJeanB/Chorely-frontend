@@ -7,6 +7,7 @@ const initialState = {
   members: [
     {
       name: "Mel",
+      memberFormDisplayed: false,
       color: "orange",
       weekPoints: 1,
       totalPoints: 17,
@@ -30,6 +31,7 @@ const initialState = {
     },
     {
       name: "Queen Flea",
+      memberFormDisplayed: false,
       color: "fuschia",
       weekPoints: 1,
       totalPoints: 17,

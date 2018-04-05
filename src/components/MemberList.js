@@ -8,41 +8,47 @@ import Colors from "../colors"
 
 export class MemberList extends React.Component {
 
-  onClick() {
-    this.props.dispatch(showMemberForm())
+  showEdit(event) {
+    console.log("showEdit called")
+    this.props.dispatch(showMemberForm(event))
   }
 
   render() {
 
     const members = this.props.members.map((member, index) => {
+
 let pointPlural;
 member.weekPoints !== 1 ? pointPlural = "points" : pointPlural = "point"
 
 let style = {backgroundColor: Colors[member.color]}
 
-let formComponent;
+let editFormComponent;
 if (member.memberFormDisplayed) {
-  formComponent = <MemberForm />;
+  console.log("formComponent displayed")
+  editFormComponent = <MemberForm />;
 }
 
       return (
 
         <div className={styles.personContainer} key={index}>
           <div className={styles.housemateIconContainer} style={style}>
-            <img className={styles.housemateIcon} alt="Person Icon" src={require("../images/housemate.png")} onClick={() => {this.onClick()}}></img>
+            <img className={styles.housemateIcon} alt="Person Icon" src={require("../images/housemate.png")}></img>
               <div className={styles.labelBox}>
                 <div className={styles.memberName}>{member.name}</div>
                 <div className={styles.points}>{member.weekPoints} {pointPlural}</div>
               </div>
               <div className={styles.iconBox}>
-                <div className={styles.editButton}>
+                <div
+                  className={styles.editButton}
+                  onClick={e => this.showEdit(e)}
+                  >
                   <img className={styles.editIcon} alt="Edit" src={require("../images/edit.png")}></img>
                 </div>
                 <div className={styles.trashButton}>
                   <img className={styles.trashIcon} alt="Delete" src={require("../images/trash.png")}></img>
                 </div>
               </div>
-            {formComponent}
+            {editFormComponent}
           </div>
         </div>
       )

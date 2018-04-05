@@ -53,6 +53,11 @@ position: absolute;
   margin: 5px;
 }
 
+.editButton:hover,
+.trashButton:hover {
+  background: rgba(185, 233, 254, 1);
+}
+
 .editIcon, .trashIcon {
   height: 20px;
   display: inline-block;
