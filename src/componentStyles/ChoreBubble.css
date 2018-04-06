@@ -1,0 +1,19 @@
+.bubbleCircle {
+  height: 65px;
+  width: 65px;
+  background: #ececed;
+  border: 1px solid gray;
+  border-radius: 100%;
+  display: inline-block;
+  margin: 5px;
+}
+
+@media only screen and (min-width: 840px) {
+  .bubbleCircle {
+    height: 80px;
+    width: 80px;
+    margin-right: 8px;
+    position: relative;
+    z-index: 5;
+  }
+}

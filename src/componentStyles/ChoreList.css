@@ -1,14 +1,78 @@
 .resetContainer {
   text-align: center;
-  padding: 15px;
+  padding: 15px 15px 10px 15px;
   width: 100%;
   margin: 0 auto;
+  color: #262828;
+}
+
+.choreContainer {
+  background: rgba(185, 233, 254, 1);
+  margin-top: 1px;
+  margin-bottom: 1px;
+  z-index: -5;
+  position: relative;
+  color: #262828;
+}
+
+.addChore {
+  background-color: #4b6dff;
+  color: white;
+  padding: 5px 15px 5px 15px;
+  font-size: 16px;
+  border: none;
+  height: 30px;
+  position: relative;
+  z-index: 3;
+}
+
+.addChore:hover {
+  background-color: rgba(61, 80, 153, 1);
+}
+
+.choreInfoBox {
+  margin-left: 25px;
+  padding: 10px;
+}
+
+.choreName {
+  font-weight: 500;
+}
+
+.pointValue {
+  font-size: 14px;
+}
+
+.iconBox {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+}
+
+.editIcon,
+.trashIcon {
+  height: 18px;
+}
+
+.choreBubbleContainer {
+  margin-left: 5px;
 }
 
 @media only screen and (min-width: 640px) {
-
   .resetContainer {
     padding-top: 30px;
   }
+}
 
+@media only screen and (min-width: 840px) {
+  .choreContainer {
+    height: 100px;
+  }
+
+  .choreBubbleContainer {
+    position: absolute;
+    z-index: 4;
+    top: 5px;
+    left: 160px;
+  }
 }
