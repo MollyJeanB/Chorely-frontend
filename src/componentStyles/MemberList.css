@@ -2,7 +2,7 @@
   margin-top: 60px;
   width: 100vw;
   position: relative;
-  z-index: -2;
+  z-index: 0;
 }
 
 .personContainer {
@@ -31,10 +31,10 @@
 }
 
 .labelBox {
-display: inline-block;
-left: 70px;
-top: 15px;
-position: absolute;
+  display: inline-block;
+  left: 70px;
+  top: 15px;
+  position: absolute;
 }
 
 .iconBox {
@@ -44,8 +44,9 @@ position: absolute;
   top: 4px;
 }
 
-.editButton, .trashButton {
-  background: rgba(194, 194, 195, .75);
+.editButton,
+.trashButton {
+  background: rgba(194, 194, 195, 0.75);
   height: 30px;
   width: 30px;
   border-radius: 100%;
@@ -58,14 +59,14 @@ position: absolute;
   background: rgba(185, 233, 254, 1);
 }
 
-.editIcon, .trashIcon {
+.editIcon,
+.trashIcon {
   height: 20px;
   display: inline-block;
   margin: 5px;
 }
 
 @media only screen and (min-width: 640px) {
-
   .membersContainer {
     display: flex;
     align-items: center;
@@ -93,23 +94,22 @@ position: absolute;
     padding: 0;
   }
 
-  .memberName, .points {
-  color: #262828;
-  width: 100px;
-  margin-left: 0;
-  text-align: center;
-}
+  .memberName,
+  .points {
+    color: #262828;
+    width: 100px;
+    margin-left: 0;
+    text-align: center;
+  }
 
-.labelBox {
-  top: 115px;
-  width: 100px;
-  left: 35px;
-}
+  .labelBox {
+    top: 115px;
+    width: 100px;
+    left: 35px;
+  }
 
-.iconBox {
-  top: 152px;
-  left: 45px;
-}
-
-
+  .iconBox {
+    top: 152px;
+    left: 45px;
+  }
 }
