@@ -2,8 +2,6 @@ import React from "react"
 import MemberForm from "./MemberForm"
 import styles from "../componentStyles/MemberList.css"
 import { connect } from "react-redux"
-import { editMemberForm, changeColor } from "../actions/actions"
-import AddMember from "./AddMember"
 import Colors from "../colors"
 
 export class Member extends React.Component {
@@ -11,12 +9,7 @@ export class Member extends React.Component {
     formDisplay: false
   }
 
-  componentWillReceiveProps(newProps) {
-    console.log(newProps.member)
-  }
-
   showEdit(event) {
-    const id = event.currentTarget.getAttribute("data-id")
     this.setState({
       formDisplay: !this.state.formDisplay
     })

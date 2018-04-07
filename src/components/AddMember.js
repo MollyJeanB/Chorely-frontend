@@ -2,7 +2,6 @@ import React from "react"
 import MemberForm from "./MemberForm"
 import styles from "../componentStyles/AddMember.css"
 import { connect } from "react-redux"
-import { showMemberForm } from "../actions/actions"
 import Colors from "../colors"
 
 export class AddMember extends React.Component {
@@ -34,6 +33,7 @@ export class AddMember extends React.Component {
     if (this.state.formDisplay) {
       formComponent = (
         <MemberForm
+          color={this.state.color}
           chooseColor={this.chooseColor.bind(this)}
           cancelForm={this.cancelForm.bind(this)}
         />
@@ -54,7 +54,7 @@ export class AddMember extends React.Component {
             alt="Person Icon"
             src={require("../images/housemate.png")}
             onClick={() => {
-              this.onClick()
+              this.showEdit()
             }}
           />
           <div

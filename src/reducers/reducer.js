@@ -168,18 +168,18 @@ export const choreReducer = (state = initialState, action) => {
   }
 
   if (action.type === SUBMIT_NEW_MEMBER) {
-    const id = state.members.length + ""
+    const id = Object.keys(state.members).length + 1
     const newMember = {
       [id]: {
         name: action.values.memberName,
-        color: action.values.memberColor
+        color: action.values.memberColor,
+        weekPoints: 0
       }
     }
-    debugger
     return Object.assign({}, state, {
       members: {
         ...state.members,
-        newMember
+        ...newMember
       }
     })
   }

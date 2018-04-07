@@ -1,16 +1,17 @@
 import React from "react"
 import { reduxForm, Field } from "redux-form"
 import styles from "../componentStyles/MemberForm.css"
-import {
-  showMemberForm,
-  submitNewMember,
-  changeColor
-} from "../actions/actions"
+import { submitNewMember } from "../actions/actions"
 import { required, nonEmpty } from "../validators"
 
 export class MemberForm extends React.Component {
   onSubmit(values) {
-    this.props.dispatch(submitNewMember(values))
+    if (this.props.color && values.memberName) {
+      values.memberColor = this.props.color
+      this.props.dispatch(submitNewMember(values))
+    } else {
+      return
+    }
   }
 
   render() {

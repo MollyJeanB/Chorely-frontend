@@ -37,14 +37,10 @@ export const submitNewMemberSuccess = values => {
 }
 
 export const SUBMIT_NEW_MEMBER = "SUBMIT_NEW_MEMBER"
-export const submitNewMember = values => (dispatch, getState) => {
-  values.memberColor = getState().chart.memberColor
-  return {
-    type: SUBMIT_NEW_MEMBER,
-    values
-  }
-}
-
+export const submitNewMember = values => ({
+  type: SUBMIT_NEW_MEMBER,
+  values
+})
 // export const SUBMIT_NEW_MEMBER = "SUBMIT_NEW_MEMBER"
 // export const submitNewMember = values => {
 //   return (dispatch, getState) => {
