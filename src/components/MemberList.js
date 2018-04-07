@@ -2,15 +2,15 @@ import React from "react";
 import MemberForm from "./MemberForm";
 import styles from "../componentStyles/MemberList.css";
 import { connect } from "react-redux";
-// import { editMemberForm } from "../actions/actions";
+import { editMemberForm } from "../actions/actions";
 import AddMember from "./AddMember";
 import Colors from "../colors";
 
 export class MemberList extends React.Component {
-  // showEdit(event) {
-  //   const index = event.target.getAttribute("data-index");
-  //   this.props.dispatch(editMemberForm(index));
-  // }
+  showEdit(event) {
+    const index = event.currentTarget.getAttribute("data-index");
+    this.props.dispatch(editMemberForm(parseInt(index, 10)));
+  }
 
   render() {
     const members = this.props.members.map((member, index) => {
@@ -28,7 +28,7 @@ export class MemberList extends React.Component {
       }
 
       return (
-        <div className={styles.personContainer} key={index} data-index={index}>
+        <div className={styles.personContainer} key={index}>
           <div className={styles.housemateIconContainer} style={style}>
             <img
               className={styles.housemateIcon}
@@ -44,6 +44,7 @@ export class MemberList extends React.Component {
             <div className={styles.iconBox}>
               <div
                 className={styles.editButton}
+                data-index={index}
                 onClick={e => this.showEdit(e)}
               >
                 <img

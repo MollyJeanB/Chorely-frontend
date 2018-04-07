@@ -18,11 +18,11 @@ export const addMember = members => ({
   members
 });
 
-// export const EDIT_MEMBER_FORM = "EDIT_MEMBER_FORM";
-// export const editMemberForm = memberIndex => {
-//   type: EDIT_MEMBER_FORM,
-//   memberIndex: index;
-// };
+export const EDIT_MEMBER_FORM = "EDIT_MEMBER_FORM";
+export const editMemberForm = memberIndex => ({
+  type: EDIT_MEMBER_FORM,
+  memberIndex: memberIndex
+});
 
 export const CHANGE_COLOR = "CHANGE_COLOR";
 export const changeColor = memberColor => ({
@@ -30,34 +30,40 @@ export const changeColor = memberColor => ({
   memberColor
 });
 
+export const ADD_MEMBER_TO_ARRAY = "ADD_MEMBER_TO_ARRAY";
+export const addMemberToArray = values => ({
+  type: ADD_MEMBER_TO_ARRAY,
+  values
+});
+
 export const SUBMIT_NEW_MEMBER_SUCCESS = "SUBMIT_NEW_MEMBER_SUCCESS";
 export const submitNewMemberSuccess = values => {
   debugger;
 };
 
-export const SUBMIT_NEW_MEMBER = "SUBMIT_NEW_MEMBER";
-export const submitNewMember = values => {
-  return (dispatch, getState) => {
-    debugger;
-    values.memberColor = getState().chart.memberColor;
-    fetch(`${API_BASE_URL}/members`, {
-      method: "post",
-      body: JSON.stringify(values),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => {
-        if (!res.ok) {
-          return Promise.reject(res.statusText);
-        }
-        return res.json();
-      })
-      .then(member => {
-        dispatch(submitNewMemberSuccess(member));
-      })
-      .catch(err => {
-        // dispatch(submitNewMemberFailure(err))
-      });
-  };
-};
+// export const SUBMIT_NEW_MEMBER = "SUBMIT_NEW_MEMBER";
+// export const submitNewMember = values => {
+//   return (dispatch, getState) => {
+//     debugger;
+//     values.memberColor = getState().chart.memberColor;
+//     fetch(`${API_BASE_URL}/members`, {
+//       method: "post",
+//       body: JSON.stringify(values),
+//       headers: {
+//         "Content-Type": "application/json"
+//       }
+//     })
+//       .then(res => {
+//         if (!res.ok) {
+//           return Promise.reject(res.statusText);
+//         }
+//         return res.json();
+//       })
+//       .then(member => {
+//         dispatch(submitNewMemberSuccess(member));
+//       })
+//       .catch(err => {
+//         // dispatch(submitNewMemberFailure(err))
+//       });
+//   };
+// };

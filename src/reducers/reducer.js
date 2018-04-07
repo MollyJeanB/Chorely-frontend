@@ -1,7 +1,9 @@
 import {
   EXPAND_MENU,
   SHOW_MEMBER_FORM,
-  CHANGE_COLOR
+  CHANGE_COLOR,
+  EDIT_MEMBER_FORM,
+  ADD_MEMBER_TO_ARRAY
 } from "../actions/actions";
 
 const initialState = {
@@ -172,11 +174,23 @@ export const choreReducer = (state = initialState, action) => {
     });
   }
 
-  // if (action.type === EDIT_MEMBER_FORM) {
-  //   return Object.assign({}, state, {
-  //     members[action.memberIndex].memberFormDisplayed: !state.members[action.memberIndex].memberFormDisplayed
-  //   })
+  // if (action.type === ADD_MEMBER_TO_ARRAY) {
+  //   return Object.assign({}, state), {
+  //     members: members.concat({
+  //     })
+  //   }
   // }
+
+  if (action.type === EDIT_MEMBER_FORM) {
+    const updatedMember = state.members[action.memberIndex];
+    updatedMember.memberFormDisplayed = !updatedMember.memberFormDisplayed;
+    let members = state.members;
+    members[action.memberIndex] = updatedMember;
+
+    return Object.assign({}, state, {
+      members: members
+    });
+  }
 
   return state;
 };
