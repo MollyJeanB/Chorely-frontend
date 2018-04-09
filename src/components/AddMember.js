@@ -6,7 +6,8 @@ import Colors from "../colors";
 
 export class AddMember extends React.Component {
   state = {
-    formDisplay: false
+    formDisplay: false,
+    color: Colors.gray
   };
 
   showEdit(event) {
@@ -17,7 +18,8 @@ export class AddMember extends React.Component {
 
   cancelForm() {
     this.setState({
-      formDisplay: !this.state.formDisplay
+      formDisplay: !this.state.formDisplay,
+      color: Colors.gray
     });
   }
 
@@ -46,6 +48,7 @@ export class AddMember extends React.Component {
         backgroundColor: Colors[this.state.color]
       };
     }
+
     return (
       <div className={styles.newPersonContainer}>
         <div className={styles.housemateIconContainer} style={style}>
@@ -74,7 +77,8 @@ export class AddMember extends React.Component {
 
 export const mapStateToProps = state => ({
   memberFormDisplayed: state.chart.memberFormDisplayed,
-  memberColor: state.chart.memberColor
+  memberColor: state.chart.memberColor,
+  form: state.form
 });
 
 export default connect(mapStateToProps)(AddMember);

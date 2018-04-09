@@ -3,6 +3,7 @@ import styles from "../componentStyles/ChoreList.css";
 import { connect } from "react-redux";
 // import Colors from "../colors";
 import ChoreBubble from "./ChoreBubble";
+import ChoreForm from "./ChoreForm";
 
 export class ChoreList extends React.Component {
   render() {
@@ -60,6 +61,7 @@ export class ChoreList extends React.Component {
           Chore Chart Resets on {this.props.resetTime}
         </div>
         <button className={styles.addChore}>Add Chore</button>
+        {/* <ChoreForm /> */}
         {chores}
       </div>
     );

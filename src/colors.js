@@ -1,19 +1,21 @@
 export default {
-red : "#CC4014",
+  red: "#CC4014",
 
-orange : "#FF8940",
+  orange: "#FF8940",
 
-green : "#80CC1C",
+  green: "#80CC1C",
 
-yellow : "#FFCE00",
+  yellow: "#FFCE00",
 
-brightBlue: "#00B6FF",
+  brightBlue: "#00B6FF",
 
-cornflowerBlue: "#4B6DFF",
+  cornflowerBlue: "#4B6DFF",
 
-purple : "#A600FF",
+  purple: "#A600FF",
 
-fuschia : "#993D78",
+  fuschia: "#993D78",
 
-pink : "#DA6DB3"
-}
+  pink: "#DA6DB3",
+
+  gray: "#C2C2C3"
+};

@@ -1,17 +1,22 @@
 import React from "react";
-import { reduxForm, Field } from "redux-form";
+import { reduxForm, Field, reset } from "redux-form";
 import styles from "../componentStyles/MemberForm.css";
 import { submitNewMember } from "../actions/actions";
 import { required, nonEmpty } from "../validators";
+import Input from "./Input";
+
+function afterSubmit(result, dispatch) {
+  dispatch(reset("formReducer"));
+}
 
 export class MemberForm extends React.Component {
   onSubmit(values) {
-    if (this.props.color && values.memberName) {
-      values.memberColor = this.props.color;
-      this.props.dispatch(submitNewMember(values));
-    } else {
-      return;
-    }
+    let colorArray = ["orange", "yellow", "green", "fuschia", "purple"];
+    let randomColor = colorArray[Math.floor(Math.random() * colorArray.length)];
+    this.props.color
+      ? (values.memberColor = this.props.color)
+      : (values.memberColor = randomColor);
+    this.props.dispatch(submitNewMember(values));
   }
 
   render() {
@@ -24,10 +29,14 @@ export class MemberForm extends React.Component {
           name="memberName"
           type="text"
           ref={input => (this.textInput = input)}
-          component="input"
+          component={Input}
           placeholder="Name"
           className={styles.nameField}
           validate={[required, nonEmpty]}
+          props={{
+            styleClassName: "nameField",
+            placeholder: "Name"
+          }}
         />
         <div className={styles.dropdown}>
           <button className={styles.dropbtn}>Color</button>
@@ -67,4 +76,7 @@ export class MemberForm extends React.Component {
   }
 }
 
-export default reduxForm({ form: "formReducer" })(MemberForm);
+export default reduxForm({
+  form: "formReducer",
+  onSubmitSuccess: afterSubmit
+})(MemberForm);
