@@ -1,25 +1,17 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
 import styles from "../componentStyles/MemberForm.css";
-import {
-  showMemberForm,
-  addMemberToArray,
-  changeColor
-} from "../actions/actions";
+import { submitNewMember } from "../actions/actions";
 import { required, nonEmpty } from "../validators";
 
 export class MemberForm extends React.Component {
-  onClick() {
-    this.props.dispatch(showMemberForm());
-  }
-
-  chooseColor(event) {
-    const color = event.target.getAttribute("data-color");
-    this.props.dispatch(changeColor(color));
-  }
-
   onSubmit(values) {
-    this.props.dispatch(addMemberToArray(values));
+    if (this.props.color && values.memberName) {
+      values.memberColor = this.props.color;
+      this.props.dispatch(submitNewMember(values));
+    } else {
+      return;
+    }
   }
 
   render() {
@@ -29,7 +21,7 @@ export class MemberForm extends React.Component {
         onSubmit={this.props.handleSubmit(this.onSubmit.bind(this))}
       >
         <Field
-          name="enterName"
+          name="memberName"
           type="text"
           ref={input => (this.textInput = input)}
           component="input"
@@ -41,7 +33,7 @@ export class MemberForm extends React.Component {
           <button className={styles.dropbtn}>Color</button>
           <div
             className={styles.dropdownContent}
-            onClick={e => this.chooseColor(e)}
+            onClick={e => this.props.chooseColor(e)}
           >
             <div className={styles.red} data-color="red" />
             <div className={styles.orange} data-color="orange" />
@@ -64,7 +56,7 @@ export class MemberForm extends React.Component {
           <button
             className={styles.cancelButton}
             onClick={() => {
-              this.onClick();
+              this.props.cancelForm();
             }}
           >
             Cancel

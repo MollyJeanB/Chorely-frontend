@@ -3,43 +3,34 @@ import {
   SHOW_MEMBER_FORM,
   CHANGE_COLOR,
   EDIT_MEMBER_FORM,
-  ADD_MEMBER_TO_ARRAY
+  SUBMIT_NEW_MEMBER
 } from "../actions/actions";
 
 const initialState = {
   drawerOpen: false,
   memberFormDisplayed: false,
   resetTime: "Sunday at 5pm",
-  members: [
-    {
+  members: {
+    "1": {
       name: "Mel",
       memberFormDisplayed: false,
-      memberIndex: 1,
+      memberId: 1,
       color: "orange",
       weekPoints: 1,
       totalPoints: 17,
       choreCompletions: [
         {
-          choreName: "Sweep Floors",
-          weekCompletions: 0,
-          totalCompletions: 2
-        },
-        {
-          choreName: "Wipe Counters",
-          weekCompletions: 1,
-          totalCompletions: 5
-        },
-        {
           choreName: "Clean Bathroom",
           weekCompletions: 0,
           totalCompletions: 1
         }
       ]
     },
-    {
+    "2": {
       name: "Queen Flea",
       memberFormDisplayed: false,
       color: "fuschia",
+      memberId: 2,
       weekPoints: 1,
       totalPoints: 17,
       choreCompletions: [
@@ -49,21 +40,17 @@ const initialState = {
           totalCompletions: 2
         },
         {
-          choreName: "Wipe Counters",
-          weekCompletions: 1,
-          totalCompletions: 5
-        },
-        {
           choreName: "Clean Bathroom",
           weekCompletions: 0,
           totalCompletions: 1
         }
       ]
     },
-    {
+    "3": {
       name: "Flea Peasant",
       color: "cornflowerBlue",
       weekPoints: 1,
+      memberId: 3,
       totalPoints: 17,
       choreCompletions: [
         {
@@ -83,9 +70,10 @@ const initialState = {
         }
       ]
     },
-    {
+    "4": {
       name: "Molly",
       color: "brightBlue",
+      memberId: 4,
       weekPoints: 3,
       totalPoints: 25,
       choreCompletions: [
@@ -106,9 +94,10 @@ const initialState = {
         }
       ]
     },
-    {
+    "5": {
       name: "Steve",
       color: "purple",
+      memberId: 5,
       weekPoints: 4,
       totalPoints: 26,
       choreCompletions: [
@@ -129,7 +118,7 @@ const initialState = {
         }
       ]
     }
-  ],
+  },
   chores: [
     {
       choreName: "Sweep Floors",
@@ -169,23 +158,37 @@ export const choreReducer = (state = initialState, action) => {
   }
 
   if (action.type === CHANGE_COLOR) {
+    let member = state.members[action.id];
+    member.color = action.memberColor;
+    let members = state.members;
+    members[action.id] = member;
     return Object.assign({}, state, {
-      memberColor: action.memberColor
+      members: members
     });
   }
 
-  // if (action.type === ADD_MEMBER_TO_ARRAY) {
-  //   return Object.assign({}, state), {
-  //     members: members.concat({
-  //     })
-  //   }
-  // }
+  if (action.type === SUBMIT_NEW_MEMBER) {
+    const id = Object.keys(state.members).length + 1;
+    const newMember = {
+      [id]: {
+        name: action.values.memberName,
+        color: action.values.memberColor,
+        weekPoints: 0
+      }
+    };
+    return Object.assign({}, state, {
+      members: {
+        ...state.members,
+        ...newMember
+      }
+    });
+  }
 
   if (action.type === EDIT_MEMBER_FORM) {
     const updatedMember = state.members[action.memberIndex];
     updatedMember.memberFormDisplayed = !updatedMember.memberFormDisplayed;
     let members = state.members;
-    members[action.memberIndex] = updatedMember;
+    members[action.memberId] = updatedMember;
 
     return Object.assign({}, state, {
       members: members

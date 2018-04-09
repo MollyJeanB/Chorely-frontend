@@ -25,21 +25,22 @@ export const editMemberForm = memberIndex => ({
 });
 
 export const CHANGE_COLOR = "CHANGE_COLOR";
-export const changeColor = memberColor => ({
+export const changeColor = (id, memberColor) => ({
   type: CHANGE_COLOR,
-  memberColor
-});
-
-export const ADD_MEMBER_TO_ARRAY = "ADD_MEMBER_TO_ARRAY";
-export const addMemberToArray = values => ({
-  type: ADD_MEMBER_TO_ARRAY,
-  values
+  memberColor,
+  id
 });
 
 export const SUBMIT_NEW_MEMBER_SUCCESS = "SUBMIT_NEW_MEMBER_SUCCESS";
 export const submitNewMemberSuccess = values => {
   debugger;
 };
+
+export const SUBMIT_NEW_MEMBER = "SUBMIT_NEW_MEMBER";
+export const submitNewMember = values => ({
+  type: SUBMIT_NEW_MEMBER,
+  values
+});
 
 // export const SUBMIT_NEW_MEMBER = "SUBMIT_NEW_MEMBER";
 // export const submitNewMember = values => {
