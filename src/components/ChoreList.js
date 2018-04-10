@@ -17,7 +17,7 @@ export class ChoreList extends React.Component {
           Chore Chart Resets on {this.props.resetTime}
         </div>
         <button className={styles.addChore}>Add Chore</button>
-        <ChoreForm />
+        {/* <ChoreForm /> */}
         {chores}
       </div>
     );

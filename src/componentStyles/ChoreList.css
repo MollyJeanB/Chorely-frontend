@@ -11,15 +11,6 @@
   color: #262828;
 }
 
-.choreContainer {
-  background: #ceeffe;
-  margin-top: 1px;
-  margin-bottom: 1px;
-  z-index: -5;
-  position: relative;
-  color: #262828;
-}
-
 .addChore {
   background-color: #4b6dff;
   color: white;
@@ -35,49 +26,8 @@
   background-color: rgba(61, 80, 153, 1);
 }
 
-.choreInfoBox {
-  margin-left: 25px;
-  padding: 10px;
-}
-
-.choreName {
-  font-weight: 500;
-}
-
-.pointValue {
-  font-size: 14px;
-}
-
-.iconBox {
-  position: absolute;
-  top: 5px;
-  left: 10px;
-}
-
-.editIcon,
-.trashIcon {
-  height: 18px;
-}
-
-.choreBubbleContainer {
-  margin-left: 5px;
-}
-
 @media only screen and (min-width: 640px) {
   .resetContainer {
     padding-top: 30px;
-  }
-}
-
-@media only screen and (min-width: 840px) {
-  .choreContainer {
-    height: 100px;
-  }
-
-  .choreBubbleContainer {
-    position: absolute;
-    z-index: 4;
-    top: 5px;
-    left: 160px;
   }
 }

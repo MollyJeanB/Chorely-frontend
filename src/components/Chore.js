@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../componentStyles/ChoreList.css";
+import styles from "../componentStyles/Chore.css";
 import ChoreBubble from "./ChoreBubble";
 import { connect } from "react-redux";
 

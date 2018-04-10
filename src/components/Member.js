@@ -1,6 +1,6 @@
 import React from "react";
 import MemberForm from "./MemberForm";
-import styles from "../componentStyles/MemberList.css";
+import styles from "../componentStyles/Member.css";
 import { connect } from "react-redux";
 import Colors from "../colors";
 

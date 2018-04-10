@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../componentStyles/MemberForm.css";
+import styles from "../componentStyles/Input.css";
 
 export default class Input extends React.Component {
   componentDidUpdate(prevProps) {
@@ -13,17 +13,19 @@ export default class Input extends React.Component {
 
     let error;
     if (this.props.meta.touched && this.props.meta.error) {
-      error = <div className="form-error">{this.props.meta.error}</div>;
+      error = <div className={styles.formError}>{this.props.meta.error}</div>;
     }
 
     let warning;
     if (this.props.meta.touched && this.props.meta.warning) {
-      warning = <div className="form-warning">{this.props.meta.warning}</div>;
+      warning = (
+        <div className={styles.formWarning}>{this.props.meta.warning}</div>
+      );
     }
 
     return (
       <div className="form-input">
-        <label htmlFor={this.props.input.name}>
+        <label className={styles.formWarning} htmlFor={this.props.input.name}>
           {this.props.label}
           {error}
           {warning}
@@ -33,7 +35,7 @@ export default class Input extends React.Component {
           id={this.props.input.name}
           type={this.props.type}
           ref={input => (this.input = input)}
-          className={styles[this.props.styleClassName]}
+          className={styles.nameField}
           placeholder={this.props.placeholder}
         />
       </div>

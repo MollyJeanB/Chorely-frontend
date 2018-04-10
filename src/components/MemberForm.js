@@ -13,9 +13,10 @@ export class MemberForm extends React.Component {
   onSubmit(values) {
     let colorArray = ["orange", "yellow", "green", "fuschia", "purple"];
     let randomColor = colorArray[Math.floor(Math.random() * colorArray.length)];
-    this.props.color
+    this.props.color && this.props.color !== "#C2C2C3"
       ? (values.memberColor = this.props.color)
       : (values.memberColor = randomColor);
+    console.log(values);
     this.props.dispatch(submitNewMember(values));
   }
 
