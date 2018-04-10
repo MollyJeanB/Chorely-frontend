@@ -1,7 +1,8 @@
 import React from "react";
-import { reduxForm, Field } from "redux-form";
+import { reduxForm, Field, reset } from "redux-form";
 import styles from "../componentStyles/ChoreForm.css";
 import { required, nonEmpty } from "../validators";
+import Input from "./Input";
 
 export class ChoreForm extends React.Component {
   // onSubmit(values) {
@@ -23,7 +24,7 @@ export class ChoreForm extends React.Component {
           name="choreName"
           type="text"
           ref={input => (this.textInput = input)}
-          component="input"
+          component={Input}
           placeholder="Chore Title"
           className={styles.choreTitle}
           validate={[required, nonEmpty]}

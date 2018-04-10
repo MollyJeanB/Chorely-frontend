@@ -119,29 +119,32 @@ const initialState = {
       ]
     }
   },
-  chores: [
-    {
+  chores: {
+    "1": {
       choreName: "Sweep Floors",
+      choreId: 1,
       pointValue: 2,
       timesPerWeek: 3,
       possibleCompletions: 15,
       totalCompletions: 7
     },
-    {
+    "2": {
       choreName: "Wipe Counters",
+      choreId: 2,
       pointValue: 1,
       timesPerWeek: 7,
       possibleCompletions: 25,
       totalCompletions: 22
     },
-    {
+    "3": {
       choreName: "Clean Bathroom",
+      choreId: 3,
       pointValue: 5,
       timesPerWeek: 1,
       possibleCompletions: 5,
       totalCompletions: 4
     }
-  ]
+  }
 };
 
 export const choreReducer = (state = initialState, action) => {
