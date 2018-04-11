@@ -31,8 +31,8 @@ export class MemberForm extends React.Component {
           type="text"
           ref={input => (this.textInput = input)}
           component={Input}
-          placeholder="Name"
-          className={styles.nameField}
+          // placeholder="Name"
+          // className={styles.nameField}
           validate={[required, nonEmpty]}
           props={{
             styleClassName: "nameField",

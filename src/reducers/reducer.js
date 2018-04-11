@@ -3,7 +3,8 @@ import {
   SHOW_MEMBER_FORM,
   CHANGE_COLOR,
   EDIT_MEMBER_FORM,
-  SUBMIT_NEW_MEMBER
+  SUBMIT_NEW_MEMBER,
+  DELETE_MEMBER
 } from "../actions/actions";
 
 const initialState = {
@@ -168,6 +169,15 @@ export const choreReducer = (state = initialState, action) => {
     return Object.assign({}, state, {
       members: members
     });
+  }
+
+  if (action.type === DELETE_MEMBER) {
+    console.log(action.id);
+    // delete state.members[action.id];
+    // let members = state.members;
+    // return Object.assign({}, state, {
+    //   members: members
+    // });
   }
 
   if (action.type === SUBMIT_NEW_MEMBER) {

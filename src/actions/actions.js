@@ -31,6 +31,13 @@ export const changeColor = (id, memberColor) => ({
   id
 });
 
+export const DELETE_MEMBER = "DELETE_MEMBER";
+export const deleteMember = (id, members) => ({
+  type: DELETE_MEMBER,
+  id,
+  members
+});
+
 export const SUBMIT_NEW_MEMBER_SUCCESS = "SUBMIT_NEW_MEMBER_SUCCESS";
 export const submitNewMemberSuccess = values => {
   debugger;
