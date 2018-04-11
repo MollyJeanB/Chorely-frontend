@@ -1,0 +1,14 @@
+.membersContainer {
+  margin-top: 60px;
+  width: 100vw;
+  position: relative;
+  z-index: -2;
+}
+
+@media only screen and (min-width: 640px) {
+  .membersContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

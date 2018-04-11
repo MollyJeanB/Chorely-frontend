@@ -1,0 +1,45 @@
+.warnContain {
+  position: absolute;
+  z-index: 5;
+  width: 135px;
+  background: #cc4014;
+  padding: 6.5px;
+  border-radius: 2px;
+  top: 0;
+  left: 20px;
+}
+
+.message {
+  color: white;
+  text-align: center;
+  font-size: 13px;
+}
+
+.buttonContain {
+  margin-left: 15px;
+}
+
+.deleteButton,
+.cancelButton {
+  background: white;
+  color: #cc4014;
+  margin: 3px 10px 0 0;
+}
+
+.deleteButton:hover,
+.cancelButton:hover {
+  background: #c2c2c3;
+}
+
+@media only screen and (min-width: 640px) {
+  .warnContain {
+    top: 38px;
+    left: 18px;
+    border: 1px solid white;
+    padding: 7px;
+  }
+
+  .message {
+    font-size: 14px;
+  }
+}

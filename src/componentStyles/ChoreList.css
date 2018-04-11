@@ -1,0 +1,33 @@
+.choreListContainer {
+  position: relative;
+  z-index: -5;
+}
+
+.resetContainer {
+  text-align: center;
+  padding: 15px 15px 10px 15px;
+  width: 100%;
+  margin: 0 auto;
+  color: #262828;
+}
+
+.addChore {
+  background-color: #4b6dff;
+  color: white;
+  padding: 5px 15px 5px 15px;
+  font-size: 16px;
+  border: none;
+  height: 30px;
+  position: relative;
+  z-index: 3;
+}
+
+.addChore:hover {
+  background-color: rgba(61, 80, 153, 1);
+}
+
+@media only screen and (min-width: 640px) {
+  .resetContainer {
+    padding-top: 30px;
+  }
+}

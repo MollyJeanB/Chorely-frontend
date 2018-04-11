@@ -1,0 +1,27 @@
+.dropContain {
+  top: 12px;
+  left: 6px;
+  position: absolute;
+  z-index: 999 !important;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.colorBox {
+  color: white;
+  font-size: 11px;
+  text-align: center;
+  width: 80px;
+  height: 20px;
+  padding: 4px;
+}
+
+.colorBox:hover {
+  border: 2px solid #3d4f99;
+}
+
+@media only screen and (min-width: 840px) {
+  .dropContain {
+    top: 38px;
+    left: -1px;
+  }
+}
