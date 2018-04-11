@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../componentStyles/ChoreBubble.css";
 import { connect } from "react-redux";
+import BubbleDropdown from "./BubbleDropdown";
 
 export class ChoreBubble extends React.Component {
   state = {
@@ -14,13 +15,20 @@ export class ChoreBubble extends React.Component {
   }
 
   render() {
+    let dropdown;
+    if (this.state.dropdownDisplay) {
+      dropdown = <BubbleDropdown />;
+    }
+
     return (
       <div
         className={styles.bubbleCircle}
         onClick={() => {
           this.showDropdown();
         }}
-      />
+      >
+        {dropdown}
+      </div>
     );
   }
 }

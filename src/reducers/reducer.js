@@ -33,91 +33,28 @@ const initialState = {
       color: "fuschia",
       memberId: 2,
       weekPoints: 1,
-      totalPoints: 17,
-      choreCompletions: [
-        {
-          choreName: "Sweep Floors",
-          weekCompletions: 0,
-          totalCompletions: 2
-        },
-        {
-          choreName: "Clean Bathroom",
-          weekCompletions: 0,
-          totalCompletions: 1
-        }
-      ]
+      totalPoints: 17
     },
     "3": {
       name: "Flea Peasant",
       color: "cornflowerBlue",
       weekPoints: 1,
       memberId: 3,
-      totalPoints: 17,
-      choreCompletions: [
-        {
-          choreName: "Sweep Floors",
-          weekCompletions: 0,
-          totalCompletions: 2
-        },
-        {
-          choreName: "Wipe Counters",
-          weekCompletions: 1,
-          totalCompletions: 5
-        },
-        {
-          choreName: "Clean Bathroom",
-          weekCompletions: 0,
-          totalCompletions: 1
-        }
-      ]
+      totalPoints: 17
     },
     "4": {
       name: "Molly",
       color: "brightBlue",
       memberId: 4,
       weekPoints: 3,
-      totalPoints: 25,
-      choreCompletions: [
-        {
-          choreName: "Sweep Floors",
-          weekCompletions: 1,
-          totalCompletions: 2
-        },
-        {
-          choreName: "Wipe Counters",
-          weekCompletions: 1,
-          totalCompletions: 11
-        },
-        {
-          choreName: "Clean Bathroom",
-          weekCompletions: 0,
-          totalCompletions: 2
-        }
-      ]
+      totalPoints: 25
     },
     "5": {
       name: "Steve",
       color: "purple",
       memberId: 5,
       weekPoints: 4,
-      totalPoints: 26,
-      choreCompletions: [
-        {
-          choreName: "Sweep Floors",
-          weekCompletions: 2,
-          totalCompletions: 3
-        },
-        {
-          choreName: "Wipe Counters",
-          weekCompletions: 0,
-          totalCompletions: 10
-        },
-        {
-          choreName: "Clean Bathroom",
-          weekCompletions: 0,
-          totalCompletions: 2
-        }
-      ]
+      totalPoints: 26
     }
   },
   chores: {
@@ -125,25 +62,23 @@ const initialState = {
       choreName: "Sweep Floors",
       choreId: 1,
       pointValue: 2,
-      timesPerWeek: 3,
-      possibleCompletions: 15,
-      totalCompletions: 7
+      timesPerWeek: 3
     },
     "2": {
       choreName: "Wipe Counters",
       choreId: 2,
       pointValue: 1,
       timesPerWeek: 7,
-      possibleCompletions: 25,
-      totalCompletions: 22
+      completions: {
+        1: 4,
+        2: 5
+      }
     },
     "3": {
       choreName: "Clean Bathroom",
       choreId: 3,
       pointValue: 5,
-      timesPerWeek: 1,
-      possibleCompletions: 5,
-      totalCompletions: 4
+      timesPerWeek: 1
     }
   }
 };

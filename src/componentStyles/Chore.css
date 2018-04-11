@@ -2,7 +2,7 @@
   background: #ceeffe;
   margin-top: 1px;
   margin-bottom: 1px;
-  z-index: -5;
+  z-index: -100;
   position: relative;
   color: #262828;
 }
