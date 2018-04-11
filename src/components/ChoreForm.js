@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../componentStyles/ChoreForm.css";
-import { required, nonEmpty } from "../validators";
 import { connect } from "react-redux";
 
 export class ChoreForm extends React.Component {

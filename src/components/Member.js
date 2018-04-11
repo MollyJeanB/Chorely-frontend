@@ -4,6 +4,7 @@ import DeleteWarn from "./DeleteWarn";
 import styles from "../componentStyles/Member.css";
 import { connect } from "react-redux";
 import Colors from "../colors";
+import { deleteMember } from "../actions/actions";
 
 export class Member extends React.Component {
   state = {
@@ -48,7 +49,10 @@ export class Member extends React.Component {
 
   removeUser(event, id) {
     console.log(id);
-    this.props.dispatch(this.props.deleteMember(id));
+    this.props.dispatch(deleteMember(id));
+    this.setState({
+      warnDisplay: false
+    });
   }
 
   render() {

@@ -1,10 +1,27 @@
 .choreContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
   background: #ceeffe;
   margin-top: 1px;
   margin-bottom: 1px;
-  z-index: -100;
   position: relative;
   color: #262828;
+}
+
+.choreBubbleContainer {
+  margin-top: -10px;
+}
+
+@media only screen and (min-width: 840px) {
+  .choreBubbleContainer {
+    margin-top: 5px;
+  }
+
+  .choreContainer {
+    height: 100px;
+    grid-template-columns: 170px 1fr;
+  }
 }
 
 .choreInfoBox {
@@ -35,15 +52,9 @@
   margin-left: 5px;
 }
 
-@media only screen and (min-width: 840px) {
-  .choreContainer {
-    height: 100px;
-  }
-
-  .choreBubbleContainer {
+/* .choreBubbleContainer {
     position: absolute;
     z-index: 4;
     top: 5px;
     left: 160px;
-  }
-}
+  } */

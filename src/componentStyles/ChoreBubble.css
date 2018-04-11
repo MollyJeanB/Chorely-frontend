@@ -7,7 +7,6 @@
   display: inline-block;
   margin: 5px;
   position: relative;
-  z-index: 1;
 }
 
 @media only screen and (min-width: 840px) {

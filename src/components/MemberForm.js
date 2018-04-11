@@ -17,6 +17,7 @@ export class MemberForm extends React.Component {
       ? (values.memberColor = this.props.color)
       : (values.memberColor = randomColor);
     console.log(values);
+
     this.props.dispatch(submitNewMember(values));
   }
 
@@ -31,8 +32,6 @@ export class MemberForm extends React.Component {
           type="text"
           ref={input => (this.textInput = input)}
           component={Input}
-          // placeholder="Name"
-          // className={styles.nameField}
           validate={[required, nonEmpty]}
           props={{
             styleClassName: "nameField",

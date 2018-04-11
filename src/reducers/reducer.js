@@ -8,8 +8,6 @@ import {
 } from "../actions/actions";
 
 const initialState = {
-  drawerOpen: false,
-  memberFormDisplayed: false,
   resetTime: "Sunday at 5pm",
   members: {
     "1": {
@@ -18,14 +16,7 @@ const initialState = {
       memberId: 1,
       color: "orange",
       weekPoints: 1,
-      totalPoints: 17,
-      choreCompletions: [
-        {
-          choreName: "Clean Bathroom",
-          weekCompletions: 0,
-          totalCompletions: 1
-        }
-      ]
+      totalPoints: 17
     },
     "2": {
       name: "Queen Flea",
@@ -68,17 +59,20 @@ const initialState = {
       choreName: "Wipe Counters",
       choreId: 2,
       pointValue: 1,
-      timesPerWeek: 7,
-      completions: {
-        1: 4,
-        2: 5
-      }
+      timesPerWeek: 7
     },
     "3": {
       choreName: "Clean Bathroom",
       choreId: 3,
       pointValue: 5,
       timesPerWeek: 1
+    }
+  },
+  choreCompletions: {
+    "1": {
+      choreId: 3,
+      memberId: 1,
+      completedAt: 1
     }
   }
 };
@@ -108,11 +102,11 @@ export const choreReducer = (state = initialState, action) => {
 
   if (action.type === DELETE_MEMBER) {
     console.log(action.id);
-    // delete state.members[action.id];
-    // let members = state.members;
-    // return Object.assign({}, state, {
-    //   members: members
-    // });
+    delete state.members[action.id];
+    let members = state.members;
+    return Object.assign({}, state, {
+      members: members
+    });
   }
 
   if (action.type === SUBMIT_NEW_MEMBER) {
@@ -121,7 +115,8 @@ export const choreReducer = (state = initialState, action) => {
       [id]: {
         name: action.values.memberName,
         color: action.values.memberColor,
-        weekPoints: 0
+        weekPoints: 0,
+        memberId: id
       }
     };
     return Object.assign({}, state, {

@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:3000";
+// const API_BASE_URL = "http://localhost:3000";
 
 export const EXPAND_MENU = "EXPAND_MENU";
 export const expandMenu = drawerOpen => ({
