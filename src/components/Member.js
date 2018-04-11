@@ -20,7 +20,13 @@ export class Member extends React.Component {
 
   showWarn(event) {
     this.setState({
-      warnDisplay: !this.state.warnDisplay
+      warnDisplay: true
+    });
+  }
+
+  cancelWarn(event) {
+    this.setState({
+      warnDisplay: false
     });
   }
 
@@ -71,6 +77,7 @@ export class Member extends React.Component {
           removeUser={e => {
             this.removeUser(e, memberId);
           }}
+          cancelWarn={this.cancelWarn.bind(this)}
         />
       );
     }

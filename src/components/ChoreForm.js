@@ -1,8 +1,7 @@
 import React from "react";
-import { reduxForm, Field, reset } from "redux-form";
 import styles from "../componentStyles/ChoreForm.css";
 import { required, nonEmpty } from "../validators";
-import Input from "./Input";
+import { connect } from "react-redux";
 
 export class ChoreForm extends React.Component {
   // onSubmit(values) {
@@ -20,17 +19,15 @@ export class ChoreForm extends React.Component {
         className={styles.formBox}
         // onSubmit={this.props.handleSubmit(this.onSubmit.bind(this))}
       >
-        <Field
+        <input
           name="choreName"
           type="text"
           ref={input => (this.textInput = input)}
-          component={Input}
           placeholder="Chore Title"
           className={styles.choreTitle}
-          validate={[required, nonEmpty]}
         />
-        <div>
-          <Field name="pointValueField" component="select">
+        <div className={styles.pointContain}>
+          <select name="pointValueField" className={styles.pointField}>
             <option value="1">Point Value</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -42,10 +39,10 @@ export class ChoreForm extends React.Component {
             <option value="8">8</option>
             <option value="9">9</option>
             <option value="10">10</option>
-          </Field>
+          </select>
         </div>
-        <div>
-          <Field name="timesPerWeekField" component="select">
+        <div className={styles.weekContain}>
+          <select name="timesPerWeekField" className={styles.weekField}>
             <option value="1">Times Per Week</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -54,7 +51,7 @@ export class ChoreForm extends React.Component {
             <option value="5">5</option>
             <option value="6">6</option>
             <option value="7">7</option>
-          </Field>
+          </select>
         </div>
         <div className={styles.buttonBox}>
           <button type="submit" className={styles.saveButton}>
@@ -74,4 +71,4 @@ export class ChoreForm extends React.Component {
   }
 }
 
-export default reduxForm({ form: "formReducer" })(ChoreForm);
+export default connect(null)(ChoreForm);

@@ -5,7 +5,28 @@ import ChoreForm from "./ChoreForm";
 import Chore from "./Chore";
 
 export class ChoreList extends React.Component {
+  state = {
+    formDisplay: false
+  };
+
+  showEdit(event) {
+    this.setState({
+      formDisplay: !this.state.formDisplay
+    });
+  }
+
+  cancelForm() {
+    this.setState({
+      formDisplay: !this.state.formDisplay
+    });
+  }
+
   render() {
+    let formComponent;
+    if (this.state.formDisplay) {
+      formComponent = <ChoreForm cancelForm={this.cancelForm.bind(this)} />;
+    }
+
     const choreKeys = Object.keys(this.props.chores);
     const chores = choreKeys.map((choreKey, index) => {
       return <Chore key={index} {...this.props.chores[choreKey]} />;
@@ -16,8 +37,15 @@ export class ChoreList extends React.Component {
         <div className={styles.resetContainer}>
           Chore Chart Resets on {this.props.resetTime}
         </div>
-        <button className={styles.addChore}>Add Chore</button>
-        {/* <ChoreForm /> */}
+        <button
+          className={styles.addChore}
+          onClick={() => {
+            this.showEdit();
+          }}
+        >
+          Add Chore
+        </button>
+        {formComponent}
         {chores}
       </div>
     );
