@@ -1,0 +1,46 @@
+.formBox {
+  padding: 8px;
+}
+
+.choreTitle {
+  display: inline-block;
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  width: 130px;
+  padding: 5px;
+  margin: 5px;
+  border-bottom: 2px solid rgba(61, 80, 153, 1);
+  background: none;
+}
+
+.pointContain,
+.weekContain {
+  display: inline-block;
+}
+
+.pointField,
+.weekField {
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  height: 20px;
+  margin: 5px;
+  border-radius: 1px;
+  color: rgba(61, 80, 153, 1);
+  border-bottom: 2px solid rgba(61, 80, 153, 1);
+}
+
+.buttonBox {
+  display: inline-block;
+}
+
+.saveButton,
+.cancelButton {
+  margin: 5px;
+  background: #4b6dff;
+  color: white;
+}
+
+.saveButton:hover,
+.cancelButton:hover {
+  background: rgba(61, 80, 153, 1);
+}

@@ -9,13 +9,7 @@ export class ChoreList extends React.Component {
     formDisplay: false
   };
 
-  showEdit(event) {
-    this.setState({
-      formDisplay: !this.state.formDisplay
-    });
-  }
-
-  cancelForm() {
+  toggleForm(event) {
     this.setState({
       formDisplay: !this.state.formDisplay
     });
@@ -24,7 +18,7 @@ export class ChoreList extends React.Component {
   render() {
     let formComponent;
     if (this.state.formDisplay) {
-      formComponent = <ChoreForm cancelForm={this.cancelForm.bind(this)} />;
+      formComponent = <ChoreForm toggleForm={this.toggleForm.bind(this)} />;
     }
 
     const choreKeys = Object.keys(this.props.chores);
@@ -40,7 +34,7 @@ export class ChoreList extends React.Component {
         <button
           className={styles.addChore}
           onClick={() => {
-            this.showEdit();
+            this.toggleForm();
           }}
         >
           Add Chore

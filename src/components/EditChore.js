@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "../componentStyles/ChoreForm.css";
+import styles from "../componentStyles/EditChore.css";
 import { connect } from "react-redux";
 
-export class ChoreForm extends React.Component {
+export class EditChore extends React.Component {
   // onSubmit(values) {
   //   if (values.choreTitle) {
   //     values.choreTitle = this.props.choreTitle;
@@ -70,4 +70,4 @@ export class ChoreForm extends React.Component {
   }
 }
 
-export default connect(null)(ChoreForm);
+export default connect(null)(EditChore);

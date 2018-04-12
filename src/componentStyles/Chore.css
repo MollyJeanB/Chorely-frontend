@@ -1,7 +1,4 @@
 .choreContainer {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 10px;
   background: #ceeffe;
   margin-top: 1px;
   margin-bottom: 1px;
@@ -11,17 +8,7 @@
 
 .choreBubbleContainer {
   margin-top: -10px;
-}
-
-@media only screen and (min-width: 840px) {
-  .choreBubbleContainer {
-    margin-top: 5px;
-  }
-
-  .choreContainer {
-    height: 100px;
-    grid-template-columns: 170px 1fr;
-  }
+  margin-left: 5px;
 }
 
 .choreInfoBox {
@@ -48,13 +35,14 @@
   height: 18px;
 }
 
-.choreBubbleContainer {
-  margin-left: 5px;
+.editIcon:hover,
+.trashIcon:hover {
+  height: 20px;
 }
 
-/* .choreBubbleContainer {
-    position: absolute;
-    z-index: 4;
-    top: 5px;
-    left: 160px;
-  } */
+@media only screen and (min-width: 840px) {
+  .choreBubbleContainer {
+    margin-left: 35px;
+  }
+
+}
