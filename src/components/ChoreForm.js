@@ -14,28 +14,16 @@ export class ChoreForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleName(event) {
+  handleInput(event, key) {
     this.setState({
-      choreName: event.target.value
-    })
-  }
-
-  handlePointValue(event) {
-    this.setState({
-      pointValueField: event.target.value
-    })
-  }
-
-  handleTimesPerWeek(event) {
-    this.setState({
-      timesPerWeekField: event.target.value
+      [key]: event.target.value
     })
   }
 
 
   handleSubmit(event) {
     event.preventDefault()
-    console.log(this.state)
+    console.log("chore form submitted, the state is", this.state)
     this.props.toggleForm()
     this.setState = {
       choreName: "",
@@ -57,13 +45,13 @@ export class ChoreForm extends React.Component {
           placeholder="Chore Title"
           className={styles.choreTitle}
           value={this.state.value}
-          onChange={e => this.handleName(e)}
+          onChange={e => this.handleInput(e, "choreName")}
         />
         <div className={styles.pointContain}>
           <select
             name="pointValueField"
             className={styles.pointField}
-            onChange={e => this.handlePointValue(e)}
+            onChange={e => this.handleInput(e, "pointValueField")}
             >
             <option value="1">Point Value</option>
             <option value="1">1</option>
@@ -82,7 +70,7 @@ export class ChoreForm extends React.Component {
           <select
             name="timesPerWeekField"
             className={styles.weekField}
-            onChange={e => this.handleTimesPerWeek(e)}
+            onChange={e => this.handleInput(e, "timesPerWeekField")}
             >
             <option value="1">Times Per Week</option>
             <option value="1">1</option>
