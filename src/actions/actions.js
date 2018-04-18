@@ -1,4 +1,6 @@
-// const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = "http://localhost:8080";
+
+// import { normalize, schema } from "normalizr"
 
 export const EXPAND_MENU = "EXPAND_MENU";
 export const expandMenu = drawerOpen => ({
@@ -39,9 +41,9 @@ export const deleteMember = (id, members) => ({
 });
 
 export const SUBMIT_NEW_MEMBER_SUCCESS = "SUBMIT_NEW_MEMBER_SUCCESS";
-export const submitNewMemberSuccess = values => {
-  debugger;
-};
+export const submitNewMemberSuccess = values => ({
+  // debugger;
+})
 
 export const SUBMIT_NEW_MEMBER = "SUBMIT_NEW_MEMBER";
 export const submitNewMember = values => ({
@@ -49,29 +51,33 @@ export const submitNewMember = values => ({
   values
 });
 
-// export const SUBMIT_NEW_MEMBER = "SUBMIT_NEW_MEMBER";
-// export const submitNewMember = values => {
-//   return (dispatch, getState) => {
-//     debugger;
-//     values.memberColor = getState().chart.memberColor;
-//     fetch(`${API_BASE_URL}/members`, {
-//       method: "post",
-//       body: JSON.stringify(values),
-//       headers: {
-//         "Content-Type": "application/json"
-//       }
-//     })
-//       .then(res => {
-//         if (!res.ok) {
-//           return Promise.reject(res.statusText);
-//         }
-//         return res.json();
-//       })
-//       .then(member => {
-//         dispatch(submitNewMemberSuccess(member));
-//       })
-//       .catch(err => {
-//         // dispatch(submitNewMemberFailure(err))
-//       });
-//   };
-// };
+export const GET_CHART_DATA_SUCCESS = "GET_CHART_DATA_SUCCESS";
+export const getChartDataSuccess = values => ({
+  // debugger;
+})
+
+export const GET_CHART_DATA = "GET_CHART_DATA";
+export const getChartData = values => {
+  return (dispatch) => {
+    debugger;
+    fetch(`${API_BASE_URL}/`, {
+      method: "get",
+      body: JSON.stringify(values),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => {
+        if (!res.ok) {
+          return Promise.reject(res.statusText);
+        }
+        return res.json();
+      })
+      .then(all => {
+        dispatch(getChartDataSuccess(all));
+      })
+      .catch(err => {
+        // dispatch(submitNewMemberFailure(err))
+      });
+  };
+};
