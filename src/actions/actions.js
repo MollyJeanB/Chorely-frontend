@@ -53,13 +53,13 @@ export const submitNewMember = values => ({
 
 export const GET_CHART_DATA_SUCCESS = "GET_CHART_DATA_SUCCESS";
 export const getChartDataSuccess = values => ({
-  // debugger;
+  type: GET_CHART_DATA_SUCCESS,
+  values
 })
 
 export const GET_CHART_DATA = "GET_CHART_DATA";
 export const getChartData = values => {
   return (dispatch) => {
-    debugger;
     fetch(`${API_BASE_URL}/`, {
       method: "get",
       body: JSON.stringify(values),

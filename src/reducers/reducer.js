@@ -4,7 +4,8 @@ import {
   CHANGE_COLOR,
   EDIT_MEMBER_FORM,
   SUBMIT_NEW_MEMBER,
-  DELETE_MEMBER
+  DELETE_MEMBER,
+  GET_CHART_DATA_SUCCESS
 } from "../actions/actions";
 
 const initialState = {
@@ -125,6 +126,13 @@ export const choreReducer = (state = initialState, action) => {
         ...newMember
       }
     });
+  }
+
+  if (action.type === GET_CHART_DATA_SUCCESS) {
+    return Object.assign({}, state, {
+      members: action.values.members,
+      chores: action.values.chores
+    })
   }
 
   if (action.type === EDIT_MEMBER_FORM) {

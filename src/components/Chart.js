@@ -20,10 +20,10 @@ componentDidMount() {
     return   (
         <div className={styles.pageContainer}>
           <MemberList
-            // {...props}
+            {...this.props}
           />
           <ChoreList
-            // {...props}
+            {...this.props}
           />
         </div>
       )
