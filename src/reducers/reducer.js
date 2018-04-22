@@ -3,16 +3,22 @@ import {
   SHOW_MEMBER_FORM,
   CHANGE_COLOR,
   EDIT_MEMBER_FORM,
-  POST_MEMBER_SUCCESS,
-  DELETE_MEMBER,
   GET_CHART_DATA_SUCCESS
 } from "../actions/actions";
+
+import {
+  POST_MEMBER_SUCCESS,
+} from "../actions/member-actions"
+
+import {
+  POST_CHORE_SUCCESS
+} from "../actions/chore-actions"
 
 const initialState = {
   resetTime: "Sunday at 5pm",
   members: {},
   chores: {},
-  choreCompletions: {},
+  completions: {},
 };
 
 export const choreReducer = (state = initialState, action) => {
@@ -38,36 +44,15 @@ export const choreReducer = (state = initialState, action) => {
     });
   }
 
-  if (action.type === DELETE_MEMBER) {
-    console.log(action.id);
-    delete state.members[action.id];
-    let members = state.members;
-    return Object.assign({}, state, {
-      members: members
-    });
-  }
-
-  // if (action.type === SUBMIT_NEW_MEMBER) {
-  //   const id = Object.keys(state.members).length + 1;
-  //   const newMember = {
-  //     [id]: {
-  //       name: action.values.memberName,
-  //       color: action.values.memberColor,
-  //       weekPoints: 0,
-  //       memberId: id
-  //     }
-  //   };
-  //   return Object.assign({}, state, {
-  //     members: {
-  //       ...state.members,
-  //       ...newMember
-  //     }
-  //   });
-  // }
-
 if (action.type === POST_MEMBER_SUCCESS) {
   return Object.assign({}, state, {
     members: action.values.members
+  })
+}
+
+if (action.type === POST_CHORE_SUCCESS) {
+  return Object.assign({}, state, {
+    chores: action.values.chores
   })
 }
 

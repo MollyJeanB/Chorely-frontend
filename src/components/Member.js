@@ -4,7 +4,7 @@ import DeleteWarn from "./DeleteWarn";
 import styles from "../componentStyles/Member.css";
 import { connect } from "react-redux";
 import Colors from "../colors";
-import { deleteMember } from "../actions/actions";
+import { deleteMember } from "../actions/member-actions";
 
 export class Member extends React.Component {
   state = {
@@ -33,7 +33,7 @@ export class Member extends React.Component {
 
   cancelForm() {
     this.props.dispatch(
-      this.props.changeColor(this.props.memberId, this.state.tempColor)
+      this.props.changeColor(this.props.id, this.state.tempColor)
     );
     this.setState({
       formDisplay: !this.state.formDisplay,
@@ -56,7 +56,7 @@ export class Member extends React.Component {
   }
 
   render() {
-    const { memberId, color, weekPoints, name } = this.props;
+    const { id, color, weekPoints, name } = this.props;
     let pointPlural;
     weekPoints !== 1 ? (pointPlural = "points") : (pointPlural = "point");
 
@@ -67,7 +67,7 @@ export class Member extends React.Component {
       editFormComponent = (
         <MemberForm
           chooseColor={e => {
-            this.chooseColor(e, memberId);
+            this.chooseColor(e, id);
           }}
           cancelForm={this.cancelForm.bind(this)}
         />
@@ -79,7 +79,7 @@ export class Member extends React.Component {
       warnComponent = (
         <DeleteWarn
           removeUser={e => {
-            this.removeUser(e, memberId);
+            this.removeUser(e, id);
           }}
           cancelWarn={this.cancelWarn.bind(this)}
         />
@@ -117,7 +117,7 @@ export class Member extends React.Component {
     }
 
     return (
-      <div className={styles.personContainer} key={memberId}>
+      <div className={styles.personContainer} key={id}>
         <div className={styles.housemateIconContainer} style={style}>
           <img
             className={styles.housemateIcon}

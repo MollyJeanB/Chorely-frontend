@@ -3,6 +3,7 @@ import styles from "../componentStyles/Chore.css";
 import ChoreBubble from "./ChoreBubble";
 import EditChore from "./EditChore"
 import { connect } from "react-redux";
+import { deleteChore } from "../actions/chore-actions"
 
 export class Chore extends React.Component {
 
@@ -16,8 +17,13 @@ toggleForm(event) {
   });
 }
 
+removeChore(event, id) {
+  console.log(id)
+  this.props.dispatch(deleteChore(id));
+}
+
   render() {
-    const { choreId, choreName, pointValue, timesPerWeek } = this.props;
+    const { id, choreName, pointValue, timesPerWeek } = this.props;
 
     let pointPlural;
     pointValue !== 1 ? (pointPlural = "points") : (pointPlural = "point");
@@ -57,7 +63,10 @@ toggleForm(event) {
                       src={require("../images/edit.png")}
                     />
                   </div>
-                  <div className={styles.trashButton}>
+                  <div
+                    className={styles.trashButton}
+                    onClick={e => this.removeChore(e, id)}
+                    >
                     <img
                       className={styles.trashIcon}
                       alt="Delete"
@@ -70,7 +79,7 @@ toggleForm(event) {
     }
 
     return (
-      <div className={styles.choreContainer} key={choreId}>
+      <div className={styles.choreContainer} key={id}>
 {infoBox}
         {formComponent}
         {choreBubbles}

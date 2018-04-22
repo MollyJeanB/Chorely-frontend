@@ -14,12 +14,6 @@ export const showMemberForm = memberFormDisplayed => ({
   memberFormDisplayed
 });
 
-export const ADD_MEMBER = "ADD_MEMBER";
-export const addMember = members => ({
-  type: ADD_MEMBER,
-  members
-});
-
 export const EDIT_MEMBER_FORM = "EDIT_MEMBER_FORM";
 export const editMemberForm = memberIndex => ({
   type: EDIT_MEMBER_FORM,
@@ -33,12 +27,6 @@ export const changeColor = (id, memberColor) => ({
   id
 });
 
-export const DELETE_MEMBER = "DELETE_MEMBER";
-export const deleteMember = (id, members) => ({
-  type: DELETE_MEMBER,
-  id,
-  members
-});
 
 export const GET_CHART_DATA_SUCCESS = "GET_CHART_DATA_SUCCESS";
 export const getChartDataSuccess = values => ({
@@ -70,34 +58,3 @@ export const getChartData = values => {
       });
   };
 };
-
-export const POST_MEMBER_SUCCESS = "POST_MEMBER_SUCCESS";
-export const postMemberSuccess = values => ({
-  type: POST_MEMBER_SUCCESS,
-  values
-})
-
-export const POST_MEMBER  = "POST_MEMBER"
-export const postMember = values => {
-  return (dispatch) => {
-    fetch(`${API_BASE_URL}/members`, {
-      method: "post",
-      body: JSON.stringify(values),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    .then(res => {
-      if (!res.ok) {
-        return Promise.reject(res.statusText);
-      }
-      return res.json();
-    })
-    .then(data => {
-      dispatch(postMemberSuccess(data));
-    })
-    .catch(err => {
-      // dispatch(submitNewMemberFailure(err))
-    });
-  }
-}

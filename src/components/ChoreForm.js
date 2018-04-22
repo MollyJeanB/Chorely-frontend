@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../componentStyles/ChoreForm.css";
+import { postChore } from "../actions/chore-actions"
 import { connect } from "react-redux";
 
 export class ChoreForm extends React.Component {
@@ -8,8 +9,8 @@ export class ChoreForm extends React.Component {
     super(props)
     this.state = {
       choreName: "",
-      pointValueField: 1,
-      timesPerWeekField: 1,
+      pointValue: 1,
+      timesPerWeek: 1,
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -24,11 +25,12 @@ export class ChoreForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     console.log("chore form submitted, the state is", this.state)
+    this.props.dispatch(postChore(this.state));
     this.props.toggleForm()
     this.setState = {
       choreName: "",
-      pointValueField: 1,
-      timesPerWeekField: 1,
+      pointValue: 1,
+      timesPerWeek: 1,
     }
   }
 
@@ -49,7 +51,7 @@ export class ChoreForm extends React.Component {
         />
         <div className={styles.pointContain}>
           <select
-            name="pointValueField"
+            name="pointValue"
             className={styles.pointField}
             onChange={e => this.handleInput(e, "pointValueField")}
             >
@@ -68,7 +70,7 @@ export class ChoreForm extends React.Component {
         </div>
         <div className={styles.weekContain}>
           <select
-            name="timesPerWeekField"
+            name="timesPerWeek"
             className={styles.weekField}
             onChange={e => this.handleInput(e, "timesPerWeekField")}
             >
@@ -100,4 +102,6 @@ export class ChoreForm extends React.Component {
   }
 }
 
-export default connect(null)(ChoreForm);
+export default connect(state => ({
+  chores: state.chores
+}))(ChoreForm);

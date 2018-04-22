@@ -1,7 +1,7 @@
 import React from "react";
 import { reduxForm, Field, reset } from "redux-form";
 import styles from "../componentStyles/MemberForm.css";
-import { postMember } from "../actions/actions";
+import { postMember } from "../actions/member-actions";
 import { required, nonEmpty } from "../validators";
 import Input from "./Input";
 
