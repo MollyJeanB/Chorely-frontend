@@ -3,79 +3,16 @@ import {
   SHOW_MEMBER_FORM,
   CHANGE_COLOR,
   EDIT_MEMBER_FORM,
-  SUBMIT_NEW_MEMBER,
+  POST_MEMBER_SUCCESS,
   DELETE_MEMBER,
   GET_CHART_DATA_SUCCESS
 } from "../actions/actions";
 
 const initialState = {
   resetTime: "Sunday at 5pm",
-  members: {
-    "1": {
-      name: "Mel",
-      memberFormDisplayed: false,
-      memberId: 1,
-      color: "orange",
-      weekPoints: 1,
-      totalPoints: 17
-    },
-    "2": {
-      name: "Queen Flea",
-      memberFormDisplayed: false,
-      color: "fuschia",
-      memberId: 2,
-      weekPoints: 1,
-      totalPoints: 17
-    },
-    "3": {
-      name: "Flea Peasant",
-      color: "cornflowerBlue",
-      weekPoints: 1,
-      memberId: 3,
-      totalPoints: 17
-    },
-    "4": {
-      name: "Molly",
-      color: "brightBlue",
-      memberId: 4,
-      weekPoints: 3,
-      totalPoints: 25
-    },
-    "5": {
-      name: "Steve",
-      color: "purple",
-      memberId: 5,
-      weekPoints: 4,
-      totalPoints: 26
-    }
-  },
-  chores: {
-    "1": {
-      choreName: "Sweep Floors",
-      choreId: 1,
-      pointValue: 2,
-      timesPerWeek: 3
-    },
-    "2": {
-      choreName: "Wipe Counters",
-      choreId: 2,
-      pointValue: 1,
-      timesPerWeek: 7
-    },
-    "3": {
-      choreName: "Clean Bathroom",
-      choreId: 3,
-      pointValue: 5,
-      timesPerWeek: 1
-    }
-  },
-  choreCompletions: {
-    "1": {
-      choreId: 3,
-      memberId: 1,
-      completedAt: 1
-    }
-  }
+  members: {},
+  chores: {},
+  choreCompletions: {},
 };
 
 export const choreReducer = (state = initialState, action) => {
@@ -110,23 +47,29 @@ export const choreReducer = (state = initialState, action) => {
     });
   }
 
-  if (action.type === SUBMIT_NEW_MEMBER) {
-    const id = Object.keys(state.members).length + 1;
-    const newMember = {
-      [id]: {
-        name: action.values.memberName,
-        color: action.values.memberColor,
-        weekPoints: 0,
-        memberId: id
-      }
-    };
-    return Object.assign({}, state, {
-      members: {
-        ...state.members,
-        ...newMember
-      }
-    });
-  }
+  // if (action.type === SUBMIT_NEW_MEMBER) {
+  //   const id = Object.keys(state.members).length + 1;
+  //   const newMember = {
+  //     [id]: {
+  //       name: action.values.memberName,
+  //       color: action.values.memberColor,
+  //       weekPoints: 0,
+  //       memberId: id
+  //     }
+  //   };
+  //   return Object.assign({}, state, {
+  //     members: {
+  //       ...state.members,
+  //       ...newMember
+  //     }
+  //   });
+  // }
+
+if (action.type === POST_MEMBER_SUCCESS) {
+  return Object.assign({}, state, {
+    members: action.values.members
+  })
+}
 
   if (action.type === GET_CHART_DATA_SUCCESS) {
     return Object.assign({}, state, {
