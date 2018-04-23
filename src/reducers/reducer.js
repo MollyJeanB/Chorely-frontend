@@ -16,7 +16,7 @@ import {
 
 const initialState = {
   resetTime: "Sunday at 5pm",
-  members: {},
+  members: [],
   chores: {},
   completions: {},
 };
@@ -36,7 +36,7 @@ export const choreReducer = (state = initialState, action) => {
 
   if (action.type === CHANGE_COLOR) {
     let member = state.members[action.id];
-    member.color = action.memberColor;
+    member.color = action.color;
     let members = state.members;
     members[action.id] = member;
     return Object.assign({}, state, {
@@ -46,7 +46,7 @@ export const choreReducer = (state = initialState, action) => {
 
 if (action.type === POST_MEMBER_SUCCESS) {
   return Object.assign({}, state, {
-    members: action.values.members
+    members: [...state.members, action.values]
   })
 }
 

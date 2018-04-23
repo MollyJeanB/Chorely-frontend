@@ -11,7 +11,8 @@ state = {
   formDisplay: false
 }
 
-toggleForm(event) {
+toggleForm(event, id) {
+  console.log(id)
   this.setState({
     formDisplay: !this.state.formDisplay
   });

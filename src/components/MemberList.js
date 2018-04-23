@@ -13,13 +13,12 @@ export class MemberList extends React.Component {
   }
 
   render() {
-    const memberKeys = Object.keys(this.props.members);
-    const members = memberKeys.map((memberKey, index) => {
+    const members = this.props.members.map((member, index) => {
       return (
         <Member
           changeColor={changeColor}
-          key={index}
-          {...this.props.members[memberKey]}
+          key={member.id}
+          {...member}
         />
       );
     });
