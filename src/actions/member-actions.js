@@ -57,3 +57,27 @@ export const deleteMember = id => {
     });
   }
 }
+
+export const updateMember = (id, values) => {
+  return (dispatch) => {
+    fetch(`${API_BASE_URL}/members/${id}`, {
+      method: "put",
+      body: JSON.stringify(values),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      return res.json();
+    })
+    .then((data) => {
+      dispatch(postMemberSuccess(data));
+    })
+    .catch(err => {
+      // dispatch(submitNewMemberFailure(err))
+    });
+  }
+}

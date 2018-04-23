@@ -54,3 +54,27 @@ export const deleteChore = id => {
     });
   }
 }
+
+export const updateChore = (id, values) => {
+  return (dispatch) => {
+    fetch(`${API_BASE_URL}/chores/${id}`, {
+      method: "put",
+      body: JSON.stringify(values),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      return res.json();
+    })
+    .then((data) => {
+      dispatch(postChoreSuccess(data));
+    })
+    .catch(err => {
+      // dispatch(submitNewMemberFailure(err))
+    });
+  }
+}
