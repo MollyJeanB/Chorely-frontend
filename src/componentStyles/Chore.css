@@ -24,6 +24,10 @@
   font-size: 14px;
 }
 
+.timesPerWeek {
+  font-size: 12px;
+}
+
 .iconBox {
   position: absolute;
   top: 5px;

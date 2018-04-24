@@ -7,6 +7,7 @@ import Chart from "./Chart"
 import Stats from "./Stats"
 
 class App extends Component {
+  
   render() {
     return (
       <Router>

@@ -1,7 +1,7 @@
 import React from "react";
 import { reduxForm, Field, reset } from "redux-form";
 import styles from "../componentStyles/MemberForm.css";
-import { submitNewMember } from "../actions/actions";
+import { postMember, updateMember } from "../actions/member-actions";
 import { required, nonEmpty } from "../validators";
 import Input from "./Input";
 
@@ -10,15 +10,19 @@ function afterSubmit(result, dispatch) {
 }
 
 export class MemberForm extends React.Component {
-  onSubmit(values) {
-    let colorArray = ["orange", "yellow", "green", "fuschia", "purple"];
-    let randomColor = colorArray[Math.floor(Math.random() * colorArray.length)];
-    this.props.color && this.props.color !== "#C2C2C3"
-      ? (values.memberColor = this.props.color)
-      : (values.memberColor = randomColor);
-    console.log(values);
+if
 
-    this.props.dispatch(submitNewMember(values));
+  onSubmit(values, id) {
+
+ // if (!id) {
+   let colorArray = ["orange", "yellow", "green", "fuschia", "purple"];
+   let randomColor = colorArray[Math.floor(Math.random() * colorArray.length)];
+   this.props.color && this.props.color !== "#C2C2C3"
+     ? (values.color = this.props.color)
+     : (values.color = randomColor);
+   this.props.dispatch(postMember(values));
+//  }
+// else this.props.dispatch(updateMember, values)
   }
 
   render() {
@@ -28,7 +32,7 @@ export class MemberForm extends React.Component {
         onSubmit={this.props.handleSubmit(this.onSubmit.bind(this))}
       >
         <Field
-          name="memberName"
+          name="name"
           type="text"
           ref={input => (this.textInput = input)}
           component={Input}

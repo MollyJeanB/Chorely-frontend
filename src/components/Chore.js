@@ -3,6 +3,7 @@ import styles from "../componentStyles/Chore.css";
 import ChoreBubble from "./ChoreBubble";
 import EditChore from "./EditChore"
 import { connect } from "react-redux";
+import { deleteChore } from "../actions/chore-actions"
 
 export class Chore extends React.Component {
 
@@ -10,17 +11,34 @@ state = {
   formDisplay: false
 }
 
-toggleForm(event) {
+toggleForm(event, id) {
   this.setState({
     formDisplay: !this.state.formDisplay
   });
 }
 
+removeChore(event, id) {
+  this.props.dispatch(deleteChore(id));
+}
+
+editChore(event, id) {
+    event.preventDefault()
+  console.log(this.props, id)
+}
+
+
   render() {
-    const { choreId, choreName, pointValue, timesPerWeek } = this.props;
+    const { id, choreName, pointValue, timesPerWeek } = this.props;
 
     let pointPlural;
     pointValue !== 1 ? (pointPlural = "points") : (pointPlural = "point");
+
+    let timeDescript;
+     if (timesPerWeek === 1) {
+       timeDescript = "Once"
+     } else if (timesPerWeek === 2) {
+        timeDescript = "Twice"
+     } else timeDescript = `${timesPerWeek} times`
 
     let timesPerWeekVal = parseInt(timesPerWeek, 10);
 
@@ -35,14 +53,18 @@ toggleForm(event) {
 
     let formComponent;
     if (this.state.formDisplay) {
-      formComponent = <EditChore toggleForm={this.toggleForm.bind(this)} />;
+      formComponent = <EditChore
+        editChore={e => {
+          this.editChore(e, id);
+        }}
+        toggleForm={this.toggleForm.bind(this)} />;
     }
 
     let infoBox;
     if (!this.state.formDisplay) {
       infoBox =
       <div className={styles.choreInfoBox}>
-                <div className={styles.choreName}>{choreName}</div>
+                <div className={styles.choreName}>{choreName}<span className={styles.timesPerWeek}>    ({timeDescript} a week)</span></div>
                 <div className={styles.pointValue}>
                   Worth {pointValue} {pointPlural}
                 </div>
@@ -57,7 +79,10 @@ toggleForm(event) {
                       src={require("../images/edit.png")}
                     />
                   </div>
-                  <div className={styles.trashButton}>
+                  <div
+                    className={styles.trashButton}
+                    onClick={e => this.removeChore(e, id)}
+                    >
                     <img
                       className={styles.trashIcon}
                       alt="Delete"
@@ -70,7 +95,7 @@ toggleForm(event) {
     }
 
     return (
-      <div className={styles.choreContainer} key={choreId}>
+      <div className={styles.choreContainer} key={id}>
 {infoBox}
         {formComponent}
         {choreBubbles}

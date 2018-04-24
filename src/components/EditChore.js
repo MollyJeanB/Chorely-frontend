@@ -1,22 +1,39 @@
 import React from "react";
 import styles from "../componentStyles/EditChore.css";
 import { connect } from "react-redux";
+import { updateChore } from "../actions/chore-actions"
 
 export class EditChore extends React.Component {
-  // onSubmit(values) {
-  //   if (values.choreTitle) {
-  //     values.choreTitle = this.props.choreTitle;
-  //     this.props.dispatch(submitNewChore(values));
-  //   } else {
-  //     return;
+
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     choreName: this.props.choreName,
+  //     pointValue: this.props.pointValue,
+  //     timesPerWeek: this.props.timesPerWeek
   //   }
   // }
 
+  handleInput(event, key) {
+    console.log(event.target.value, this.state)
+    this.setState({
+      [key]: event.target.value
+    })
+  }
+
+  // handleSubmit(event, id) {
+  //   event.preventDefault()
+  //   console.log("chore form submitted, the state is", this.state, id)
+  //   this.props.dispatch(updateChore(this.state, id));
+  //   this.props.toggleForm()
+  // }
+
   render() {
+
     return (
       <form
         className={styles.formBox}
-        // onSubmit={this.props.handleSubmit(this.onSubmit.bind(this))}
+        onSubmit={e => this.props.editChore(e)}
       >
         <input
           name="choreName"
@@ -24,9 +41,14 @@ export class EditChore extends React.Component {
           ref={input => (this.textInput = input)}
           placeholder="Chore Title"
           className={styles.choreTitle}
+          value={this.props.choreName}
+          onChange={e => this.handleInput(e, "choreName")}
         />
         <div className={styles.pointContain}>
-          <select name="pointValueField" className={styles.pointField}>
+          <select name="pointValue"
+            className={styles.pointField}
+            onChange={e => this.handleInput(e, "pointValue")}
+            >
             <option value="1">Point Value</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -41,7 +63,11 @@ export class EditChore extends React.Component {
           </select>
         </div>
         <div className={styles.weekContain}>
-          <select name="timesPerWeekField" className={styles.weekField}>
+          <select name="timesPerWeek"
+            className={styles.weekField}
+            onChange={e => this.handleInput(e, "timesPerWeek")}
+
+            >
             <option value="1">Times Per Week</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -70,4 +96,8 @@ export class EditChore extends React.Component {
   }
 }
 
-export default connect(null)(EditChore);
+export const mapStateToProps = state => ({
+  chores: state.chart.chores
+});
+
+export default connect(mapStateToProps)(EditChore);
