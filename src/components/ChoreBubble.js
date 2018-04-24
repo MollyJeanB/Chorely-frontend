@@ -44,7 +44,7 @@ export class ChoreBubble extends React.Component {
 
     if (this.state.dropdownDisplay) {
       dropdown =
-      <div className={styles.selectBox}>
+      <form className={styles.selectBox}>
       <select
         name="memberId"
         onChange={e => this.changeCompletion(e)}
@@ -55,7 +55,7 @@ export class ChoreBubble extends React.Component {
           <option value="undo">Undo Chore</option>
           <option value="cancel">Cancel</option>
       </select>
-      </div>
+    </form>
       ;
     }
 
