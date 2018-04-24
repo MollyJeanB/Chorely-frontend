@@ -53,8 +53,6 @@ export const getChartData = values => {
       .then(all => {
         dispatch(getChartDataSuccess(all));
       })
-      .catch(err => {
-        // dispatch(submitNewMemberFailure(err))
-      });
+      .catch(err => console.log(err))
   };
 };

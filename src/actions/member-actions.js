@@ -1,4 +1,3 @@
-import axios from 'axios';
 
 const API_BASE_URL = "http://localhost:8080";
 
@@ -8,23 +7,28 @@ export const postMemberSuccess = values => ({
   values
 })
 
-// export const POST_MEMBER  = "POST_MEMBER"
+
 export const postMember = values => {
   return (dispatch) => {
-    axios.post(`${API_BASE_URL}/members`, values)
-    .then(data => {
-      console.log(data.data)
-      dispatch(postMemberSuccess(data.data));
+    fetch(`${API_BASE_URL}/members`, {
+      method: "post",
+      body: JSON.stringify(values),
+      headers: {
+        "Content-Type": "application/json"
+      }
     })
-    .catch(err => {
-      // dispatch(submitNewMemberFailure(err))
-    });
+    .then(response => {
+      console.log(response)
+      return response.json()
+    }
+    )
+    .then(data => {
+      dispatch(postMemberSuccess(data))
+    })
+    .catch(err => console.log(err))
   }
 }
 
-// export const updateMember
-//
-// export const DELETE_MEMBER = "DELETE_MEMBER";
 export const deleteMember = id => {
   return (dispatch) => {
     fetch(`${API_BASE_URL}/members/${id}`, {

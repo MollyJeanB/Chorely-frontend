@@ -1,6 +1,6 @@
 const API_BASE_URL = "http://localhost:8080";
 
-export const POST_CHORE_SUCCESS = "POST_MEMBER_SUCCESS";
+export const POST_CHORE_SUCCESS = "POST_CHORE_SUCCESS";
 export const postChoreSuccess = values => ({
   type: POST_CHORE_SUCCESS,
   values
@@ -16,19 +16,15 @@ export const postChore = values => {
         "Content-Type": "application/json"
       }
     })
-    .then(res => {
-      if (!res.ok) {
-        return Promise.reject(res.statusText);
-      }
-      return res.json();
-    })
+    .then(response => {
+      console.log(response)
+      return response.json()
+    }
+    )
     .then(data => {
-      console.log(data)
-      dispatch(postChoreSuccess(data));
+      dispatch(postChoreSuccess(data))
     })
-    .catch(err => {
-      // dispatch(submitNewMemberFailure(err))
-    });
+    .catch(err => console.log(err))
   }
 }
 
@@ -64,17 +60,12 @@ export const updateChore = (id, values) => {
         "Content-Type": "application/json"
       }
     })
-    .then(res => {
-      if (!res.ok) {
-        return Promise.reject(res.statusText);
-      }
-      return res.json();
-    })
-    .then((data) => {
-      dispatch(postChoreSuccess(data));
-    })
-    .catch(err => {
-      // dispatch(submitNewMemberFailure(err))
-    });
+    .then(() => dispatch(deleteChoreSuccess()))
+    .catch(err => console.log(err))
   }
 }
+
+export const DELETE_CHORE_SUCCESS = "DELETE_CHORE_SUCCESS";
+export const deleteChoreSuccess = () => ({
+  type: DELETE_CHORE_SUCCESS,
+})

@@ -7,18 +7,19 @@ import {
 } from "../actions/actions";
 
 import {
-  POST_MEMBER_SUCCESS,
+  POST_MEMBER_SUCCESS
 } from "../actions/member-actions"
 
 import {
-  POST_CHORE_SUCCESS
+  POST_CHORE_SUCCESS,
+  DELETE_CHORE_SUCCESS
 } from "../actions/chore-actions"
 
 const initialState = {
   resetTime: "Sunday at 5pm",
   members: [],
-  chores: {},
-  completions: {},
+  chores: [],
+  completions: [],
 };
 
 export const choreReducer = (state = initialState, action) => {
@@ -44,15 +45,21 @@ export const choreReducer = (state = initialState, action) => {
     });
   }
 
+  if (action.type === DELETE_CHORE_SUCCESS) {
+    return Object.assign({}, state, {
+      chores: state.chores
+    })
+  }
+
 if (action.type === POST_MEMBER_SUCCESS) {
   return Object.assign({}, state, {
-    members: [...state.members, action.values]
+    members: [action.values, ...state.members]
   })
 }
 
 if (action.type === POST_CHORE_SUCCESS) {
   return Object.assign({}, state, {
-    chores: action.values.chores
+    chores: [action.values, ...state.chores]
   })
 }
 

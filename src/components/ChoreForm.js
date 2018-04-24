@@ -53,7 +53,7 @@ export class ChoreForm extends React.Component {
           <select
             name="pointValue"
             className={styles.pointField}
-            onChange={e => this.handleInput(e, "pointValueField")}
+            onChange={e => this.handleInput(e, "pointValue")}
             >
             <option value="1">Point Value</option>
             <option value="1">1</option>
@@ -72,7 +72,7 @@ export class ChoreForm extends React.Component {
           <select
             name="timesPerWeek"
             className={styles.weekField}
-            onChange={e => this.handleInput(e, "timesPerWeekField")}
+            onChange={e => this.handleInput(e, "timesPerWeek")}
             >
             <option value="1">Times Per Week</option>
             <option value="1">1</option>
@@ -102,6 +102,8 @@ export class ChoreForm extends React.Component {
   }
 }
 
-export default connect(state => ({
-  chores: state.chores
-}))(ChoreForm);
+// export default connect(state => ({
+//   chores: state.chores
+// }))(ChoreForm);
+
+export default connect(null)(ChoreForm);

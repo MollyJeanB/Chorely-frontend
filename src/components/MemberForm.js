@@ -13,7 +13,6 @@ export class MemberForm extends React.Component {
 if
 
   onSubmit(values, id) {
-    console.log(id)
 
  // if (!id) {
    let colorArray = ["orange", "yellow", "green", "fuschia", "purple"];
@@ -21,8 +20,6 @@ if
    this.props.color && this.props.color !== "#C2C2C3"
      ? (values.color = this.props.color)
      : (values.color = randomColor);
-   console.log(values);
-
    this.props.dispatch(postMember(values));
 //  }
 // else this.props.dispatch(updateMember, values)

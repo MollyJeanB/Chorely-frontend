@@ -21,9 +21,10 @@ export class ChoreList extends React.Component {
       formComponent = <ChoreForm toggleForm={this.toggleForm.bind(this)} />;
     }
 
-    const choreKeys = Object.keys(this.props.chores);
-    const chores = choreKeys.map((choreKey, index) => {
-      return <Chore key={index} {...this.props.chores[choreKey]} />;
+    const chores = this.props.chores.map((chore, index) => {
+      return <Chore
+        key={chore.id}
+        {...chore} />;
     });
 
     return (
