@@ -24,6 +24,7 @@ export class ChoreBubble extends React.Component {
   }
 
   render() {
+    let clickMessage;
     let dropdown;
     const memberKeys = Object.keys(this.props.members);
     const options = memberKeys.map((memberKey, index) => {
@@ -36,17 +37,25 @@ export class ChoreBubble extends React.Component {
       );
     });
 
+    if (!this.state.dropdownDisplay) {
+      clickMessage =
+      <div className={styles.clickMessage}>Click to mark as complete</div>
+    }
+
     if (this.state.dropdownDisplay) {
       dropdown =
+      <div className={styles.selectBox}>
       <select
         name="memberId"
         onChange={e => this.changeCompletion(e)}
+        className={styles.personField}
         >
           <option value="cancel">Who did it?</option>
           {options}
           <option value="undo">Undo Chore</option>
           <option value="cancel">Cancel</option>
       </select>
+      </div>
       ;
     }
 
@@ -57,6 +66,7 @@ export class ChoreBubble extends React.Component {
           this.showDropdown();
         }}
       >
+        {clickMessage}
         {dropdown}
       </div>
     );

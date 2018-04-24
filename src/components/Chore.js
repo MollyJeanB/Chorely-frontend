@@ -33,6 +33,13 @@ editChore(event, id) {
     let pointPlural;
     pointValue !== 1 ? (pointPlural = "points") : (pointPlural = "point");
 
+    let timeDescript;
+     if (timesPerWeek === 1) {
+       timeDescript = "Once"
+     } else if (timesPerWeek === 2) {
+        timeDescript = "Twice"
+     } else timeDescript = `${timesPerWeek} times`
+
     let timesPerWeekVal = parseInt(timesPerWeek, 10);
 
     let choreBubbles = bubbleMaker();
@@ -57,7 +64,7 @@ editChore(event, id) {
     if (!this.state.formDisplay) {
       infoBox =
       <div className={styles.choreInfoBox}>
-                <div className={styles.choreName}>{choreName}</div>
+                <div className={styles.choreName}>{choreName}<span className={styles.timesPerWeek}>    ({timeDescript} a week)</span></div>
                 <div className={styles.pointValue}>
                   Worth {pointValue} {pointPlural}
                 </div>
