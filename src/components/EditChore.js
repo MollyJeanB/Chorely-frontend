@@ -5,21 +5,21 @@ import { updateChore } from "../actions/chore-actions"
 
 export class EditChore extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      choreName: this.props.choreName,
-      pointValue: this.props.pointValue,
-      timesPerWeek: this.props.timesPerWeek
-    }
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     choreName: this.props.choreName,
+  //     pointValue: this.props.pointValue,
+  //     timesPerWeek: this.props.timesPerWeek
+  //   }
+  // }
 
   handleInput(event, key) {
+    console.log(event.target.value, this.state)
     this.setState({
       [key]: event.target.value
     })
   }
-
 
   // handleSubmit(event, id) {
   //   event.preventDefault()
@@ -29,8 +29,6 @@ export class EditChore extends React.Component {
   // }
 
   render() {
-
-const id = this.props.id
 
     return (
       <form
@@ -98,4 +96,8 @@ const id = this.props.id
   }
 }
 
-export default connect(null)(EditChore);
+export const mapStateToProps = state => ({
+  chores: state.chart.chores
+});
+
+export default connect(mapStateToProps)(EditChore);

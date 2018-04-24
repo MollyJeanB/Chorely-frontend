@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../componentStyles/ChoreBubble.css";
 import { connect } from "react-redux";
-import BubbleDropdown from "./BubbleDropdown";
+// import BubbleDropdown from "./BubbleDropdown";
 
 export class ChoreBubble extends React.Component {
   state = {
@@ -10,14 +10,44 @@ export class ChoreBubble extends React.Component {
 
   showDropdown(event) {
     this.setState({
-      dropdownDisplay: !this.state.dropdownDisplay
+      dropdownDisplay: true
     });
+  }
+
+  changeCompletion(event) {
+    console.log(event.target.value)
+    if (event.target.value === "cancel") {
+      this.setState({
+        dropdownDisplay: false
+      });
+    }
   }
 
   render() {
     let dropdown;
+    const memberKeys = Object.keys(this.props.members);
+    const options = memberKeys.map((memberKey, index) => {
+      return (
+        <option
+          value={this.props.members[memberKey].id}
+          key={index}
+          >{this.props.members[memberKey].name}</option>
+
+      );
+    });
+
     if (this.state.dropdownDisplay) {
-      dropdown = <BubbleDropdown />;
+      dropdown =
+      <select
+        name="memberId"
+        onChange={e => this.changeCompletion(e)}
+        >
+          <option value="cancel">Who did it?</option>
+          {options}
+          <option value="undo">Undo Chore</option>
+          <option value="cancel">Cancel</option>
+      </select>
+      ;
     }
 
     return (

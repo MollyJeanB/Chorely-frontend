@@ -27,29 +27,6 @@ export const postChore = values => {
   }
 }
 
-export const updateChore = id => {
-  return (dispatch) => {
-    fetch(`${API_BASE_URL}/chores/${id}`, {
-      method: "put",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    .then(res => {
-      if (!res.ok) {
-        return Promise.reject(res.statusText);
-      }
-      return res.json();
-    })
-    .then((data) => {
-      dispatch(postChoreSuccess(data));
-    })
-    .catch(err => {
-      // dispatch(submitNewMemberFailure(err))
-    });
-  }
-}
-
 export const deleteChore = (id, values) => {
   return (dispatch) => {
     fetch(`${API_BASE_URL}/chores/${id}`, {
@@ -68,4 +45,32 @@ export const DELETE_CHORE_SUCCESS = "DELETE_CHORE_SUCCESS";
 export const deleteChoreSuccess = id => ({
   type: DELETE_CHORE_SUCCESS,
   id
+})
+
+export const updateChore = (id, values) => {
+  return (dispatch) => {
+    fetch(`${API_BASE_URL}/chores/${id}`, {
+      method: "put",
+      body: JSON.stringify(values),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => {
+      console.log(response)
+      return response.json()
+    }
+    )
+    .then(data => {
+      dispatch(updateChoreSuccess(data))
+    })
+    .catch(err => console.log(err))
+  }
+}
+
+export const UPDATE_CHORE_SUCCESS = "UPDATE_CHORE_SUCCESS"
+export const updateChoreSuccess = (id, values) => ({
+  type: UPDATE_CHORE_SUCCESS,
+  id,
+  values
 })

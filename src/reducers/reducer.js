@@ -13,7 +13,8 @@ import {
 
 import {
   POST_CHORE_SUCCESS,
-  DELETE_CHORE_SUCCESS
+  DELETE_CHORE_SUCCESS,
+  UPDATE_CHORE_SUCCESS
 } from "../actions/chore-actions"
 
 const initialState = {
@@ -71,6 +72,12 @@ if (action.type === POST_MEMBER_SUCCESS) {
 }
 
 if (action.type === POST_CHORE_SUCCESS) {
+  return Object.assign({}, state, {
+    chores: [action.values, ...state.chores]
+  })
+}
+
+if (action.type === UPDATE_CHORE_SUCCESS) {
   return Object.assign({}, state, {
     chores: [action.values, ...state.chores]
   })
