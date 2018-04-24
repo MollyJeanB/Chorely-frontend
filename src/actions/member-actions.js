@@ -58,17 +58,21 @@ export const updateMember = (id, values) => {
         "Content-Type": "application/json"
       }
     })
-    .then(res => {
-      if (!res.ok) {
-        return Promise.reject(res.statusText);
-      }
-      return res.json();
+    .then(response => {
+      console.log(response)
+      return response.json()
+    }
+    )
+    .then(data => {
+      dispatch(updateMemberSuccess(data))
     })
-    .then((data) => {
-      dispatch(postMemberSuccess(data));
-    })
-    .catch(err => {
-      // dispatch(submitNewMemberFailure(err))
-    });
+    .catch(err => console.log(err))
   }
 }
+
+export const UPDATE_MEMBER_SUCCESS = "UPDATE_MEMBER_SUCCESS"
+export const updateMemberSuccess = (id, values) => ({
+  type: UPDATE_MEMBER_SUCCESS,
+  id,
+  values
+})
