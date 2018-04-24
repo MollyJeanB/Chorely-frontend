@@ -12,16 +12,20 @@ state = {
 }
 
 toggleForm(event, id) {
-  console.log(id)
   this.setState({
     formDisplay: !this.state.formDisplay
   });
 }
 
 removeChore(event, id) {
-  console.log(id)
   this.props.dispatch(deleteChore(id));
 }
+
+editChore(event, id) {
+    event.preventDefault()
+  console.log(this.props, id)
+}
+
 
   render() {
     const { id, choreName, pointValue, timesPerWeek } = this.props;
@@ -42,7 +46,11 @@ removeChore(event, id) {
 
     let formComponent;
     if (this.state.formDisplay) {
-      formComponent = <EditChore toggleForm={this.toggleForm.bind(this)} />;
+      formComponent = <EditChore
+        editChore={e => {
+          this.editChore(e, id);
+        }}
+        toggleForm={this.toggleForm.bind(this)} />;
     }
 
     let infoBox;

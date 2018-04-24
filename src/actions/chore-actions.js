@@ -6,7 +6,6 @@ export const postChoreSuccess = values => ({
   values
 })
 
-// export const POST_MEMBER  = "POST_MEMBER"
 export const postChore = values => {
   return (dispatch) => {
     fetch(`${API_BASE_URL}/chores`, {
@@ -28,10 +27,10 @@ export const postChore = values => {
   }
 }
 
-export const deleteChore = id => {
+export const updateChore = id => {
   return (dispatch) => {
     fetch(`${API_BASE_URL}/chores/${id}`, {
-      method: "delete",
+      method: "put",
       headers: {
         "Content-Type": "application/json"
       }
@@ -51,21 +50,22 @@ export const deleteChore = id => {
   }
 }
 
-export const updateChore = (id, values) => {
+export const deleteChore = (id, values) => {
   return (dispatch) => {
     fetch(`${API_BASE_URL}/chores/${id}`, {
-      method: "put",
+      method: "delete",
       body: JSON.stringify(values),
       headers: {
         "Content-Type": "application/json"
       }
     })
-    .then(() => dispatch(deleteChoreSuccess()))
+    .then(() => dispatch(deleteChoreSuccess(id)))
     .catch(err => console.log(err))
   }
 }
 
 export const DELETE_CHORE_SUCCESS = "DELETE_CHORE_SUCCESS";
-export const deleteChoreSuccess = () => ({
+export const deleteChoreSuccess = id => ({
   type: DELETE_CHORE_SUCCESS,
+  id
 })

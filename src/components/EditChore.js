@@ -5,21 +5,37 @@ import { updateChore } from "../actions/chore-actions"
 
 export class EditChore extends React.Component {
 
-  onSubmit(values, id) {
-    console.log(values, id)
-    this.props.dispatch(updateChore(values, id))
-
+  constructor(props) {
+    super(props)
+    this.state = {
+      choreName: this.props.choreName,
+      pointValue: this.props.pointValue,
+      timesPerWeek: this.props.timesPerWeek
+    }
   }
+
+  handleInput(event, key) {
+    this.setState({
+      [key]: event.target.value
+    })
+  }
+
+
+  // handleSubmit(event, id) {
+  //   event.preventDefault()
+  //   console.log("chore form submitted, the state is", this.state, id)
+  //   this.props.dispatch(updateChore(this.state, id));
+  //   this.props.toggleForm()
+  // }
 
   render() {
 
-const { id, choreName, pointValue, timesPerWeek } = this.props;
+const id = this.props.id
 
     return (
       <form
-        key={id}
         className={styles.formBox}
-        onSubmit={e => this.onSubmit(e, id)}
+        onSubmit={e => this.props.editChore(e)}
       >
         <input
           name="choreName"
@@ -27,9 +43,14 @@ const { id, choreName, pointValue, timesPerWeek } = this.props;
           ref={input => (this.textInput = input)}
           placeholder="Chore Title"
           className={styles.choreTitle}
+          value={this.props.choreName}
+          onChange={e => this.handleInput(e, "choreName")}
         />
         <div className={styles.pointContain}>
-          <select name="pointValue" className={styles.pointField}>
+          <select name="pointValue"
+            className={styles.pointField}
+            onChange={e => this.handleInput(e, "pointValue")}
+            >
             <option value="1">Point Value</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -44,7 +65,11 @@ const { id, choreName, pointValue, timesPerWeek } = this.props;
           </select>
         </div>
         <div className={styles.weekContain}>
-          <select name="timesPerWeek" className={styles.weekField}>
+          <select name="timesPerWeek"
+            className={styles.weekField}
+            onChange={e => this.handleInput(e, "timesPerWeek")}
+
+            >
             <option value="1">Times Per Week</option>
             <option value="1">1</option>
             <option value="2">2</option>

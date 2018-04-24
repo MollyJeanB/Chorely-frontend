@@ -29,28 +29,25 @@ export const postMember = values => {
   }
 }
 
-export const deleteMember = id => {
+export const deleteMember = (id, values) => {
   return (dispatch) => {
     fetch(`${API_BASE_URL}/members/${id}`, {
       method: "delete",
+      body: JSON.stringify(values),
       headers: {
         "Content-Type": "application/json"
       }
     })
-    .then(res => {
-      if (!res.ok) {
-        return Promise.reject(res.statusText);
-      }
-      return res.json();
-    })
-    .then((data) => {
-      dispatch(postMemberSuccess(data));
-    })
-    .catch(err => {
-      // dispatch(submitNewMemberFailure(err))
-    });
+    .then(() => dispatch(deleteMemberSuccess(id)))
+    .catch(err => console.log(err))
   }
 }
+
+export const DELETE_MEMBER_SUCCESS = "DELETE_MEMBER_SUCCESS";
+export const deleteMemberSuccess = id => ({
+  type: DELETE_MEMBER_SUCCESS,
+  id
+})
 
 export const updateMember = (id, values) => {
   return (dispatch) => {
