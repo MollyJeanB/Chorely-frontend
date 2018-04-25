@@ -66,6 +66,7 @@ export class Member extends React.Component {
     if (this.state.formDisplay) {
       editFormComponent = (
         <EditMember
+          index={this.key}
           chooseColor={e => {
             this.chooseColor(e, id);
           }}
@@ -117,7 +118,7 @@ export class Member extends React.Component {
     }
 
     return (
-      <div className={styles.personContainer} key={id}>
+      <div className={styles.personContainer}>
         <div className={styles.housemateIconContainer} style={style}>
           <img
             className={styles.housemateIcon}

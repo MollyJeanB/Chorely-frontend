@@ -37,6 +37,7 @@ export default class Input extends React.Component {
           ref={input => (this.input = input)}
           className={styles[this.props.styleClassName]}
           placeholder={this.props.placeholder}
+          maxLength="12"
         />
       </div>
     );

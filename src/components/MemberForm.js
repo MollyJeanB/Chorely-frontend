@@ -4,7 +4,6 @@ import styles from "../componentStyles/MemberForm.css";
 import { postMember } from "../actions/member-actions";
 import { required, nonEmpty } from "../validators";
 import Input from "./Input";
-import Colors from "../colors";
 
 function afterSubmit(result, dispatch) {
   dispatch(reset("formReducer"));
@@ -32,7 +31,6 @@ if
         <Field
           name="name"
           type="text"
-          maxLength="20"
           ref={input => (this.textInput = input)}
           component={Input}
           validate={[required, nonEmpty]}

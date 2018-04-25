@@ -13,7 +13,7 @@ export class EditMember extends React.Component {
           name="name"
           type="text"
           placeholder="Name"
-          maxLength="20"
+          maxLength="12"
 
         />
         <div className={styles.dropdown}>
