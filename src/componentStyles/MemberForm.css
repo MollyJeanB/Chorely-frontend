@@ -74,7 +74,7 @@ button:hover {
 }
 
 .dropdownContent {
-  display: none;
+  display: block;
   position: absolute;
   background-color: #f1f1f1;
   width: 100px;
@@ -130,9 +130,9 @@ button:hover {
   border: 2px solid #3d4f99;
 }
 
-.dropdown:hover .dropdownContent {
+/* .dropdown:hover .dropdownContent {
   display: block;
-}
+} */
 
 .dropbtn:hover {
   background-color: rgba(61, 80, 153, 1);
