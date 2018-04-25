@@ -47,11 +47,12 @@ export const deleteChoreSuccess = id => ({
   id
 })
 
-export const updateChore = (id, values) => {
+export const updateChore = state => {
+  console.log(state.id)
   return (dispatch) => {
-    fetch(`${API_BASE_URL}/chores/${id}`, {
+    fetch(`${API_BASE_URL}/chores/${state.id}`, {
       method: "put",
-      body: JSON.stringify(values),
+      body: JSON.stringify(state),
       headers: {
         "Content-Type": "application/json"
       }
@@ -69,8 +70,8 @@ export const updateChore = (id, values) => {
 }
 
 export const UPDATE_CHORE_SUCCESS = "UPDATE_CHORE_SUCCESS"
-export const updateChoreSuccess = (id, values) => ({
+export const updateChoreSuccess = data => ({
   type: UPDATE_CHORE_SUCCESS,
-  id,
-  values
+  values: data
+
 })

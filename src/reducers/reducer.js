@@ -36,19 +36,6 @@ export const choreReducer = (state = initialState, action) => {
     });
   }
 
-  if (action.type === CHANGE_COLOR) {
-    let member = state.members.filter(memberObj => {
-      return memberObj.id === action.id
-    })
-    console.log(member)
-    member.color = action.color;
-    // let members = state.members;
-    // members[action.id] = member;
-    // return Object.assign({}, state, {
-    //   members: members
-    // });
-  }
-
   if (action.type === DELETE_CHORE_SUCCESS) {
     let choreArray = [...state.chores]
     let deletedIndex = choreArray.findIndex(item => item.id === action.id);
@@ -80,9 +67,32 @@ if (action.type === POST_CHORE_SUCCESS) {
 }
 
 if (action.type === UPDATE_CHORE_SUCCESS) {
-  return Object.assign({}, state, {
-    chores: [action.values, ...state.chores]
+  let choreArray = [...state.chores]
+
+  let chore = choreArray.filter(choreItem => {
+    return choreItem.id === action.values.id
   })
+  let choreKey = parseInt(Object.keys(chore))
+  console.log(choreKey)
+  choreArray[choreKey] = action.values
+  return Object.assign({}, state, {
+    chores: choreArray
+  })
+}
+
+if (action.type === CHANGE_COLOR) {
+  let memberArray = [...state.members]
+  let member = memberArray.filter(memberObj => {
+    return memberObj.id === action.id
+  })
+  let memberKey = Object.keys(member)
+
+  member.color = action.color;
+  // let members = state.members;
+  // members[action.id] = member;
+  // return Object.assign({}, state, {
+  //   members: members
+  // });
 }
 
   if (action.type === GET_CHART_DATA_SUCCESS) {

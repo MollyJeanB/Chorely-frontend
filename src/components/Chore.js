@@ -3,7 +3,7 @@ import styles from "../componentStyles/Chore.css";
 import ChoreBubble from "./ChoreBubble";
 import EditChore from "./EditChore"
 import { connect } from "react-redux";
-import { deleteChore } from "../actions/chore-actions"
+import { deleteChore, updateChore } from "../actions/chore-actions"
 
 export class Chore extends React.Component {
 
@@ -23,7 +23,8 @@ removeChore(event, id) {
 
 editChore(event, id) {
     event.preventDefault()
-  console.log(this.props, id)
+  console.log("editChore called", this.props, id)
+  this.props.dispatch(updateChore(event, id))
 }
 
 
@@ -57,6 +58,7 @@ editChore(event, id) {
         editChore={e => {
           this.editChore(e, id);
         }}
+        {...this.props}
         toggleForm={this.toggleForm.bind(this)} />;
     }
 

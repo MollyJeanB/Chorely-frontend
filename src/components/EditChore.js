@@ -5,35 +5,36 @@ import { updateChore } from "../actions/chore-actions"
 
 export class EditChore extends React.Component {
 
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     choreName: this.props.choreName,
-  //     pointValue: this.props.pointValue,
-  //     timesPerWeek: this.props.timesPerWeek
-  //   }
-  // }
+  constructor(props) {
+    super(props)
+    this.state = {
+      choreName: this.props.choreName,
+      pointValue: this.props.pointValue,
+      timesPerWeek: this.props.timesPerWeek,
+      id: this.props.id
+    }
+  }
 
   handleInput(event, key) {
-    console.log(event.target.value, this.state)
     this.setState({
       [key]: event.target.value
     })
+      console.log(event.target.value, this.state)
   }
 
-  // handleSubmit(event, id) {
-  //   event.preventDefault()
-  //   console.log("chore form submitted, the state is", this.state, id)
-  //   this.props.dispatch(updateChore(this.state, id));
-  //   this.props.toggleForm()
-  // }
+  editChore(event) {
+    event.preventDefault()
+    console.log("chore form submitted, the state is", this.state)
+    this.props.dispatch(updateChore(this.state));
+    this.props.toggleForm()
+  }
 
   render() {
 
     return (
       <form
         className={styles.formBox}
-        onSubmit={e => this.props.editChore(e)}
+        onSubmit={this.editChore.bind(this)}
       >
         <input
           name="choreName"
@@ -41,7 +42,7 @@ export class EditChore extends React.Component {
           ref={input => (this.textInput = input)}
           placeholder="Chore Title"
           className={styles.choreTitle}
-          value={this.props.choreName}
+          value={this.state.choreName}
           maxLength="25"
           onChange={e => this.handleInput(e, "choreName")}
         />
