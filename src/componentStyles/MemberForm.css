@@ -20,6 +20,21 @@ button,
   z-index: 2;
 }
 
+.editNameField {
+  font-family: "Raleway", sans-serif;
+  height: 30px;
+  width: 100px;
+  font-size: 12px;
+  margin: 0 10px 0px 8px;
+  padding: 6px;
+  border-bottom: 2px solid rgba(61, 80, 153, 1);
+  background: #ececed;
+}
+
+::placeholder {
+  color: rgba(61, 80, 153, 1);
+}
+
 button {
   padding: 2px;
   background: none;

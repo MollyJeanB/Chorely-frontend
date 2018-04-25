@@ -1,5 +1,5 @@
 import React from "react";
-import MemberForm from "./MemberForm";
+import EditMember from "./EditMember";
 import DeleteWarn from "./DeleteWarn";
 import styles from "../componentStyles/Member.css";
 import { connect } from "react-redux";
@@ -65,7 +65,7 @@ export class Member extends React.Component {
     let editFormComponent;
     if (this.state.formDisplay) {
       editFormComponent = (
-        <MemberForm
+        <EditMember 
           chooseColor={e => {
             this.chooseColor(e, id);
           }}
