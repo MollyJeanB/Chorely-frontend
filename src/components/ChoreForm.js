@@ -11,6 +11,7 @@ export class ChoreForm extends React.Component {
       choreName: "",
       pointValue: 1,
       timesPerWeek: 1,
+      validateDisplay: false
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -26,7 +27,7 @@ export class ChoreForm extends React.Component {
     event.preventDefault()
     console.log("chore form submitted, the state is", this.state)
 if (this.state.choreName.trim() === "") {
-  console.log("nope")
+  this.showValidator()
 } else {
   this.props.dispatch(postChore(this.state));
   this.props.toggleForm()
@@ -39,12 +40,26 @@ if (this.state.choreName.trim() === "") {
 
   }
 
+  showValidator() {
+    this.setState({
+      validateDisplay: !this.state.validateDisplay
+    })
+  }
+
   render() {
+
+    let inputRequired;
+    if (this.state.validateDisplay) {
+      inputRequired = <div className={styles.validate}>Required</div>
+    }
+
+
     return (
       <form
         className={styles.formBox}
         onSubmit={this.handleSubmit}
       >
+        {inputRequired}
         <input
           name="choreName"
           type="text"
