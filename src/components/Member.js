@@ -32,18 +32,18 @@ export class Member extends React.Component {
   }
 
   cancelForm() {
-    this.props.dispatch(
-      this.props.changeColor(this.props.id, this.state.tempColor)
-    );
     this.setState({
       formDisplay: !this.state.formDisplay,
       tempColor: null
     });
+    // this.props.dispatch(
+    //   this.props.changeColor(this.props.id, this.state.tempColor)
+    // );
   }
 
   chooseColor(event, id) {
-    console.log(id);
     const color = event.target.getAttribute("data-color");
+    console.log(id, color);
     this.props.dispatch(this.props.changeColor(id, color));
   }
 
@@ -65,7 +65,7 @@ export class Member extends React.Component {
     let editFormComponent;
     if (this.state.formDisplay) {
       editFormComponent = (
-        <EditMember 
+        <EditMember
           chooseColor={e => {
             this.chooseColor(e, id);
           }}

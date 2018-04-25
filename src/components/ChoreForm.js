@@ -25,13 +25,18 @@ export class ChoreForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     console.log("chore form submitted, the state is", this.state)
-    this.props.dispatch(postChore(this.state));
-    this.props.toggleForm()
-    this.setState = {
-      choreName: "",
-      pointValue: 1,
-      timesPerWeek: 1,
-    }
+if (this.state.choreName.trim() === "") {
+  console.log("nope")
+} else {
+  this.props.dispatch(postChore(this.state));
+  this.props.toggleForm()
+  this.setState = {
+    choreName: "",
+    pointValue: 1,
+    timesPerWeek: 1,
+}
+}
+
   }
 
   render() {
@@ -48,6 +53,7 @@ export class ChoreForm extends React.Component {
           className={styles.choreTitle}
           value={this.state.value}
           onChange={e => this.handleInput(e, "choreName")}
+          maxLength="25"
         />
         <div className={styles.pointContain}>
           <select

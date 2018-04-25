@@ -21,9 +21,9 @@ export const editMemberForm = memberIndex => ({
 });
 
 export const CHANGE_COLOR = "CHANGE_COLOR";
-export const changeColor = (id, memberColor) => ({
+export const changeColor = (id, color) => ({
   type: CHANGE_COLOR,
-  memberColor,
+  color,
   id
 });
 

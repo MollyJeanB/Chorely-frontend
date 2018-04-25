@@ -4,23 +4,16 @@ import { updateMember } from "../actions/member-actions";
 import { connect } from "react-redux";
 
 export class EditMember extends React.Component {
-if
-
-  // onSubmit(values, id) {
-  //  this.props.dispatch(updateMember(values, id));
-  // }
 
   render() {
     return (
-      <form
-        className={styles.formBox}
-        // onSubmit={this.props.handleSubmit(this.onSubmit.bind(this))}
-      >
+      <form className={styles.formBox}>
         <input
           className={styles.editNameField}
           name="name"
           type="text"
           placeholder="Name"
+          maxLength="20"
 
         />
         <div className={styles.dropdown}>

@@ -42,6 +42,7 @@ export class EditChore extends React.Component {
           placeholder="Chore Title"
           className={styles.choreTitle}
           value={this.props.choreName}
+          maxLength="25"
           onChange={e => this.handleInput(e, "choreName")}
         />
         <div className={styles.pointContain}>
