@@ -69,12 +69,12 @@ if (action.type === POST_CHORE_SUCCESS) {
 if (action.type === UPDATE_CHORE_SUCCESS) {
   let choreArray = [...state.chores]
 
-  let chore = choreArray.filter(choreItem => {
-    return choreItem.id === action.values.id
-  })
-  let choreKey = parseInt(Object.keys(chore))
-  console.log(choreKey)
-  choreArray[choreKey] = action.values
+choreArray.forEach(chore => {
+  if (chore.id === action.values.id) {
+    console.log(chore)
+    chore = Object.assign(chore, action.values)
+  }
+})
   return Object.assign({}, state, {
     chores: choreArray
   })
@@ -82,17 +82,14 @@ if (action.type === UPDATE_CHORE_SUCCESS) {
 
 if (action.type === CHANGE_COLOR) {
   let memberArray = [...state.members]
-  let member = memberArray.filter(memberObj => {
-    return memberObj.id === action.id
+  memberArray.forEach(member => {
+    if (member.id === action.id) {
+      member.color = action.color;
+    }
   })
-  let memberKey = Object.keys(member)
-
-  member.color = action.color;
-  // let members = state.members;
-  // members[action.id] = member;
-  // return Object.assign({}, state, {
-  //   members: members
-  // });
+  return Object.assign({}, state, {
+    members: memberArray
+  });
 }
 
   if (action.type === GET_CHART_DATA_SUCCESS) {

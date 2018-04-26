@@ -36,14 +36,13 @@ export class Member extends React.Component {
       formDisplay: !this.state.formDisplay,
       tempColor: null
     });
-    // this.props.dispatch(
-    //   this.props.changeColor(this.props.id, this.state.tempColor)
-    // );
+    this.props.dispatch(
+      this.props.changeColor(this.props.id, this.state.tempColor)
+    );
   }
 
   chooseColor(event, id) {
     const color = event.target.getAttribute("data-color");
-    console.log(id, color);
     this.props.dispatch(this.props.changeColor(id, color));
   }
 
