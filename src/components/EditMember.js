@@ -5,8 +5,28 @@ import { connect } from "react-redux";
 
 export class EditMember extends React.Component {
 
-  state= {
+constructor(props) {
+  super(props)
+  this.state = {
+    id: this.props.id,
+    color: this.props.color,
+    name: this.props.name,
+    weekPoints: this.props.weekPoints,
     dropDownDisplay: false
+  }
+}
+
+  handleInput(event) {
+    this.setState({
+      name: event.target.value
+    })
+  }
+
+  editMember(event) {
+    event.preventDefault()
+    this.state.color = this.props.color
+    this.props.dispatch(updateMember(this.state));
+    this.props.showEdit()
   }
 
   showDropdown(event) {
@@ -38,14 +58,18 @@ export class EditMember extends React.Component {
     }
 
     return (
-      <form className={styles.formBox}>
+      <form
+        className={styles.formBox}
+        onSubmit={this.editMember.bind(this)}
+        >
         <input
           className={styles.editNameField}
           name="name"
           type="text"
           placeholder="Name"
           maxLength="12"
-
+          onChange={e => this.handleInput(e)}
+          value={this.state.name}
         />
         <div className={styles.dropdown}>
           <button

@@ -4,7 +4,7 @@ import MemberList from "./MemberList"
 import ChoreList from "./ChoreList"
 import {connect } from "react-redux"
 import {getChartData} from "../actions/actions"
-import Spinner from "react-spinkit"
+// import Spinner from "react-spinkit"
 
 class Chart extends React.Component {
 

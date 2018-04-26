@@ -16,7 +16,7 @@ export class DeleteWarn extends React.Component {
           </button>
           <button
             className={styles.cancelButton}
-            onClick={() => this.props.cancelWarn()}
+            onClick={() => this.props.toggleWarn()}
           >
             Cancel
           </button>

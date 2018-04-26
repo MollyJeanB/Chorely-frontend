@@ -9,7 +9,7 @@ import { deleteMember } from "../actions/member-actions";
 export class Member extends React.Component {
   state = {
     formDisplay: false,
-    warnDisplay: false
+    warnDisplay: false,
   };
 
   showEdit(event) {
@@ -19,15 +19,9 @@ export class Member extends React.Component {
     });
   }
 
-  showWarn(event) {
+  toggleWarn(event) {
     this.setState({
-      warnDisplay: true
-    });
-  }
-
-  cancelWarn(event) {
-    this.setState({
-      warnDisplay: false
+      warnDisplay: !this.state.warnDisplay
     });
   }
 
@@ -47,7 +41,6 @@ export class Member extends React.Component {
   }
 
   removeUser(event, id) {
-    console.log(id);
     this.props.dispatch(deleteMember(id));
     this.setState({
       warnDisplay: false
@@ -70,6 +63,8 @@ export class Member extends React.Component {
             this.chooseColor(e, id);
           }}
           cancelForm={this.cancelForm.bind(this)}
+          {...this.props}
+          showEdit={this.showEdit.bind(this)}
         />
       );
     }
@@ -81,7 +76,7 @@ export class Member extends React.Component {
           removeUser={e => {
             this.removeUser(e, id);
           }}
-          cancelWarn={this.cancelWarn.bind(this)}
+          toggleWarn={this.toggleWarn.bind(this)}
         />
       );
     }
@@ -104,7 +99,7 @@ export class Member extends React.Component {
                 src={require("../images/edit.png")}
               />
             </div>
-            <div className={styles.trashButton} onClick={e => this.showWarn(e)}>
+            <div className={styles.trashButton} onClick={e => this.toggleWarn(e)}>
               <img
                 className={styles.trashIcon}
                 alt="Delete"

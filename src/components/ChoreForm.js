@@ -25,19 +25,17 @@ export class ChoreForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    console.log("chore form submitted, the state is", this.state)
-if (this.state.choreName.trim() === "") {
-  this.showValidator()
-} else {
-  this.props.dispatch(postChore(this.state));
-  this.props.toggleForm()
-  this.setState = {
-    choreName: "",
-    pointValue: 1,
-    timesPerWeek: 1,
-}
-}
-
+    if (this.state.choreName.trim() === "") {
+      this.showValidator()
+    } else {
+      this.props.dispatch(postChore(this.state));
+      this.props.toggleForm()
+      this.setState = {
+        choreName: "",
+        pointValue: 1,
+        timesPerWeek: 1
+      }
+    }
   }
 
   showValidator() {
@@ -122,9 +120,5 @@ if (this.state.choreName.trim() === "") {
     );
   }
 }
-
-// export default connect(state => ({
-//   chores: state.chores
-// }))(ChoreForm);
 
 export default connect(null)(ChoreForm);
