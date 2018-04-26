@@ -35,6 +35,16 @@ button,
   color: rgba(61, 80, 153, 1);
 }
 
+.validate {
+  background: red;
+  color: white;
+  position: absolute;
+  top: 0;
+  font-size: 11px;
+  left: 8px;
+  padding: 2px;
+}
+
 button {
   padding: 2px;
   background: none;

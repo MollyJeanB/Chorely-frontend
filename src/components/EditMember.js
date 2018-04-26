@@ -12,7 +12,8 @@ constructor(props) {
     color: this.props.color,
     name: this.props.name,
     weekPoints: this.props.weekPoints,
-    dropDownDisplay: false
+    dropDownDisplay: false,
+    validateDisplay: false
   }
 }
 
@@ -25,9 +26,13 @@ constructor(props) {
   editMember(event) {
     event.preventDefault()
     const values = this.state
-    values.color = this.props.color
-    this.props.dispatch(updateMember(values));
-    this.props.showEdit()
+    if (values.name.trim() === "") {
+      this.showValidator()
+    } else {
+      values.color = this.props.color
+      this.props.dispatch(updateMember(values));
+      this.props.showEdit()
+    }
   }
 
   showDropdown(event) {
@@ -37,7 +42,18 @@ constructor(props) {
     });
   }
 
+  showValidator() {
+    this.setState({
+      validateDisplay: !this.state.validateDisplay
+    })
+  }
+
   render() {
+
+    let inputRequired;
+    if (this.state.validateDisplay) {
+      inputRequired = <div className={styles.validate}>Required</div>
+    }
 
     let dropdown;
     if (this.state.dropDownDisplay) {
@@ -63,6 +79,7 @@ constructor(props) {
         className={styles.formBox}
         onSubmit={this.editMember.bind(this)}
         >
+          {inputRequired}
         <input
           className={styles.editNameField}
           name="name"
