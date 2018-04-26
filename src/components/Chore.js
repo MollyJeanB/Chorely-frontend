@@ -3,7 +3,7 @@ import styles from "../componentStyles/Chore.css";
 import ChoreBubble from "./ChoreBubble";
 import EditChore from "./EditChore"
 import { connect } from "react-redux";
-import { deleteChore, updateChore } from "../actions/chore-actions"
+import { deleteChore } from "../actions/chore-actions"
 
 export class Chore extends React.Component {
 

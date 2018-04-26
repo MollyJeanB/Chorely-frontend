@@ -24,8 +24,9 @@ constructor(props) {
 
   editMember(event) {
     event.preventDefault()
-    this.state.color = this.props.color
-    this.props.dispatch(updateMember(this.state));
+    const values = this.state
+    values.color = this.props.color
+    this.props.dispatch(updateMember(values));
     this.props.showEdit()
   }
 

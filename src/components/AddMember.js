@@ -30,6 +30,13 @@ export class AddMember extends React.Component {
     });
   }
 
+revertColor() {
+  this.setState({
+    color: Colors.gray
+  });
+}
+
+
   render() {
     let formComponent;
     if (this.state.formDisplay) {
@@ -38,6 +45,8 @@ export class AddMember extends React.Component {
           color={this.state.color}
           chooseColor={this.chooseColor.bind(this)}
           cancelForm={this.cancelForm.bind(this)}
+          showEdit={this.showEdit.bind(this)}
+          revertColor={this.revertColor.bind(this)}
         />
       );
     }
@@ -75,10 +84,4 @@ export class AddMember extends React.Component {
   }
 }
 
-export const mapStateToProps = state => ({
-  memberFormDisplayed: state.chart.memberFormDisplayed,
-  memberColor: state.chart.memberColor,
-  form: state.form
-});
-
-export default connect(mapStateToProps)(AddMember);
+export default connect(null)(AddMember);

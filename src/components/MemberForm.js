@@ -22,13 +22,15 @@ export class MemberForm extends React.Component {
     });
   }
 
-  onSubmit(values, id) {
+  onSubmit(values) {
    let colorArray = ["orange", "yellow", "green", "fuschia", "purple"];
    let randomColor = colorArray[Math.floor(Math.random() * colorArray.length)];
    this.props.color && this.props.color !== "#C2C2C3"
      ? (values.color = this.props.color)
      : (values.color = randomColor);
    this.props.dispatch(postMember(values));
+   this.props.showEdit()
+   this.props.revertColor()
   }
 
   render() {
