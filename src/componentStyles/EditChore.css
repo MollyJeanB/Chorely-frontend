@@ -44,3 +44,13 @@
 .cancelButton:hover {
   background: rgba(61, 80, 153, 1);
 }
+
+.validate {
+  background: red;
+  color: white;
+  position: absolute;
+  top: 0;
+  font-size: 12px;
+  left: 13px;
+  padding: 2px;
+}

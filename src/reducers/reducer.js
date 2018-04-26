@@ -1,6 +1,5 @@
 import {
   EXPAND_MENU,
-  SHOW_MEMBER_FORM,
   CHANGE_COLOR,
   GET_CHART_DATA_SUCCESS
 } from "../actions/actions";
@@ -31,11 +30,6 @@ export const choreReducer = (state = initialState, action) => {
     });
   }
 
-  if (action.type === SHOW_MEMBER_FORM) {
-    return Object.assign({}, state, {
-      memberFormDisplayed: !state.memberFormDisplayed
-    });
-  }
 
   if (action.type === DELETE_CHORE_SUCCESS) {
     let choreArray = [...state.chores]
@@ -69,8 +63,7 @@ if (action.type === POST_CHORE_SUCCESS) {
 
 if (action.type === UPDATE_CHORE_SUCCESS) {
   let choreArray = [...state.chores]
-
-choreArray.forEach(chore => {
+  choreArray.forEach(chore => {
   if (chore.id === action.values.id) {
     console.log(chore)
     chore = Object.assign(chore, action.values)
@@ -83,8 +76,7 @@ choreArray.forEach(chore => {
 
 if (action.type === UPDATE_MEMBER_SUCCESS) {
   let memberArray = [...state.members]
-
-memberArray.forEach(member => {
+  memberArray.forEach(member => {
   if (member.id === action.values.id) {
     member = Object.assign(member, action.values)
   }

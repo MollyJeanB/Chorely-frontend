@@ -11,7 +11,8 @@ export class EditChore extends React.Component {
       choreName: this.props.choreName,
       pointValue: this.props.pointValue,
       timesPerWeek: this.props.timesPerWeek,
-      id: this.props.id
+      id: this.props.id,
+      validateDisplay: false
     }
   }
 
@@ -24,18 +25,33 @@ export class EditChore extends React.Component {
 
   editChore(event) {
     event.preventDefault()
-    console.log("chore form submitted, the state is", this.state)
-    this.props.dispatch(updateChore(this.state));
-    this.props.toggleForm()
+    if (this.state.choreName.trim() === "") {
+      this.showValidator()
+    } else {
+      this.props.dispatch(updateChore(this.state));
+      this.props.toggleForm()
+    }
+  }
+
+  showValidator() {
+    this.setState({
+      validateDisplay: !this.state.validateDisplay
+    })
   }
 
   render() {
+
+    let inputRequired;
+    if (this.state.validateDisplay) {
+      inputRequired = <div className={styles.validate}>Required</div>
+    }
 
     return (
       <form
         className={styles.formBox}
         onSubmit={this.editChore.bind(this)}
       >
+        {inputRequired}
         <input
           name="choreName"
           type="text"

@@ -6,12 +6,6 @@ export const expandMenu = drawerOpen => ({
   drawerOpen
 });
 
-export const SHOW_MEMBER_FORM = "SHOW_MEMBER_FORM";
-export const showMemberForm = memberFormDisplayed => ({
-  type: SHOW_MEMBER_FORM,
-  memberFormDisplayed
-});
-
 export const CHANGE_COLOR = "CHANGE_COLOR";
 export const changeColor = (id, color) => ({
   type: CHANGE_COLOR,
@@ -19,14 +13,12 @@ export const changeColor = (id, color) => ({
   id
 });
 
-
 export const GET_CHART_DATA_SUCCESS = "GET_CHART_DATA_SUCCESS";
 export const getChartDataSuccess = values => ({
   type: GET_CHART_DATA_SUCCESS,
   values
 })
 
-export const GET_CHART_DATA = "GET_CHART_DATA";
 export const getChartData = values => {
   return (dispatch) => {
     fetch(`${API_BASE_URL}/`, {
