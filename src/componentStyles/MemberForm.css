@@ -20,6 +20,31 @@ button,
   z-index: 2;
 }
 
+.editNameField {
+  font-family: "Raleway", sans-serif;
+  height: 30px;
+  width: 100px;
+  font-size: 12px;
+  margin: 0 10px 0px 8px;
+  padding: 6px;
+  border-bottom: 2px solid rgba(61, 80, 153, 1);
+  background: #ececed;
+}
+
+::placeholder {
+  color: rgba(61, 80, 153, 1);
+}
+
+.validate {
+  background: red;
+  color: white;
+  position: absolute;
+  top: 0;
+  font-size: 11px;
+  left: 8px;
+  padding: 2px;
+}
+
 button {
   padding: 2px;
   background: none;
@@ -37,7 +62,7 @@ button:hover {
   display: inline-block;
   padding-top: 2px;
   position: relative;
-  z-index: 3;
+  z-index: 1;
 }
 
 .dropbtn {
@@ -49,7 +74,7 @@ button:hover {
   height: 30px;
   margin: 0px 10px 0 0;
   position: relative;
-  z-index: 3;
+  z-index: 1;
 }
 
 .dropdown {
@@ -59,7 +84,7 @@ button:hover {
 }
 
 .dropdownContent {
-  display: none;
+  display: block;
   position: absolute;
   background-color: #f1f1f1;
   width: 100px;
@@ -71,7 +96,7 @@ button:hover {
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  z-index: 5;
+  z-index: 10;
   position: relative;
 }
 
@@ -115,10 +140,6 @@ button:hover {
   border: 2px solid #3d4f99;
 }
 
-.dropdown:hover .dropdownContent {
-  display: block;
-}
-
 .dropbtn:hover {
   background-color: rgba(61, 80, 153, 1);
 }
@@ -136,7 +157,8 @@ button:hover {
     display: block;
     position: absolute;
     top: 50px;
-    left: 52px;
+    left: 20px;
+    z-index: -1;
   }
 
   .dropdownContent {

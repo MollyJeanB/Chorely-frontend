@@ -9,9 +9,9 @@ describe("choreReducer", () => {
     const state = choreReducer(undefined, { type: "__UNKNOWN" });
     expect(state).toEqual({
       resetTime: "Sunday at 5pm",
-      members: [],
-      chores: [],
-      completions: []
+      members: {},
+      chores: {},
+      completions: {}
     });
   });
 });

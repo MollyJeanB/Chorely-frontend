@@ -5,43 +5,61 @@ import { updateChore } from "../actions/chore-actions"
 
 export class EditChore extends React.Component {
 
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     choreName: this.props.choreName,
-  //     pointValue: this.props.pointValue,
-  //     timesPerWeek: this.props.timesPerWeek
-  //   }
-  // }
+  constructor(props) {
+    super(props)
+    this.state = {
+      choreName: this.props.choreName,
+      pointValue: this.props.pointValue,
+      timesPerWeek: this.props.timesPerWeek,
+      id: this.props.id,
+      validateDisplay: false
+    }
+  }
 
   handleInput(event, key) {
-    console.log(event.target.value, this.state)
     this.setState({
       [key]: event.target.value
     })
+      console.log(event.target.value, this.state)
   }
 
-  // handleSubmit(event, id) {
-  //   event.preventDefault()
-  //   console.log("chore form submitted, the state is", this.state, id)
-  //   this.props.dispatch(updateChore(this.state, id));
-  //   this.props.toggleForm()
-  // }
+  editChore(event) {
+    event.preventDefault()
+    if (this.state.choreName.trim() === "") {
+      this.showValidator()
+    } else {
+      this.props.dispatch(updateChore(this.state));
+      this.props.toggleForm()
+    }
+  }
+
+  showValidator() {
+    this.setState({
+      validateDisplay: !this.state.validateDisplay
+    })
+  }
 
   render() {
+
+    let inputRequired;
+    if (this.state.validateDisplay) {
+      inputRequired = <div className={styles.validate}>Required</div>
+    }
 
     return (
       <form
         className={styles.formBox}
-        onSubmit={e => this.props.editChore(e)}
+        onSubmit={this.editChore.bind(this)}
       >
+        {inputRequired}
         <input
           name="choreName"
           type="text"
           ref={input => (this.textInput = input)}
           placeholder="Chore Title"
           className={styles.choreTitle}
-          value={this.props.choreName}
+          value={this.state.choreName}
+          maxLength="25"
           onChange={e => this.handleInput(e, "choreName")}
         />
         <div className={styles.pointContain}>

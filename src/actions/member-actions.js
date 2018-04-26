@@ -49,11 +49,12 @@ export const deleteMemberSuccess = id => ({
   id
 })
 
-export const updateMember = (id, values) => {
+export const updateMember = state => {
+  console.log(state.id)
   return (dispatch) => {
-    fetch(`${API_BASE_URL}/members/${id}`, {
+    fetch(`${API_BASE_URL}/members/${state.id}`, {
       method: "put",
-      body: JSON.stringify(values),
+      body: JSON.stringify(state),
       headers: {
         "Content-Type": "application/json"
       }
@@ -71,8 +72,7 @@ export const updateMember = (id, values) => {
 }
 
 export const UPDATE_MEMBER_SUCCESS = "UPDATE_MEMBER_SUCCESS"
-export const updateMemberSuccess = (id, values) => ({
+export const updateMemberSuccess = data => ({
   type: UPDATE_MEMBER_SUCCESS,
-  id,
-  values
+  values: data
 })

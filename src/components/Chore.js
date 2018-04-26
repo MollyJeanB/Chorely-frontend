@@ -21,11 +21,6 @@ removeChore(event, id) {
   this.props.dispatch(deleteChore(id));
 }
 
-editChore(event, id) {
-    event.preventDefault()
-  console.log(this.props, id)
-}
-
 
   render() {
     const { id, choreName, pointValue, timesPerWeek } = this.props;
@@ -54,9 +49,7 @@ editChore(event, id) {
     let formComponent;
     if (this.state.formDisplay) {
       formComponent = <EditChore
-        editChore={e => {
-          this.editChore(e, id);
-        }}
+        {...this.props}
         toggleForm={this.toggleForm.bind(this)} />;
     }
 

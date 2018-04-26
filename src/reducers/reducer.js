@@ -1,14 +1,13 @@
 import {
   EXPAND_MENU,
-  SHOW_MEMBER_FORM,
   CHANGE_COLOR,
-  EDIT_MEMBER_FORM,
   GET_CHART_DATA_SUCCESS
 } from "../actions/actions";
 
 import {
   POST_MEMBER_SUCCESS,
-  DELETE_MEMBER_SUCCESS
+  DELETE_MEMBER_SUCCESS,
+  UPDATE_MEMBER_SUCCESS
 } from "../actions/member-actions"
 
 import {
@@ -19,9 +18,9 @@ import {
 
 const initialState = {
   resetTime: "Sunday at 5pm",
-  members: [],
-  chores: [],
-  completions: [],
+  members: {},
+  chores: {},
+  completions: {},
 };
 
 export const choreReducer = (state = initialState, action) => {
@@ -31,21 +30,6 @@ export const choreReducer = (state = initialState, action) => {
     });
   }
 
-  if (action.type === SHOW_MEMBER_FORM) {
-    return Object.assign({}, state, {
-      memberFormDisplayed: !state.memberFormDisplayed
-    });
-  }
-
-  if (action.type === CHANGE_COLOR) {
-    let member = state.members[action.id];
-    member.color = action.color;
-    let members = state.members;
-    members[action.id] = member;
-    return Object.assign({}, state, {
-      members: members
-    });
-  }
 
   if (action.type === DELETE_CHORE_SUCCESS) {
     let choreArray = [...state.chores]
@@ -78,9 +62,40 @@ if (action.type === POST_CHORE_SUCCESS) {
 }
 
 if (action.type === UPDATE_CHORE_SUCCESS) {
+  let choreArray = [...state.chores]
+  choreArray.forEach(chore => {
+  if (chore.id === action.values.id) {
+    console.log(chore)
+    chore = Object.assign(chore, action.values)
+  }
+})
   return Object.assign({}, state, {
-    chores: [action.values, ...state.chores]
+    chores: choreArray
   })
+}
+
+if (action.type === UPDATE_MEMBER_SUCCESS) {
+  let memberArray = [...state.members]
+  memberArray.forEach(member => {
+  if (member.id === action.values.id) {
+    member = Object.assign(member, action.values)
+  }
+})
+  return Object.assign({}, state, {
+    members: memberArray
+  })
+}
+
+if (action.type === CHANGE_COLOR) {
+  let memberArray = [...state.members]
+  memberArray.forEach(member => {
+    if (member.id === action.id) {
+      member.color = action.color;
+    }
+  })
+  return Object.assign({}, state, {
+    members: memberArray
+  });
 }
 
   if (action.type === GET_CHART_DATA_SUCCESS) {
@@ -88,17 +103,6 @@ if (action.type === UPDATE_CHORE_SUCCESS) {
       members: action.values.members,
       chores: action.values.chores
     })
-  }
-
-  if (action.type === EDIT_MEMBER_FORM) {
-    const updatedMember = state.members[action.memberIndex];
-    updatedMember.memberFormDisplayed = !updatedMember.memberFormDisplayed;
-    let members = state.members;
-    members[action.memberId] = updatedMember;
-
-    return Object.assign({}, state, {
-      members: members
-    });
   }
 
   return state;

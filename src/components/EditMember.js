@@ -1,18 +1,38 @@
 import React from "react";
-import { reduxForm, Field, reset } from "redux-form";
 import styles from "../componentStyles/MemberForm.css";
-import { postMember } from "../actions/member-actions";
-import { required, nonEmpty } from "../validators";
-import Input from "./Input";
+import { updateMember } from "../actions/member-actions";
+import { connect } from "react-redux";
 
-function afterSubmit(result, dispatch) {
-  dispatch(reset("formReducer"));
+export class EditMember extends React.Component {
+
+constructor(props) {
+  super(props)
+  this.state = {
+    id: this.props.id,
+    color: this.props.color,
+    name: this.props.name,
+    weekPoints: this.props.weekPoints,
+    dropDownDisplay: false,
+    validateDisplay: false
+  }
 }
 
-export class MemberForm extends React.Component {
+  handleInput(event) {
+    this.setState({
+      name: event.target.value
+    })
+  }
 
-  state= {
-    dropDownDisplay: false
+  editMember(event) {
+    event.preventDefault()
+    const values = this.state
+    if (values.name.trim() === "") {
+      this.showValidator()
+    } else {
+      values.color = this.props.color
+      this.props.dispatch(updateMember(values));
+      this.props.showEdit()
+    }
   }
 
   showDropdown(event) {
@@ -22,18 +42,18 @@ export class MemberForm extends React.Component {
     });
   }
 
-  onSubmit(values) {
-   let colorArray = ["orange", "yellow", "green", "fuschia", "purple"];
-   let randomColor = colorArray[Math.floor(Math.random() * colorArray.length)];
-   this.props.color && this.props.color !== "#C2C2C3"
-     ? (values.color = this.props.color)
-     : (values.color = randomColor);
-   this.props.dispatch(postMember(values));
-   this.props.showEdit()
-   this.props.revertColor()
+  showValidator() {
+    this.setState({
+      validateDisplay: !this.state.validateDisplay
+    })
   }
 
   render() {
+
+    let inputRequired;
+    if (this.state.validateDisplay) {
+      inputRequired = <div className={styles.validate}>Required</div>
+    }
 
     let dropdown;
     if (this.state.dropDownDisplay) {
@@ -57,18 +77,17 @@ export class MemberForm extends React.Component {
     return (
       <form
         className={styles.formBox}
-        onSubmit={this.props.handleSubmit(this.onSubmit.bind(this))}
-      >
-        <Field
+        onSubmit={this.editMember.bind(this)}
+        >
+          {inputRequired}
+        <input
+          className={styles.editNameField}
           name="name"
           type="text"
-          ref={input => (this.textInput = input)}
-          component={Input}
-          validate={[required, nonEmpty]}
-          props={{
-            styleClassName: "nameField",
-            placeholder: "Name"
-          }}
+          placeholder="Name"
+          maxLength="12"
+          onChange={e => this.handleInput(e)}
+          value={this.state.name}
         />
         <div className={styles.dropdown}>
           <button
@@ -96,7 +115,8 @@ export class MemberForm extends React.Component {
   }
 }
 
-export default reduxForm({
-  form: "formReducer",
-  onSubmitSuccess: afterSubmit
-})(MemberForm);
+export const mapStateToProps = state => ({
+  member: state.chart.members
+});
+
+export default connect(mapStateToProps)(EditMember);

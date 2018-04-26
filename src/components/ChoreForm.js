@@ -11,6 +11,7 @@ export class ChoreForm extends React.Component {
       choreName: "",
       pointValue: 1,
       timesPerWeek: 1,
+      validateDisplay: false
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -24,22 +25,39 @@ export class ChoreForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    console.log("chore form submitted, the state is", this.state)
-    this.props.dispatch(postChore(this.state));
-    this.props.toggleForm()
-    this.setState = {
-      choreName: "",
-      pointValue: 1,
-      timesPerWeek: 1,
+    if (this.state.choreName.trim() === "") {
+      this.showValidator()
+    } else {
+      this.props.dispatch(postChore(this.state));
+      this.props.toggleForm()
+      this.setState = {
+        choreName: "",
+        pointValue: 1,
+        timesPerWeek: 1
+      }
     }
   }
 
+  showValidator() {
+    this.setState({
+      validateDisplay: !this.state.validateDisplay
+    })
+  }
+
   render() {
+
+    let inputRequired;
+    if (this.state.validateDisplay) {
+      inputRequired = <div className={styles.validate}>Required</div>
+    }
+
+
     return (
       <form
         className={styles.formBox}
         onSubmit={this.handleSubmit}
       >
+        {inputRequired}
         <input
           name="choreName"
           type="text"
@@ -48,6 +66,7 @@ export class ChoreForm extends React.Component {
           className={styles.choreTitle}
           value={this.state.value}
           onChange={e => this.handleInput(e, "choreName")}
+          maxLength="25"
         />
         <div className={styles.pointContain}>
           <select
@@ -101,9 +120,5 @@ export class ChoreForm extends React.Component {
     );
   }
 }
-
-// export default connect(state => ({
-//   chores: state.chores
-// }))(ChoreForm);
 
 export default connect(null)(ChoreForm);
