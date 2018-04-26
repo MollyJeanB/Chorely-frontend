@@ -52,7 +52,7 @@ button:hover {
   display: inline-block;
   padding-top: 2px;
   position: relative;
-  z-index: 3;
+  z-index: 1;
 }
 
 .dropbtn {
@@ -64,7 +64,7 @@ button:hover {
   height: 30px;
   margin: 0px 10px 0 0;
   position: relative;
-  z-index: 3;
+  z-index: 1;
 }
 
 .dropdown {
@@ -86,7 +86,7 @@ button:hover {
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  z-index: 5;
+  z-index: 10;
   position: relative;
 }
 
@@ -130,10 +130,6 @@ button:hover {
   border: 2px solid #3d4f99;
 }
 
-/* .dropdown:hover .dropdownContent {
-  display: block;
-} */
-
 .dropbtn:hover {
   background-color: rgba(61, 80, 153, 1);
 }
@@ -151,7 +147,8 @@ button:hover {
     display: block;
     position: absolute;
     top: 50px;
-    left: 52px;
+    left: 20px;
+    z-index: -1;
   }
 
   .dropdownContent {

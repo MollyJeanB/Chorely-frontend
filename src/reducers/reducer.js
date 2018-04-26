@@ -7,7 +7,8 @@ import {
 
 import {
   POST_MEMBER_SUCCESS,
-  DELETE_MEMBER_SUCCESS
+  DELETE_MEMBER_SUCCESS,
+  UPDATE_MEMBER_SUCCESS
 } from "../actions/member-actions"
 
 import {
@@ -77,6 +78,19 @@ choreArray.forEach(chore => {
 })
   return Object.assign({}, state, {
     chores: choreArray
+  })
+}
+
+if (action.type === UPDATE_MEMBER_SUCCESS) {
+  let memberArray = [...state.members]
+
+memberArray.forEach(member => {
+  if (member.id === action.values.id) {
+    member = Object.assign(member, action.values)
+  }
+})
+  return Object.assign({}, state, {
+    members: memberArray
   })
 }
 
