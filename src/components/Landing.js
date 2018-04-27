@@ -37,13 +37,13 @@ class Landing extends Component {
         </section>
         <section className={styles.explainSection}>
           <div className={styles.explainBlock}>
-            <div className={styles.explainContent}>It's Chorely, bitch. U live with filthy monsters. Keep track of your shit! (Chorely is an easy peasy chore chart that makes a friendly competition out of keeping your shared spaces tidy.)</div>
+            <div className={styles.explainContent}>Chorely is an easy peasy chore chart that makes a friendly competition out of keeping your shared spaces tidy.</div>
           </div>
           <div className={styles.explainBlock}>
-            <div className={styles.explainContent}>Set up an account for your household. Create chores and assign them values.</div>
+            <div className={styles.explainContent}>When you create an account for your household, set up a leaderboard for your household members. Then, create a weekly chorelist. Assign point values to chores and choose how many times they should be done each week. </div>
           </div>
           <div className={styles.explainBlock}>
-            <div className={styles.explainContent}>Score points and find harmony! U have the power to create your destiny.</div>
+            <div className={styles.explainContent}>Instead of bickering about whose turn it is to vacuum with your housemates or family members, track who does what and score points for getting stuff done!</div>
           </div>
         </section>
         <section className={styles.signupSection}></section>
