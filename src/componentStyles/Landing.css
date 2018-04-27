@@ -1,0 +1,81 @@
+
+.introSection {
+  height: 400px;
+  width: 100vw;
+  background: rgba(185, 233, 254, 1);
+}
+
+.logo {
+    color: rgba(61, 80, 153, 1);
+    font-size: 30px;
+    font-weight: 700;
+    padding: 5px;
+}
+
+.question {
+  font-weight: 700;
+  font-size: 28px;
+  text-align: center;
+  padding: 5px;
+  color: #262828;
+}
+
+.iconBox {
+  width: 302px;
+  margin: 0 auto;
+  border: 1px solid red;
+  padding-top: 120px
+}
+
+.choreIcon {
+  height: 100px;
+  padding: 20px;
+  border: 1px solid red;
+}
+
+.explainSection {
+  height: 400px;
+  width: 100vw;
+}
+
+.signupSection {
+  height: 400px;
+  width: 100vw;
+  background: rgba(185, 233, 254, 1);
+}
+
+@media only screen and (min-width: 640px) {
+
+  /* .question {
+    font-size: 40px;
+  } */
+
+  .iconBox {
+    width: 422px;
+    /* padding-top:  */
+
+  }
+
+  .choreIcon {
+    height: 140px;
+
+  }
+
+
+}
+
+@media only screen and (min-width: 850px) {
+
+  .question {
+    font-size: 40px;
+  }
+
+}
+
+@media only screen and (min-width: 950px) {
+
+  .question {
+    font-size: 45px;
+  }
+
+}
