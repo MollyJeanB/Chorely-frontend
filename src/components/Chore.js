@@ -41,7 +41,10 @@ removeChore(event, id) {
     function bubbleMaker() {
       let bubbles = [];
       for (let i = 0; i < timesPerWeekVal; i++) {
-        bubbles.push(<ChoreBubble key={i} />);
+        bubbles.push(
+          <ChoreBubble
+            // {...this.props}
+          key={i} />);
       }
       return <div className={styles.choreBubbleContainer}>{bubbles}</div>;
     }
@@ -89,7 +92,7 @@ removeChore(event, id) {
 
     return (
       <div className={styles.choreContainer} key={id}>
-{infoBox}
+        {infoBox}
         {formComponent}
         {choreBubbles}
       </div>

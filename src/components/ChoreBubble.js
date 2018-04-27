@@ -4,9 +4,15 @@ import { connect } from "react-redux";
 // import BubbleDropdown from "./BubbleDropdown";
 
 export class ChoreBubble extends React.Component {
-  state = {
-    dropdownDisplay: false
-  };
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      choreName: this.props.choreName,
+      id: this.props.id,
+      dropdownDisplay: false
+    }
+  }
 
   showDropdown(event) {
     this.setState({
@@ -19,7 +25,9 @@ export class ChoreBubble extends React.Component {
     if (event.target.value === "cancel") {
       this.setState({
         dropdownDisplay: false
-      });
+      })
+    } else {
+      console.log(this.state)
     }
   }
 
@@ -47,7 +55,7 @@ export class ChoreBubble extends React.Component {
       <form className={styles.selectBox}>
       <select
         name="memberId"
-        onChange={e => this.changeCompletion(e)}
+        onChange={this.changeCompletion.bind(this)}
         className={styles.personField}
         >
           <option value="cancel">Who did it?</option>
