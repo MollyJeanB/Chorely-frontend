@@ -7,7 +7,10 @@ class Landing extends Component {
       <div className={styles.landingContain}>
         <section className={styles.introSection}>
           <div className={styles.logo}>Chorely</div>
-          <button className={styles.loginButton}>Log In</button>
+          <div className={styles.cornerButtons}>
+            <button className={styles.loginButton}>Log In</button>
+            <button className={styles.loginButton}>Sign Up</button>
+          </div>
           <div className={styles.iconBox}>
             <img
               className={styles.choreIcon}
@@ -24,7 +27,17 @@ class Landing extends Component {
           </div>
           <div className={styles.question}>Who does the most chores in your house?</div>
         </section>
-        <section className={styles.explainSection}></section>
+        <section className={styles.explainSection}>
+          <div className={styles.explainBlock}>
+            <div className={styles.explainContent}>It's Chorely, bitch. U live with filthy monsters. Keep track of your shit!</div>
+          </div>
+          <div className={styles.explainBlock}>
+            <div className={styles.explainContent}>Set up an account for your household. Create chores and assign them values.</div>
+          </div>
+          <div className={styles.explainBlock}>
+            <div className={styles.explainContent}>Score points and find harmony! U have the power to create your destiny.</div>
+          </div>
+        </section>
         <section className={styles.signupSection}></section>
       </div>
     )

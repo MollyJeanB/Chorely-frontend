@@ -3,6 +3,7 @@
   height: 400px;
   width: 100vw;
   background: rgba(185, 233, 254, 1);
+  position: relative;
 }
 
 .logo {
@@ -21,21 +22,23 @@
 }
 
 .iconBox {
-  width: 302px;
-  margin: 0 auto;
-  border: 1px solid red;
-  padding-top: 120px
 }
 
 .choreIcon {
-  height: 100px;
-  padding: 20px;
-  border: 1px solid red;
 }
 
 .explainSection {
-  height: 400px;
   width: 100vw;
+}
+
+.explainBlock {
+border-radius: 25px;
+background: rgba(194, 194, 195, .4);
+height: 300px;
+margin: 20px;
+display: flex;
+align-items: center;
+
 }
 
 .signupSection {
@@ -44,23 +47,27 @@
   background: rgba(185, 233, 254, 1);
 }
 
+.explainContent {
+  padding: 10px;
+}
+
 @media only screen and (min-width: 640px) {
 
-  /* .question {
-    font-size: 40px;
-  } */
-
-  .iconBox {
-    width: 422px;
-    /* padding-top:  */
-
+  .question {
+    font-size: 30px;
   }
 
-  .choreIcon {
-    height: 140px;
 
+  .explainSection {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
   }
 
+  .explainBlock {
+    margin: 0;
+  }
 
 }
 
@@ -69,7 +76,6 @@
   .question {
     font-size: 40px;
   }
-
 }
 
 @media only screen and (min-width: 950px) {
