@@ -21,12 +21,6 @@
   color: #262828;
 }
 
-.iconBox {
-}
-
-.choreIcon {
-}
-
 .explainSection {
   width: 100vw;
 }
@@ -51,10 +45,58 @@ align-items: center;
   padding: 10px;
 }
 
+.cornerButtons {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.loginButton, .signupButton {
+  font-size: 14px;
+  text-decoration: underline;
+  padding: 10px;
+}
+
+.loginButton:hover,
+.signupButton:hover {
+  color: #4b6dff;
+}
+
+.headlineContain {
+  position: absolute;
+  bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.iconContain {
+  display: inline-block;
+  margin: 15px;
+}
+
+.iconBox {
+  display: flex;
+  justify-content: center;
+}
+
+.choreIcon {
+  height: 80px;
+}
+
 @media only screen and (min-width: 640px) {
 
   .question {
     font-size: 30px;
+  }
+
+  .choreIcon {
+    height: 128px;
+  }
+
+  .iconContain {
+    margin: 20px;
   }
 
 
@@ -76,12 +118,4 @@ align-items: center;
   .question {
     font-size: 40px;
   }
-}
-
-@media only screen and (min-width: 950px) {
-
-  .question {
-    font-size: 45px;
-  }
-
 }
