@@ -8,11 +8,13 @@ export const postCompletionSuccess = values => ({
 })
 
 
-export const postCompletion = values => {
+export const postCompletion = (memberId, choreId) => {
+  console.log(memberId, choreId)
   return (dispatch) => {
+
     fetch(`${API_BASE_URL}/completions`, {
       method: "post",
-      body: JSON.stringify(values),
+      body: JSON.stringify(memberId, choreId),
       headers: {
         "Content-Type": "application/json"
       }

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../componentStyles/ChoreBubble.css";
 import { connect } from "react-redux";
+import {postCompletion} from "../actions/completion-actions"
 // import BubbleDropdown from "./BubbleDropdown";
 
 export class ChoreBubble extends React.Component {
@@ -22,14 +23,24 @@ export class ChoreBubble extends React.Component {
 
   changeCompletion(event) {
     console.log(event.target.value)
+    const memberId = event.target.value
+    const choreId = this.state.id
     if (event.target.value === "cancel") {
       this.setState({
         dropdownDisplay: false
       })
-    } else {
-      console.log(this.state)
     }
-  }
+    else {
+      this.props.dispatch(postCompletion(memberId, choreId))
+      //undo
+    }
+    // else {
+    //   if {
+    //     //id and already an id present, then updateCompletion
+    //   } else
+    //   //id and none present, newCompletion
+    // }
+   }
 
   render() {
     let clickMessage;
