@@ -21,7 +21,7 @@ removeChore(event, id) {
   this.props.dispatch(deleteChore(id));
 }
 
-bubbleMaker() {
+bubbleMaker(memberResponsible) {
   let bubbles = [];
   for (let i = 0; i < this.props.timesPerWeek; i++) {
     bubbles.push(
@@ -34,7 +34,17 @@ bubbleMaker() {
 
 
   render() {
-    const { id, choreName, pointValue, timesPerWeek } = this.props;
+    const { id, choreName, pointValue, timesPerWeek, completions, members } = this.props;
+
+    const complete = completions.find(c => c.choreId == id)
+
+    let memberResponsible
+
+    if (complete) {
+      memberResponsible = members.find(m => complete.memberId == m.id)
+    }
+
+    console.log(memberResponsible)
 
     let pointPlural;
     pointValue !== 1 ? (pointPlural = "points") : (pointPlural = "point");
@@ -46,7 +56,7 @@ bubbleMaker() {
         timeDescript = "Twice"
      } else timeDescript = `${timesPerWeek} times`
 
-    let choreBubbles = this.bubbleMaker();
+    let choreBubbles = this.bubbleMaker(memberResponsible);
 
     let formComponent;
     if (this.state.formDisplay) {

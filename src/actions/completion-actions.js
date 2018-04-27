@@ -10,26 +10,26 @@ export const postCompletionSuccess = values => ({
 
 export const postCompletion = (memberId, choreId) => {
   console.log(memberId, choreId)
-  return (dispatch) => {
+  return dispatch => {
+     fetch(`${API_BASE_URL}/completions`, {
+       method: "post",
+       body: JSON.stringify({ choreId, memberId }),
+       headers: {
+         "Content-Type": "application/json"
+       }
+     })
+       .then(response => {
+         debugger
+         return response.json()
+       })
+       .then(data => {
+         debugger
+         dispatch(postCompletionSuccess(data))
+       })
+       .catch(err => console.log(err))
+   }
+ }
 
-    fetch(`${API_BASE_URL}/completions`, {
-      method: "post",
-      body: JSON.stringify(memberId, choreId),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    .then(response => {
-      console.log(response)
-      return response.json()
-    }
-    )
-    .then(data => {
-      dispatch(postCompletionSuccess(data))
-    })
-    .catch(err => console.log(err))
-  }
-}
 
 export const deleteCompletion = (id, values) => {
   return (dispatch) => {
