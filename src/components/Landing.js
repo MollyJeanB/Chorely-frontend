@@ -28,8 +28,8 @@ class Landing extends Component {
               <div className={styles.iconContain}>
                 <img
                   className={styles.choreIcon}
-                  alt="Dish soap bottle and stack of clean plates icon"
-                  src={require("../images/liquid.png")} />
+                  alt="Dish soap and dishes icon"
+                  src={require("../images/spray.png")} />
               </div>
             </div>
             <div className={styles.question}>Who does the most chores in your house?</div>
@@ -37,13 +37,31 @@ class Landing extends Component {
         </section>
         <section className={styles.explainSection}>
           <div className={styles.explainBlock}>
-            <div className={styles.explainContent}>Chorely is an easy peasy chore chart that makes a friendly competition out of keeping your shared spaces tidy.</div>
+            <div className={styles.explainIconContain}>
+              <img
+                className={styles.explainIcon}
+                alt="Note pad icon"
+                src={require("../images/note.png")} />
+            </div>
+            <div className={styles.explainContent}>Chorely is an easy peasy chore chart that makes a friendly competition out of keeping shared spaces tidy. Because life's too short to waste time bickering over who cleaned the sink trap last.</div>
           </div>
           <div className={styles.explainBlock}>
-            <div className={styles.explainContent}>When you create an account for your household, set up a leaderboard for your household members. Then, create a weekly chorelist. Assign point values to chores and choose how many times they should be done each week. </div>
+            <div className={styles.explainIconContain}>
+              <img
+                className={styles.explainIcon}
+                alt="House icon"
+                src={require("../images/house.png")} />
+            </div>
+            <div className={styles.explainContent}>Get started in a flash! Just create an account for your household. With a few taps or clicks, you can set up a leaderboard for your household members and create a weekly chore list.</div>
           </div>
           <div className={styles.explainBlock}>
-            <div className={styles.explainContent}>Instead of bickering about whose turn it is to vacuum with your housemates or family members, track who does what and score points for getting stuff done!</div>
+            <div className={styles.explainIconContain}>
+              <img
+                className={styles.explainIcon}
+                alt="Star sticker icon"
+                src={require("../images/sticker.png")} />
+            </div>
+            <div className={styles.explainContent}>Assign point values to chores & choose how many times they should be done each week. Then check off chores as you complete them to score points. No more tantrums & passive aggressive notes!</div>
           </div>
         </section>
         <section className={styles.signupSection}></section>
