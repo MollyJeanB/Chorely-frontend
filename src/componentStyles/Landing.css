@@ -1,0 +1,153 @@
+
+
+.introSection {
+  height: 400px;
+  width: 100vw;
+  background: rgba(185, 233, 254, 1);
+  position: relative;
+}
+
+.logo {
+    color: rgba(61, 80, 153, 1);
+    font-size: 30px;
+    font-weight: 700;
+    padding: 5px;
+}
+
+.question {
+  font-weight: 700;
+  font-size: 28px;
+  text-align: center;
+  padding: 5px 10px 5px 10px;
+  color: #262828;
+}
+
+.explainSection {
+  width: 100vw;
+}
+
+.explainBlock {
+border-radius: 25px;
+background: rgba(194, 194, 195, .4);
+height: 300px;
+margin: 20px;
+display: flex;
+align-items: center;
+box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+
+}
+
+.signupSection {
+  height: 400px;
+  width: 100vw;
+  background: rgba(185, 233, 254, 1);
+  display: flex;
+  justify-content: center;
+}
+
+.explainContent {
+  padding: 10px;
+  color: #262828;
+}
+
+.cornerButtons {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.loginButton, .signupButton {
+  font-size: 14px;
+  text-decoration: underline;
+  padding: 10px;
+}
+
+.loginButton:hover,
+.signupButton:hover {
+  color: #4b6dff;
+}
+
+.headlineContain {
+  position: absolute;
+  bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.iconContain {
+  display: inline-block;
+  margin: 10px;
+}
+
+.explainIconContain {
+  display: inline-block;
+  margin: 15px;
+}
+
+.iconBox {
+  display: flex;
+  justify-content: center;
+}
+
+.choreIcon {
+  height: 75px;
+}
+
+.explainIcon {
+  height: 70px;
+}
+
+@media only screen and (min-width: 640px) {
+
+  .question {
+    font-size: 30px;
+  }
+
+  .choreIcon {
+    height: 128px;
+  }
+
+  .iconContain {
+    margin: 20px;
+  }
+
+}
+
+@media only screen and (min-width: 750px) {
+  .explainSection {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+  }
+
+  .explainBlock {
+    margin: 0;
+    display: grid;
+  }
+
+  .explainIcon {
+    margin: 0 auto;
+  }
+
+  .explainIconContain {
+   display: flex;
+   justify-content: center;
+  }
+
+  .explainContent {
+    padding: 20px;
+    margin-top: -45px;
+
+  }
+}
+
+
+@media only screen and (min-width: 850px) {
+
+  .question {
+    font-size: 40px;
+  }
+}

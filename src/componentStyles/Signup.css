@@ -1,0 +1,65 @@
+.introPar, .demoInfo {
+  text-align: center;
+  padding: 4px;
+  color: #262828;
+}
+
+.introPar {
+  font-weight: 500;
+  margin-bottom: 10px
+}
+
+.signupContain {
+  margin: 35px 10px 0 10px;
+  width: 95%;
+}
+
+.demoInfo {
+  font-size: 14px;
+}
+
+.signupLabel, .signupInput {
+  display: block;
+}
+
+.signupInput {
+  width: 300px;
+  height: 25px;
+  font-family: Raleway;
+  font-size: 13px;
+  padding-left: 8px;
+}
+
+.signupLabel {
+  margin-top: 6px;
+  margin-bottom: 2px;
+  color: #262828;
+}
+
+.formContain {
+  margin: 0 auto;
+  width: 300px;
+  margin-top: 30px;
+}
+
+.submitSignupButton {
+  width: 80px;
+  margin: 0 auto;
+  display: block;
+  margin-top: 10px;
+  background: #4b6dff;
+  color: white;
+  font-size: 16px;
+}
+
+.submitSignupButton:hover {
+  background: rgba(61, 80, 153, 1);
+}
+
+.linkToTop {
+  text-decoration: underline;
+}
+
+.linkToTop:hover {
+  color: #4b6dff;
+}

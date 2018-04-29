@@ -2,6 +2,8 @@ import React from "react"
 import styles from "../componentStyles/Chart.css"
 import MemberList from "./MemberList"
 import ChoreList from "./ChoreList"
+import NavBar from "./NavBar"
+import NavBarMobile from "./NavBarMobile"
 import {connect } from "react-redux"
 import {getChartData} from "../actions/actions"
 // import Spinner from "react-spinkit"
@@ -42,6 +44,8 @@ componentDidMount() {
 
     return   (
         <div className={styles.pageContainer}>
+          <NavBar />
+          <NavBarMobile />
           {spinner}
           {memberSection}
           {choreSection}
