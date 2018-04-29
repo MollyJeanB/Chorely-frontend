@@ -28,8 +28,9 @@ class Signup extends Component {
             id="password"
             type="text"
             className={styles.signupInput}
-            placeholder="•••••••"
+            placeholder="•••••••••"
             ></input>
+            <button className={styles.submitSignupButton} type="submit">Submit</button>
 
         </form>
       </div>

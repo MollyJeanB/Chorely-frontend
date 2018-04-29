@@ -3,6 +3,13 @@ import styles from "../componentStyles/Landing.css"
 import Signup from "./Signup"
 
 class Landing extends Component {
+
+  scrollToSignup(e) {
+    const signUpBox = document.getElementById("signup")
+    signUpBox.scrollIntoView({behavior: "smooth"})
+  }
+
+
   render () {
     return(
       <div className={styles.landingContain}>
@@ -10,7 +17,7 @@ class Landing extends Component {
           <div className={styles.logo}>Chorely</div>
           <div className={styles.cornerButtons}>
             <button className={styles.loginButton}>Log In</button>
-            <button className={styles.signupButton}>Sign Up</button>
+            <button className={styles.signupButton} onClick={e => this.scrollToSignup(e)}>Sign Up</button>
           </div>
           <div className={styles.headlineContain}>
             <div className={styles.iconBox}>
@@ -44,7 +51,7 @@ class Landing extends Component {
                 alt="Note pad icon"
                 src={require("../images/note.png")} />
             </div>
-            <div className={styles.explainContent}>Chorely is an easy peasy chore chart that makes a friendly competition out of keeping shared spaces tidy. Because life's too short to waste time bickering over who cleaned the sink trap last.</div>
+            <div className={styles.explainContent}><b>Chorely is an easy peasy</b> chore chart that makes a friendly competition out of keeping shared spaces tidy. Because life's too short to waste time bickering over who cleaned the sink trap last.</div>
           </div>
           <div className={styles.explainBlock}>
             <div className={styles.explainIconContain}>
@@ -53,7 +60,7 @@ class Landing extends Component {
                 alt="House icon"
                 src={require("../images/house.png")} />
             </div>
-            <div className={styles.explainContent}>Get started in a flash! Just create an account for your household. With a few taps or clicks, you can set up a leaderboard for your household members and create a weekly chore list.</div>
+            <div className={styles.explainContent}><b>Get started in a flash!</b> Just create an account for your household. With a few taps or clicks, you can set up a leaderboard for your household members and create a weekly chore list.</div>
           </div>
           <div className={styles.explainBlock}>
             <div className={styles.explainIconContain}>
@@ -62,10 +69,10 @@ class Landing extends Component {
                 alt="Star sticker icon"
                 src={require("../images/sticker.png")} />
             </div>
-            <div className={styles.explainContent}>Assign point values to chores & choose how many times they should be done each week. Then check off chores as you complete them to score points. No more tantrums & passive aggressive notes!</div>
+            <div className={styles.explainContent}><b>Assign point values to chores</b> & choose how many times they should be done each week. Then check off chores as you complete them to score points. No more tantrums & passive aggressive notes!</div>
           </div>
         </section>
-        <section className={styles.signupSection}>
+        <section className={styles.signupSection} id="signup">
           <Signup />
         </section>
       </div>
