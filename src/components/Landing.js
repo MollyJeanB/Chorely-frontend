@@ -5,25 +5,49 @@ import Login from "./Login"
 
 class Landing extends Component {
 
+  state = {
+    loginDisplay: false
+  }
+
   scrollToForm(id) {
     const scrollDiv = document.getElementById(id)
     scrollDiv.scrollIntoView({behavior: "smooth"})
   }
 
-  // goToLogin() {
-  //   scrollToForm(login)
-  //   //
-  // }
+  toggleLogin() {
+    this.setState({
+      loginDisplay: !this.state.loginDisplay
+    })
+  }
 
+  goToLogin() {
+    this.scrollToForm("corner");
+    if (!this.state.loginDisplay) {
+      this.toggleLogin()
+  }
+}
 
-  render () {
+  render() {
+
+    const loginDisplay = this.props
+
+    let loginForm;
+    if (this.state.loginDisplay) {
+      loginForm = (
+        <Login
+          {...this.props}
+          toggleLogin={this.toggleLogin.bind(this)}
+         />
+      )
+    }
+
     return(
       <div className={styles.landingContain}>
         <section className={styles.introSection}>
-          <Login />
+          {loginForm}
           <div className={styles.logo}>Chorely</div>
-          <div className={styles.cornerButtons}>
-            <button className={styles.loginButton}>Log In</button>
+          <div className={styles.cornerButtons} id={"corner"}>
+            <button className={styles.loginButton} onClick={() => this.toggleLogin()}>Log In</button>
             <button className={styles.signupButton} onClick={() => this.scrollToForm("signup")}>Sign Up</button>
           </div>
           <div className={styles.headlineContain}>
@@ -80,7 +104,9 @@ class Landing extends Component {
           </div>
         </section>
         <section className={styles.signupSection} id="signup">
-          <Signup />
+          <Signup
+            goToLogin={this.goToLogin.bind(this)}
+           />
         </section>
       </div>
     )

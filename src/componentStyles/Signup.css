@@ -55,3 +55,11 @@
 .submitSignupButton:hover {
   background: rgba(61, 80, 153, 1);
 }
+
+.linkToTop {
+  text-decoration: underline;
+}
+
+.linkToTop:hover {
+  color: #4b6dff;
+}

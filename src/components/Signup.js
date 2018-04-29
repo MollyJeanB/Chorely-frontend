@@ -6,7 +6,7 @@ class Signup extends Component {
     return (
       <div className={styles.signupContain}>
         <p className={styles.introPar}>Make an account for your household & let the games begin!</p>
-        <p className={styles.demoInfo}>To see a demo account, login at the top of the page with these credentials:</p>
+        <p className={styles.demoInfo}>To see a demo account, <span className={styles.linkToTop} onClick={() => this.props.goToLogin()}>login</span> at the top of the page with these credentials:</p>
         <p className={styles.demoInfo}> Username: <b>OurHouse</b>  |  Password: <b>chore1234</b></p>
         <form className={styles.formContain}>
           <label className={styles.signupLabel}>House Name</label>

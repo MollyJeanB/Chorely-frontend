@@ -25,7 +25,7 @@ class Login extends Component {
             placeholder="•••••••"
             ></input>
             <button className={styles.submitLoginButton} type="submit">Log In</button>
-            <button className={styles.closeButton} aria-label="close">x</button>
+            <button className={styles.closeButton} aria-label="close" onClick={() => this.props.toggleLogin()}>x</button>
         </form>
       </div>
     )
