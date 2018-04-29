@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import styles from "../componentStyles/Landing.css"
+import Signup from "./Signup"
 
 class Landing extends Component {
   render () {
@@ -64,7 +65,9 @@ class Landing extends Component {
             <div className={styles.explainContent}>Assign point values to chores & choose how many times they should be done each week. Then check off chores as you complete them to score points. No more tantrums & passive aggressive notes!</div>
           </div>
         </section>
-        <section className={styles.signupSection}></section>
+        <section className={styles.signupSection}>
+          <Signup />
+        </section>
       </div>
     )
   }
