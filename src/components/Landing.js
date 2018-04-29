@@ -1,23 +1,30 @@
 import React, { Component } from "react"
 import styles from "../componentStyles/Landing.css"
 import Signup from "./Signup"
+import Login from "./Login"
 
 class Landing extends Component {
 
-  scrollToSignup(e) {
-    const signUpBox = document.getElementById("signup")
-    signUpBox.scrollIntoView({behavior: "smooth"})
+  scrollToForm(id) {
+    const scrollDiv = document.getElementById(id)
+    scrollDiv.scrollIntoView({behavior: "smooth"})
   }
+
+  // goToLogin() {
+  //   scrollToForm(login)
+  //   //
+  // }
 
 
   render () {
     return(
       <div className={styles.landingContain}>
         <section className={styles.introSection}>
+          <Login />
           <div className={styles.logo}>Chorely</div>
           <div className={styles.cornerButtons}>
             <button className={styles.loginButton}>Log In</button>
-            <button className={styles.signupButton} onClick={e => this.scrollToSignup(e)}>Sign Up</button>
+            <button className={styles.signupButton} onClick={() => this.scrollToForm("signup")}>Sign Up</button>
           </div>
           <div className={styles.headlineContain}>
             <div className={styles.iconBox}>

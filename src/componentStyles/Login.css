@@ -1,0 +1,77 @@
+.loginContain {
+  background: white;
+  width: 320px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+.loginInput, .loginLabel {
+  display: block;
+  margin: 5px;
+}
+
+.loginLabel {
+  color: #262828;
+  margin-left: 60px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.loginInput {
+  background: rgba(194, 194, 195, .6);
+  height: 25px;
+  width: 200px;
+  margin: 0 auto;
+  font-family: Raleway;
+  font-size: 13px;
+  padding-left: 10px;
+}
+
+.demoBox {
+  width: 310px;
+  background: #4b6dff;
+  color: white;
+  font-size: 14px;
+  margin: 10px 5px;
+}
+
+.demoInfo {
+  padding: 4px;
+}
+
+.submitLoginButton {
+  width: 70px;
+  margin: 0 auto;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: #4b6dff;
+  color: white;
+  font-size: 14px;
+}
+
+.submitLoginButton:hover {
+  background: rgba(61, 80, 153, 1);
+}
+
+.closeButton {
+  position: absolute;
+  display: block;
+  left: 12px;
+  bottom: 9px;
+  font-size: 18px;
+}
+
+.closeButton:hover {
+  background: none;
+  color: red;
+}
+
+@media only screen and (min-width: 321px) {
+  .loginContain {
+    border-radius: 0 0 0 25px;
+  }
+}

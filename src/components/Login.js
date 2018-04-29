@@ -10,21 +10,22 @@ class Login extends Component {
           <p className={styles.demoInfo}> Username: <b>OurHouse</b>  |  Password: <b>chore1234</b></p>
         </div>
         <form className={styles.formContain}>
-            <label className={styles.signupLabel}>Username</label>
+            <label className={styles.loginLabel}>Username</label>
           <input
             id="userName"
             type="text"
-            className={styles.signupInput}
+            className={styles.loginInput}
             placeholder="username"
             ></input>
-            <label className={styles.signupLabel}>Password</label>
+            <label className={styles.loginLabel}>Password</label>
           <input
             id="password"
             type="text"
-            className={styles.signupInput}
+            className={styles.loginInput}
             placeholder="•••••••"
             ></input>
             <button className={styles.submitLoginButton} type="submit">Log In</button>
+            <button className={styles.closeButton} aria-label="close">x</button>
         </form>
       </div>
     )
