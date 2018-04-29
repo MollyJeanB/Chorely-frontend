@@ -29,13 +29,13 @@ class Landing extends Component {
 
   render() {
 
-    const loginDisplay = this.props
+    // const loginDisplay = this.props
 
     let loginForm;
     if (this.state.loginDisplay) {
       loginForm = (
         <Login
-          {...this.props}
+          // {...this.props}
           toggleLogin={this.toggleLogin.bind(this)}
          />
       )
