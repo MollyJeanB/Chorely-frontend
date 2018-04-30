@@ -14,40 +14,45 @@ class Landing extends Component {
     scrollDiv.scrollIntoView({behavior: "smooth"})
   }
 
-  toggleLogin() {
+  toggleLogin(event) {
+    event.preventDefault()
+    console.log("toggle fired")
     this.setState({
       loginDisplay: !this.state.loginDisplay
     })
   }
 
-  goToLogin() {
+  goToLogin(event) {
     this.scrollToForm("corner");
     if (!this.state.loginDisplay) {
-      this.toggleLogin()
+      this.toggleLogin(event)
   }
 }
 
   render() {
 
-    const loginDisplay = this.props
+    // const loginDisplay = this.props
 
-    let loginForm;
-    if (this.state.loginDisplay) {
-      loginForm = (
-        <Login
-          {...this.props}
-          toggleLogin={this.toggleLogin.bind(this)}
-         />
-      )
-    }
+    // let loginForm;
+    // if (this.state.loginDisplay) {
+    //   loginForm = (
+    //     <Login
+    //       // {...this.props}
+    //       toggleLogin={this.toggleLogin.bind(this)}
+    //      />
+    //   )
+    // }
 
     return(
       <div className={styles.landingContain}>
         <section className={styles.introSection}>
-          {loginForm}
+          <Login
+            slideDown={this.state.loginDisplay}
+            toggleLogin={this.toggleLogin.bind(this)}
+           />
           <div className={styles.logo}>Chorely</div>
           <div className={styles.cornerButtons} id={"corner"}>
-            <button className={styles.loginButton} onClick={() => this.toggleLogin()}>Log In</button>
+            <button className={styles.loginButton} onClick={(e) => this.toggleLogin(e)}>Log In</button>
             <button className={styles.signupButton} onClick={() => this.scrollToForm("signup")}>Sign Up</button>
           </div>
           <div className={styles.headlineContain}>

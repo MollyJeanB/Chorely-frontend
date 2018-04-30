@@ -7,10 +7,17 @@
   background: white;
   width: 320px;
   position: fixed;
-  top: 0;
+  top: -220px;
   right: 0;
   z-index: 2;
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
+  transition: 0.5s;
+}
+
+.slideDown {
+  top: 0;
+  transition: 0.5s;
+
 }
 
 .loginInput, .loginLabel {
