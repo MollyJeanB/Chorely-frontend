@@ -19,11 +19,9 @@ export const postCompletion = (memberId, choreId) => {
        }
      })
        .then(response => {
-         debugger
          return response.json()
        })
        .then(data => {
-         debugger
          dispatch(postCompletionSuccess(data))
        })
        .catch(err => console.log(err))
@@ -73,8 +71,7 @@ export const updateCompletion = (id, values) => {
 }
 
 export const UPDATE_COMPLETION_SUCCESS = "UPDATE_COMPLETION_SUCCESS"
-export const updateCompletionSuccess = (id, values) => ({
+export const updateCompletionSuccess = data => ({
   type: UPDATE_COMPLETION_SUCCESS,
-  id,
-  values
+  data
 })

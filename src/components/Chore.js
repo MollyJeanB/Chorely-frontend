@@ -21,12 +21,13 @@ removeChore(event, id) {
   this.props.dispatch(deleteChore(id));
 }
 
-bubbleMaker(memberResponsible) {
+bubbleMaker() {
   let bubbles = [];
   for (let i = 0; i < this.props.timesPerWeek; i++) {
     bubbles.push(
       <ChoreBubble
         {...this.props}
+        completion={this.props.completions[i]}
       key={i} />);
   }
   return <div className={styles.choreBubbleContainer}>{bubbles}</div>;

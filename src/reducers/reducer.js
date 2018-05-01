@@ -16,7 +16,11 @@ import {
   UPDATE_CHORE_SUCCESS
 } from "../actions/chore-actions"
 
-import { POST_COMPLETION_SUCCESS } from "../actions/completion-actions"
+import {
+  POST_COMPLETION_SUCCESS,
+  UPDATE_COMPLETION_SUCCESS
+
+ } from "../actions/completion-actions"
 
 const initialState = {
   resetTime: "Sunday at 5pm",
@@ -92,6 +96,18 @@ if (action.type === UPDATE_MEMBER_SUCCESS) {
 })
   return Object.assign({}, state, {
     members: memberArray
+  })
+}
+
+if (action.type === UPDATE_COMPLETION_SUCCESS) {
+  let completionArray = [...state.completions]
+  completionArray.forEach(completion => {
+  if (completion.id === action.values.id) {
+    completion = Object.assign(completion, action.values)
+  }
+})
+  return Object.assign({}, state, {
+    completions: completionArray
   })
 }
 

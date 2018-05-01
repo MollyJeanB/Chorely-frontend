@@ -1,7 +1,9 @@
 import React from "react";
 import styles from "../componentStyles/ChoreBubble.css";
 import { connect } from "react-redux";
-import {postCompletion} from "../actions/completion-actions"
+import {postCompletion, updateCompletion} from "../actions/completion-actions"
+import Colors from "../colors"
+
 // import BubbleDropdown from "./BubbleDropdown";
 
 export class ChoreBubble extends React.Component {
@@ -21,19 +23,35 @@ export class ChoreBubble extends React.Component {
     });
   }
 
+  getMember() {
+    return this.props.members.find(
+      m => m.id === this.props.completion.memberId
+    )
+  }
+
   changeCompletion(event) {
     console.log(event.target.value)
     const memberId = event.target.value
     const choreId = this.state.id
-    if (event.target.value === "cancel") {
+    if (memberId === "cancel") {
       this.setState({
         dropdownDisplay: false
       })
     }
-    else {
-      this.props.dispatch(postCompletion(memberId, choreId))
-      //undo
+
+    else if (memberId === "undo") {
+      console.log("undo coming soon")
     }
+
+    else if (!this.props.completion) {
+      this.props.dispatch(postCompletion(memberId, choreId))
+    }
+
+    else {
+      this.props.dispatch(updateCompletion(this.props.completion.id, memberId))
+
+    }
+
     // else {
     //   if {
     //     //id and already an id present, then updateCompletion
@@ -61,13 +79,29 @@ export class ChoreBubble extends React.Component {
       <div className={styles.clickMessage}>Click to mark as complete</div>
     }
 
-    if (this.state.dropdownDisplay) {
+    let selectedId,
+    thisMember,
+    bubbleStyle = {},
+    dropdownDisplay = this.state.dropdownDisplay
+
+    if (this.props.completion) {
+      thisMember = this.getMember()
+      console.log(thisMember)
+      selectedId = thisMember.id
+      bubbleStyle = {
+        backgroundColor: Colors[thisMember.color]
+      }
+      dropdownDisplay = true
+    }
+
+    if (dropdownDisplay) {
       dropdown =
       <form className={styles.selectBox}>
       <select
         name="memberId"
         onChange={this.changeCompletion.bind(this)}
         className={styles.personField}
+        value={selectedId}
         >
           <option value="cancel">Who did it?</option>
           {options}
@@ -84,6 +118,7 @@ export class ChoreBubble extends React.Component {
         onClick={() => {
           this.showDropdown();
         }}
+        style={bubbleStyle}
       >
         {clickMessage}
         {dropdown}
@@ -94,7 +129,7 @@ export class ChoreBubble extends React.Component {
 
 export const mapStateToProps = state => ({
   members: state.chart.members,
-  chores: state.chart.chores
+  chores: state.chart.chores,
 });
 
 export default connect(mapStateToProps)(ChoreBubble);
