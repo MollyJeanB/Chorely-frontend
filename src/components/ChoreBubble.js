@@ -37,43 +37,29 @@ export class ChoreBubble extends React.Component {
       console.log("cancelled")
     }
     else if (memberId === "undo") {
+      const memberToUpdate = this.getMember(this.props.completion.memberId)
+      const pointsObjMinus = {weekPoints: memberToUpdate.weekPoints - this.state.pointValue}
+      const updateMemberDataExisting = { ...memberToUpdate, ...pointsObjMinus}
       this.props.dispatch(deleteCompletion(this.props.completion.id))
-      const memberToUpdate = this.props.members.find(m => m.id === this.props.completion.memberId)
-      const pointsObj = {weekPoints: memberToUpdate.weekPoints - this.state.pointValue}
-      const updateMemberDataExisting = { ...memberToUpdate, ...pointsObj}
       this.props.dispatch(updateMember(updateMemberDataExisting))
     }
     else if (!this.props.completion) {
+      const memberToScore = this.getMember(memberId)
+      const pointsObj = {weekPoints: memberToScore.weekPoints + this.state.pointValue}
+      const updateMemberDataNew = { ...memberToScore, ...pointsObj}
       this.props.dispatch(postCompletion(memberId, choreId))
-      const memberToScore = this.props.members.find(m => m.id === memberId)
-      const points = this.state.pointValue
-      const updateMemberDataNew = {
-        id: memberToScore.id,
-        color: memberToScore.color,
-        name: memberToScore.name,
-        weekPoints: memberToScore.weekPoints + points
-      }
       this.props.dispatch(updateMember(updateMemberDataNew))
     }
     else {
       const updateData = {memberId: memberId}
+      const memberToScore = this.getMember(memberId)
+      const memberToUpdate = this.getMember(this.props.completion.memberId)
+      const pointsObj = {weekPoints: memberToScore.weekPoints + this.state.pointValue}
+      const pointsObjMinus = {weekPoints: memberToUpdate.weekPoints - this.state.pointValue}
+      const updateMemberDataNew = { ...memberToScore, ...pointsObj}
+      const updateMemberDataExisting = { ...memberToUpdate, ...pointsObjMinus}
       this.props.dispatch(updateCompletion(this.props.completion.id, updateData))
-      const memberToScore = this.props.members.find(m => m.id === memberId)
-      const points = this.state.pointValue
-      const updateMemberDataNew = {
-        id: memberToScore.id,
-        color: memberToScore.color,
-        name: memberToScore.name,
-        weekPoints: memberToScore.weekPoints + points
-      }
       this.props.dispatch(updateMember(updateMemberDataNew))
-      const memberToUpdate = this.props.members.find(m => m.id === this.props.completion.memberId)
-      const updateMemberDataExisting = {
-        id: memberToUpdate.id,
-        color: memberToUpdate.color,
-        name: memberToUpdate.name,
-        weekPoints: memberToUpdate.weekPoints - points
-      }
       this.props.dispatch(updateMember(updateMemberDataExisting))
 
     }
