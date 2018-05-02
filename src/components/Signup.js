@@ -71,17 +71,16 @@ class Signup extends Component {
     let successDirect;
 
     if (this.props.successMessage) {
-      console.log(this.props)
       successDirect = (
-        <div className={styles.welcomeMessage}>Welcome, {this.props.newHouseName}!
-          To get started, <span className={styles.linkToTop} onClick={(e) => this.props.goToLogin(e)}>login</span> at the top of the page.
+        <div className={styles.welcomeMessage}>Welcome, {this.props.newUserName}!
+          To get started, <span className={styles.newLinkToTop} onClick={(e) => this.props.goToLogin(e)}>login</span> at the top of the page.
         </div>
       )
     }
 
     if (this.props.failMessage) {
       console.log("registered in component")
-      postFail = <div className={styles.postFailMessage}>Request failed. Username is already taken.</div>
+      postFail = <div className={styles.postFailMessage}>Username is already taken</div>
     }
 
     if (this.state.passwordValidate !== "") {
@@ -139,7 +138,7 @@ class Signup extends Component {
 
 export const mapStateToProps = state => ({
   successMessage: state.chart.successMessage,
-  newHouseName: state.chart.newHouseName,
+  newUserName: state.chart.newUserName,
   failMessage: state.chart.failMessage
 })
 

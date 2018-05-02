@@ -1,3 +1,36 @@
+.postFailMessage {
+  position: absolute;
+  background: red;
+  text-align: center;
+  color: white;
+  padding: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  width: 250px;
+}
+
+.passwordValidateMessage,
+.usernameValidateMessage {
+  position: absolute;
+  background: red;
+  font-size: 13px;
+  color: white;
+  padding: 3px;
+  margin-top: -20px;
+}
+
+.welcomeMessage {
+  background: #4b6dff;
+  width: 300px;
+  text-align: center;
+  color: white;
+  position: absolute;
+  padding: 10px;
+}
+
+
 .introPar, .demoInfo {
   text-align: center;
   padding: 4px;

@@ -37,7 +37,7 @@ export const choreReducer = (state = initialState, action) => {
     console.log(action.values)
     return Object.assign({}, state, {
       successMessage: true,
-      newHouseName: action.values.houseName
+      newUserName: action.values.username
     })
   }
 
