@@ -1,5 +1,4 @@
-
-import jwtDecode from 'jwt-decode';
+import jwtDecode from "jwt-decode"
 import {saveAuthToken} from '../local-storage';
 const API_BASE_URL = "http://localhost:8080";
 
@@ -44,12 +43,6 @@ export const getChartData = values => {
   };
 };
 
-export const POST_NEW_USER_SUCCESS = "POST_NEW_USER_SUCCESS";
-export const postNewUserSuccess = values => ({
-  type: POST_NEW_USER_SUCCESS,
-  values
-})
-
 export const postNewUser = credentials => {
   return (dispatch) => {
     fetch(`${API_BASE_URL}/users`, {
@@ -59,17 +52,34 @@ export const postNewUser = credentials => {
         "Content-Type": "application/json"
       }
     })
-    .then(response => {
-      console.log(response)
-      return response.json()
+    .then(res => {
+      console.log(res)
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      return res.json();
     }
     )
     .then(data => {
-      dispatch(postNewUserSuccess(data))
+        dispatch(postNewUserSuccess(data))
     })
-    .catch(err => console.log(err))
+    .catch((err) => {
+      console.log(err)
+      dispatch(postNewUserFail())
+    })
   }
 }
+
+export const POST_NEW_USER_SUCCESS = "POST_NEW_USER_SUCCESS";
+export const postNewUserSuccess = values => ({
+  type: POST_NEW_USER_SUCCESS,
+  values
+})
+
+export const POST_NEW_USER_FAIL = "POST_NEW_USER_FAIL";
+export const postNewUserFail = () => ({
+  type: POST_NEW_USER_FAIL
+})
 
 export const login = credentials => {
   return (dispatch) => {

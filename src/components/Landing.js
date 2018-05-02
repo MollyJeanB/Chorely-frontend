@@ -31,18 +31,6 @@ class Landing extends Component {
 
   render() {
 
-    // const loginDisplay = this.props
-
-    // let loginForm;
-    // if (this.state.loginDisplay) {
-    //   loginForm = (
-    //     <Login
-    //       // {...this.props}
-    //       toggleLogin={this.toggleLogin.bind(this)}
-    //      />
-    //   )
-    // }
-
     return(
       <div className={styles.landingContain}>
         <section className={styles.introSection}>

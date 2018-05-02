@@ -1,7 +1,9 @@
 import {
   EXPAND_MENU,
   CHANGE_COLOR,
-  GET_CHART_DATA_SUCCESS
+  GET_CHART_DATA_SUCCESS,
+  POST_NEW_USER_SUCCESS,
+  POST_NEW_USER_FAIL
 } from "../actions/actions";
 
 import {
@@ -24,10 +26,26 @@ const initialState = {
 };
 
 export const choreReducer = (state = initialState, action) => {
+
   if (action.type === EXPAND_MENU) {
     return Object.assign({}, state, {
       drawerOpen: !state.drawerOpen
     });
+  }
+
+  if (action.type === POST_NEW_USER_SUCCESS) {
+    console.log(action.values)
+    return Object.assign({}, state, {
+      successMessage: true,
+      newHouseName: action.values.houseName
+    })
+  }
+
+  if (action.type === POST_NEW_USER_FAIL) {
+    console.log("post fail called")
+    return Object.assign({}, state, {
+      failMessage: true
+    })
   }
 
 
