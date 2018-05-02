@@ -53,13 +53,13 @@ class Signup extends Component {
       }
       else {
         this.props.dispatch(postNewUser(credentials))
-        this.setState = {
+        this.setState({
           houseName: "",
           username: "",
           password: "",
           passwordValidate: "",
-          usernameValidate: "",
-      }
+          usernameValidate: ""
+      })
     }
   }
 
@@ -108,6 +108,7 @@ class Signup extends Component {
             className={styles.signupInput}
             placeholder="Fun House"
             onChange={e => this.handleInput(e, "houseName")}
+            value={this.state.houseName}
             ></input>
             <label className={styles.signupLabel}>Username</label>
           {usernameValidationMessage}
@@ -117,6 +118,7 @@ class Signup extends Component {
             className={styles.signupInput}
             placeholder="FunHouse"
             onChange={e => this.handleInput(e, "username")}
+            value={this.state.username}
             ></input>
             <label className={styles.signupLabel}>Password</label>
           {passwordValidationMessage}
@@ -126,6 +128,7 @@ class Signup extends Component {
             className={styles.signupInput}
             placeholder="•••••••••"
             onChange={e => this.handleInput(e, "password")}
+            value={this.state.password}
             ></input>
             <button className={styles.submitSignupButton} type="submit">Submit</button>
         </form>
