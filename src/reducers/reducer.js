@@ -18,8 +18,8 @@ import {
 
 import {
   POST_COMPLETION_SUCCESS,
-  UPDATE_COMPLETION_SUCCESS
-
+  UPDATE_COMPLETION_SUCCESS,
+  DELETE_COMPLETION_SUCCESS
  } from "../actions/completion-actions"
 
 const initialState = {
@@ -56,6 +56,15 @@ export const choreReducer = (state = initialState, action) => {
        });
   }
 
+  if (action.type === DELETE_COMPLETION_SUCCESS) {
+    let completionArray = [...state.completions]
+    let deletedIndex = completionArray.findIndex(item => item.id === action.id);
+   completionArray.splice(deletedIndex, 1);
+       return Object.assign({}, state, {
+         completions: completionArray
+       });
+  }
+
 if (action.type === POST_MEMBER_SUCCESS) {
   return Object.assign({}, state, {
     members: [action.values, ...state.members]
@@ -78,7 +87,6 @@ if (action.type === UPDATE_CHORE_SUCCESS) {
   let choreArray = [...state.chores]
   choreArray.forEach(chore => {
   if (chore.id === action.values.id) {
-    console.log(chore)
     chore = Object.assign(chore, action.values)
   }
 })

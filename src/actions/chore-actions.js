@@ -48,7 +48,7 @@ export const deleteChoreSuccess = id => ({
 })
 
 export const updateChore = state => {
-  console.log(state.id)
+  console.log(state)
   return (dispatch) => {
     fetch(`${API_BASE_URL}/chores/${state.id}`, {
       method: "put",

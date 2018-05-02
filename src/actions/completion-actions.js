@@ -29,11 +29,10 @@ export const postCompletion = (memberId, choreId) => {
  }
 
 
-export const deleteCompletion = (id, values) => {
+export const deleteCompletion = (id) => {
   return (dispatch) => {
     fetch(`${API_BASE_URL}/completions/${id}`, {
       method: "delete",
-      body: JSON.stringify(values),
       headers: {
         "Content-Type": "application/json"
       }
@@ -49,11 +48,12 @@ export const deleteCompletionSuccess = id => ({
   id
 })
 
-export const updateCompletion = (id, values) => {
+export const updateCompletion = (id, memberId) => {
   return (dispatch) => {
+    console.log("action dispatched", id, memberId)
     fetch(`${API_BASE_URL}/completions/${id}`, {
       method: "put",
-      body: JSON.stringify(values),
+      body: JSON.stringify(memberId),
       headers: {
         "Content-Type": "application/json"
       }
@@ -73,5 +73,5 @@ export const updateCompletion = (id, values) => {
 export const UPDATE_COMPLETION_SUCCESS = "UPDATE_COMPLETION_SUCCESS"
 export const updateCompletionSuccess = data => ({
   type: UPDATE_COMPLETION_SUCCESS,
-  data
+  values: data
 })

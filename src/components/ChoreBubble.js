@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../componentStyles/ChoreBubble.css";
 import { connect } from "react-redux";
-import {postCompletion, updateCompletion} from "../actions/completion-actions"
+import {postCompletion, updateCompletion, deleteCompletion} from "../actions/completion-actions"
 import Colors from "../colors"
 
 // import BubbleDropdown from "./BubbleDropdown";
@@ -30,34 +30,23 @@ export class ChoreBubble extends React.Component {
   }
 
   changeCompletion(event) {
-    console.log(event.target.value)
     const memberId = event.target.value
     const choreId = this.state.id
-    if (memberId === "cancel") {
-      this.setState({
-        dropdownDisplay: false
-      })
-    }
 
-    else if (memberId === "undo") {
-      console.log("undo coming soon")
+    if (memberId === "undo") {
+      this.props.dispatch(deleteCompletion(this.props.completion.id))
     }
 
     else if (!this.props.completion) {
       this.props.dispatch(postCompletion(memberId, choreId))
     }
-
     else {
-      this.props.dispatch(updateCompletion(this.props.completion.id, memberId))
-
+      const updateData = {memberId: memberId}
+      this.props.dispatch(updateCompletion(this.props.completion.id, updateData))
     }
-
-    // else {
-    //   if {
-    //     //id and already an id present, then updateCompletion
-    //   } else
-    //   //id and none present, newCompletion
-    // }
+    this.setState({
+      dropdownDisplay: false
+    })
    }
 
   render() {
@@ -86,13 +75,16 @@ export class ChoreBubble extends React.Component {
 
     if (this.props.completion) {
       thisMember = this.getMember()
-      console.log(thisMember)
       selectedId = thisMember.id
+      const memberName = thisMember.name
       bubbleStyle = {
         backgroundColor: Colors[thisMember.color]
       }
-      dropdownDisplay = true
+      // dropdownDisplay = true
+      clickMessage = <div className={styles.nameDidIt}>{memberName} <br />did it!</div>
     }
+
+
 
     if (dropdownDisplay) {
       dropdown =

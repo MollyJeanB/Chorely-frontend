@@ -45,8 +45,6 @@ bubbleMaker() {
       memberResponsible = members.find(m => complete.memberId == m.id)
     }
 
-    console.log(memberResponsible)
-
     let pointPlural;
     pointValue !== 1 ? (pointPlural = "points") : (pointPlural = "point");
 
