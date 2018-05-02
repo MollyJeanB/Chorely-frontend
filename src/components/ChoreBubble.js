@@ -2,9 +2,8 @@ import React from "react";
 import styles from "../componentStyles/ChoreBubble.css";
 import { connect } from "react-redux";
 import {postCompletion, updateCompletion, deleteCompletion} from "../actions/completion-actions"
+import { updateMember } from "../actions/member-actions"
 import Colors from "../colors"
-
-// import BubbleDropdown from "./BubbleDropdown";
 
 export class ChoreBubble extends React.Component {
 
@@ -12,6 +11,7 @@ export class ChoreBubble extends React.Component {
     super(props)
     this.state = {
       choreName: this.props.choreName,
+      pointValue: this.props.pointValue,
       id: this.props.id,
       dropdownDisplay: false
     }
@@ -23,9 +23,9 @@ export class ChoreBubble extends React.Component {
     });
   }
 
-  getMember() {
+  getMember(id) {
     return this.props.members.find(
-      m => m.id === this.props.completion.memberId
+      m => m.id === id
     )
   }
 
@@ -33,16 +33,49 @@ export class ChoreBubble extends React.Component {
     const memberId = event.target.value
     const choreId = this.state.id
 
-    if (memberId === "undo") {
-      this.props.dispatch(deleteCompletion(this.props.completion.id))
+    if (memberId === "cancel") {
+      console.log("cancelled")
     }
-
+    else if (memberId === "undo") {
+      this.props.dispatch(deleteCompletion(this.props.completion.id))
+      const memberToUpdate = this.props.members.find(m => m.id === this.props.completion.memberId)
+      const pointsObj = {weekPoints: memberToUpdate.weekPoints - this.state.pointValue}
+      const updateMemberDataExisting = { ...memberToUpdate, ...pointsObj}
+      this.props.dispatch(updateMember(updateMemberDataExisting))
+    }
     else if (!this.props.completion) {
       this.props.dispatch(postCompletion(memberId, choreId))
+      const memberToScore = this.props.members.find(m => m.id === memberId)
+      const points = this.state.pointValue
+      const updateMemberDataNew = {
+        id: memberToScore.id,
+        color: memberToScore.color,
+        name: memberToScore.name,
+        weekPoints: memberToScore.weekPoints + points
+      }
+      this.props.dispatch(updateMember(updateMemberDataNew))
     }
     else {
       const updateData = {memberId: memberId}
       this.props.dispatch(updateCompletion(this.props.completion.id, updateData))
+      const memberToScore = this.props.members.find(m => m.id === memberId)
+      const points = this.state.pointValue
+      const updateMemberDataNew = {
+        id: memberToScore.id,
+        color: memberToScore.color,
+        name: memberToScore.name,
+        weekPoints: memberToScore.weekPoints + points
+      }
+      this.props.dispatch(updateMember(updateMemberDataNew))
+      const memberToUpdate = this.props.members.find(m => m.id === this.props.completion.memberId)
+      const updateMemberDataExisting = {
+        id: memberToUpdate.id,
+        color: memberToUpdate.color,
+        name: memberToUpdate.name,
+        weekPoints: memberToUpdate.weekPoints - points
+      }
+      this.props.dispatch(updateMember(updateMemberDataExisting))
+
     }
     this.setState({
       dropdownDisplay: false
@@ -74,17 +107,14 @@ export class ChoreBubble extends React.Component {
     dropdownDisplay = this.state.dropdownDisplay
 
     if (this.props.completion) {
-      thisMember = this.getMember()
+      thisMember = this.getMember(this.props.completion.memberId)
       selectedId = thisMember.id
       const memberName = thisMember.name
       bubbleStyle = {
         backgroundColor: Colors[thisMember.color]
       }
-      // dropdownDisplay = true
       clickMessage = <div className={styles.nameDidIt}>{memberName} <br />did it!</div>
     }
-
-
 
     if (dropdownDisplay) {
       dropdown =
