@@ -37,12 +37,12 @@ bubbleMaker() {
   render() {
     const { id, choreName, pointValue, timesPerWeek, completions, members } = this.props;
 
-    const complete = completions.find(c => c.choreId == id)
+    const complete = completions.find(c => c.choreId === id)
 
     let memberResponsible
 
     if (complete) {
-      memberResponsible = members.find(m => complete.memberId == m.id)
+      memberResponsible = members.find(m => complete.memberId === m.id)
     }
 
     let pointPlural;
