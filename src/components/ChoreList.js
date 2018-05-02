@@ -25,7 +25,10 @@ export class ChoreList extends React.Component {
     const chores = choreKeys.map((choreKey, index) => {
       return <Chore
         key={index}
-        {...this.props.chores[choreKey]} />;
+        {...this.props.chores[choreKey]}
+        completions={this.props.completions.filter(comp => comp.choreId == this.props.chores[choreKey].id)}
+        members={this.props.members}
+       />;
     });
 
     return (
@@ -51,7 +54,8 @@ export class ChoreList extends React.Component {
 export const mapStateToProps = state => ({
   resetTime: state.chart.resetTime,
   members: state.chart.members,
-  chores: state.chart.chores
+  chores: state.chart.chores,
+  completions: state.chart.completions
 });
 
 export default connect(mapStateToProps)(ChoreList);

@@ -16,6 +16,12 @@ import {
   UPDATE_CHORE_SUCCESS
 } from "../actions/chore-actions"
 
+import {
+  POST_COMPLETION_SUCCESS,
+  UPDATE_COMPLETION_SUCCESS,
+  DELETE_COMPLETION_SUCCESS
+ } from "../actions/completion-actions"
+
 const initialState = {
   resetTime: "Sunday at 5pm",
   members: {},
@@ -41,11 +47,21 @@ export const choreReducer = (state = initialState, action) => {
   }
 
   if (action.type === DELETE_MEMBER_SUCCESS) {
+    console.log(state)
     let memberArray = [...state.members]
     let deletedIndex = memberArray.findIndex(item => item.id === action.id);
    memberArray.splice(deletedIndex, 1);
        return Object.assign({}, state, {
          members: memberArray
+       });
+  }
+
+  if (action.type === DELETE_COMPLETION_SUCCESS) {
+    let completionArray = [...state.completions]
+    let deletedIndex = completionArray.findIndex(item => item.id === action.id);
+   completionArray.splice(deletedIndex, 1);
+       return Object.assign({}, state, {
+         completions: completionArray
        });
   }
 
@@ -61,11 +77,16 @@ if (action.type === POST_CHORE_SUCCESS) {
   })
 }
 
+if (action.type === POST_COMPLETION_SUCCESS) {
+  return Object.assign({}, state, {
+    completions: [...state.completions, action.values]
+  })
+}
+
 if (action.type === UPDATE_CHORE_SUCCESS) {
   let choreArray = [...state.chores]
   choreArray.forEach(chore => {
   if (chore.id === action.values.id) {
-    console.log(chore)
     chore = Object.assign(chore, action.values)
   }
 })
@@ -86,6 +107,18 @@ if (action.type === UPDATE_MEMBER_SUCCESS) {
   })
 }
 
+if (action.type === UPDATE_COMPLETION_SUCCESS) {
+  let completionArray = [...state.completions]
+  completionArray.forEach(completion => {
+  if (completion.id === action.values.id) {
+    completion = Object.assign(completion, action.values)
+  }
+})
+  return Object.assign({}, state, {
+    completions: completionArray
+  })
+}
+
 if (action.type === CHANGE_COLOR) {
   let memberArray = [...state.members]
   memberArray.forEach(member => {
@@ -101,7 +134,8 @@ if (action.type === CHANGE_COLOR) {
   if (action.type === GET_CHART_DATA_SUCCESS) {
     return Object.assign({}, state, {
       members: action.values.members,
-      chores: action.values.chores
+      chores: action.values.chores,
+      completions: action.values.completions
     })
   }
 
