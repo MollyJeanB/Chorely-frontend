@@ -1,4 +1,3 @@
-
 const API_BASE_URL = "http://localhost:8080";
 
 export const POST_MEMBER_SUCCESS = "POST_MEMBER_SUCCESS";
@@ -9,12 +8,14 @@ export const postMemberSuccess = values => ({
 
 
 export const postMember = values => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    let authToken = getState().chart.authToken
     fetch(`${API_BASE_URL}/members`, {
       method: "post",
       body: JSON.stringify(values),
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${authToken}`
       }
     })
     .then(response => {
@@ -30,12 +31,14 @@ export const postMember = values => {
 }
 
 export const deleteMember = (id, values) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    let authToken = getState().chart.authToken
     fetch(`${API_BASE_URL}/members/${id}`, {
       method: "delete",
       body: JSON.stringify(values),
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${authToken}`
       }
     })
     .then(() => dispatch(deleteMemberSuccess(id)))
@@ -50,13 +53,14 @@ export const deleteMemberSuccess = id => ({
 })
 
 export const updateMember = state => {
-  console.log(state.id)
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    let authToken = getState().chart.authToken
     fetch(`${API_BASE_URL}/members/${state.id}`, {
       method: "put",
       body: JSON.stringify(state),
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${authToken}`
       }
     })
     .then(response => {

@@ -3,7 +3,9 @@ import {
   CHANGE_COLOR,
   GET_CHART_DATA_SUCCESS,
   POST_NEW_USER_SUCCESS,
-  POST_NEW_USER_FAIL
+  POST_NEW_USER_FAIL,
+  LOGIN_SUCCESS,
+  SET_AUTH_TOKEN
 } from "../actions/actions";
 
 import {
@@ -26,6 +28,20 @@ const initialState = {
 };
 
 export const choreReducer = (state = initialState, action) => {
+
+  if (action.type === LOGIN_SUCCESS) {
+    return Object.assign({}, state, {
+      isLoggedin: true
+    })
+  }
+
+  if (action.type === SET_AUTH_TOKEN) {
+    console.log(action.authToken)
+    return Object.assign({}, state, {
+      authToken: action.authToken,
+      isLoggedin: true
+    })
+  }
 
   if (action.type === EXPAND_MENU) {
     return Object.assign({}, state, {

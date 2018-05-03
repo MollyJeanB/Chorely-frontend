@@ -7,16 +7,17 @@ export const postChoreSuccess = values => ({
 })
 
 export const postChore = values => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    let authToken = getState().chart.authToken
     fetch(`${API_BASE_URL}/chores`, {
       method: "post",
       body: JSON.stringify(values),
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${authToken}`
       }
     })
     .then(response => {
-      console.log(response)
       return response.json()
     }
     )
@@ -28,12 +29,14 @@ export const postChore = values => {
 }
 
 export const deleteChore = (id, values) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    let authToken = getState().chart.authToken
     fetch(`${API_BASE_URL}/chores/${id}`, {
       method: "delete",
       body: JSON.stringify(values),
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${authToken}`
       }
     })
     .then(() => dispatch(deleteChoreSuccess(id)))
@@ -48,13 +51,14 @@ export const deleteChoreSuccess = id => ({
 })
 
 export const updateChore = state => {
-  console.log(state.id)
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    let authToken = getState().chart.authToken
     fetch(`${API_BASE_URL}/chores/${state.id}`, {
       method: "put",
       body: JSON.stringify(state),
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${authToken}`
       }
     })
     .then(response => {

@@ -22,12 +22,15 @@ export const getChartDataSuccess = values => ({
 })
 
 export const getChartData = values => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    let authToken = getState().chart.authToken
+    console.log(authToken)
     fetch(`${API_BASE_URL}/`, {
       method: "get",
       body: JSON.stringify(values),
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${authToken}`
       }
     })
       .then(res => {
