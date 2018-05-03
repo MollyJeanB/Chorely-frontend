@@ -9,13 +9,14 @@ export const postCompletionSuccess = values => ({
 
 
 export const postCompletion = (memberId, choreId) => {
-  console.log(memberId, choreId)
-  return dispatch => {
+  return (dispatch, getState) => {
+    let authToken = getState().chart.authToken
      fetch(`${API_BASE_URL}/completions`, {
        method: "post",
        body: JSON.stringify({ choreId, memberId }),
        headers: {
-         "Content-Type": "application/json"
+         "Content-Type": "application/json",
+         "Authorization": `Bearer ${authToken}`
        }
      })
        .then(response => {
@@ -30,11 +31,13 @@ export const postCompletion = (memberId, choreId) => {
 
 
 export const deleteCompletion = (id) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    let authToken = getState().chart.authToken
     fetch(`${API_BASE_URL}/completions/${id}`, {
       method: "delete",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${authToken}`
       }
     })
     .then(() => dispatch(deleteCompletionSuccess(id)))
@@ -49,13 +52,14 @@ export const deleteCompletionSuccess = id => ({
 })
 
 export const updateCompletion = (id, memberId) => {
-  return (dispatch) => {
-    console.log("action dispatched", id, memberId)
+  return (dispatch, getState) => {
+    let authToken = getState().chart.authToken
     fetch(`${API_BASE_URL}/completions/${id}`, {
       method: "put",
       body: JSON.stringify(memberId),
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${authToken}`
       }
     })
     .then(response => {

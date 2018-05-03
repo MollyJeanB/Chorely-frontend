@@ -36,6 +36,9 @@ export class ChoreBubble extends React.Component {
     if (memberId === "cancel") {
       console.log("cancelled")
     }
+    else if (memberId === "undo" && !this.props.completion) {
+      console.log("cancelled")
+    }
     else if (memberId === "undo") {
       const memberToUpdate = this.getMember(this.props.completion.memberId)
       const pointsObjMinus = {weekPoints: memberToUpdate.weekPoints - this.state.pointValue}
