@@ -79,7 +79,6 @@ class Signup extends Component {
     }
 
     if (this.props.failMessage) {
-      console.log("registered in component")
       postFail = <div className={styles.postFailMessage}>Username is already taken</div>
     }
 

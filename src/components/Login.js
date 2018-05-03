@@ -9,7 +9,9 @@ class Login extends Component {
     super(props)
       this.state = {
         username: "",
-        password: ""
+        password: "",
+        passwordValidate: "",
+        usernameValidate: ""
       }
       this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -23,12 +25,44 @@ class Login extends Component {
     handleSubmit(event) {
       event.preventDefault()
       let credentials = this.state
-      console.log(credentials)
-      this.props.dispatch(login(credentials))
+      if (credentials.username.trim() === "") {
+        this.setState({
+          usernameValidate: "Username required"
+        })
+      } else if (credentials.password.trim() === "") {
+        this.setState({
+          passwordValidate: "Password required"
+        })
+      } else {
+        this.props.dispatch(login(credentials))
+        this.setState({
+          username: "",
+          password: "",
+          passwordValidate: "",
+          usernameValidate: ""
+      })
+      }
     }
 
 
   render() {
+
+    let passwordValidationMessage;
+    let usernameValidationMessage;
+    let loginFailMessage;
+
+    if (this.state.passwordValidate !== "") {
+      passwordValidationMessage = <div className={styles.passwordValidateMessage}>{this.state.passwordValidate}</div>
+    }
+
+    if (this.state.usernameValidate !== "") {
+      usernameValidationMessage = <div className={styles.usernameValidateMessage}>{this.state.usernameValidate}</div>
+    }
+
+    if (this.props.loginFail) {
+      console.log("in component")
+      loginFailMessage = <div className={styles.loginFailMessage}>Authentication failed. Please check your credentials and try again.</div>
+    }
 
 
     const slideDown =
@@ -38,25 +72,30 @@ class Login extends Component {
 
     return (
       <div className={slideDown}>
+        {loginFailMessage}
         <div className={styles.demoBox}>
           <p className={styles.demoInfo}>To see a demo account, use these credentials:</p>
           <p className={styles.demoInfo}> Username: <b>OurHouse</b>  |  Password: <b>chore1234</b></p>
         </div>
         <form className={styles.formContain} onSubmit={this.handleSubmit}>
             <label className={styles.loginLabel}>Username</label>
+            {usernameValidationMessage}
           <input
             id="usernameLogin"
             type="text"
             className={styles.loginInput}
             placeholder="username"
+            value={this.state.username}
             onChange={e => this.handleInput(e, "username")}
             ></input>
             <label className={styles.loginLabel}>Password</label>
+            {passwordValidationMessage}
           <input
             id="passwordLogin"
             type="password"
             className={styles.loginInput}
             placeholder="•••••••"
+            value={this.state.password}
             onChange={e => this.handleInput(e, "password")}
             ></input>
             <button className={styles.submitLoginButton} type="submit">Log In</button>
@@ -67,4 +106,8 @@ class Login extends Component {
   }
 }
 
-export default connect(null)(Login)
+export const mapStateToProps = state => ({
+  loginFail: state.chart.loginFail
+})
+
+export default connect(mapStateToProps)(Login)

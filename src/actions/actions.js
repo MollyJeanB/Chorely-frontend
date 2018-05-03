@@ -93,14 +93,30 @@ export const login = credentials => {
         "Content-Type": "application/json"
       }
     })
-    .then(res => res.json())
+    .then(res => {
+      console.log(res)
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
+      return res.json();
+    }
+    )
     .then(({authToken}) => storeAuthInfo(authToken, dispatch))
-    .catch(err => console.log(err))
+    .catch(err => {
+      console.log(err)
+      dispatch(loginFail())
+      console.log("called in actions")
+    })
   }
 }
 
+export const LOGIN_FAIL = "LOGIN_FAIL";
+export const loginFail = () => ({
+  type: LOGIN_FAIL
+})
+
 const storeAuthInfo = (authToken, dispatch) => {
-    const decodedToken = jwtDecode(authToken);
+    // const decodedToken = jwtDecode(authToken);
     dispatch(setAuthToken(authToken));
     // dispatch(loginSuccess(decodedToken.user));
     saveAuthToken(authToken);

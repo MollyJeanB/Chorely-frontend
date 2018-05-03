@@ -4,7 +4,7 @@ import {
   GET_CHART_DATA_SUCCESS,
   POST_NEW_USER_SUCCESS,
   POST_NEW_USER_FAIL,
-  // LOGIN_SUCCESS,
+  LOGIN_FAIL,
   SET_AUTH_TOKEN
 } from "../actions/actions";
 
@@ -29,14 +29,14 @@ const initialState = {
 
 export const choreReducer = (state = initialState, action) => {
 
-  // if (action.type === LOGIN_SUCCESS) {
-  //   return Object.assign({}, state, {
-  //     isLoggedin: true
-  //   })
-  // }
+  if (action.type === LOGIN_FAIL) {
+    console.log("ran in reducer")
+    return Object.assign({}, state, {
+      loginFail: true
+    })
+  }
 
   if (action.type === SET_AUTH_TOKEN) {
-    console.log(action.authToken)
     return Object.assign({}, state, {
       authToken: action.authToken,
       isLoggedin: true
@@ -50,7 +50,6 @@ export const choreReducer = (state = initialState, action) => {
   }
 
   if (action.type === POST_NEW_USER_SUCCESS) {
-    console.log(action.values)
     return Object.assign({}, state, {
       successMessage: true,
       newUserName: action.values.username
@@ -58,7 +57,6 @@ export const choreReducer = (state = initialState, action) => {
   }
 
   if (action.type === POST_NEW_USER_FAIL) {
-    console.log("post fail called")
     return Object.assign({}, state, {
       failMessage: true
     })
