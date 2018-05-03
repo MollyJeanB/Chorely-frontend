@@ -23,11 +23,16 @@
 
 .welcomeMessage {
   background: #4b6dff;
-  width: 300px;
+  width: 100vw;
   text-align: center;
   color: white;
   position: absolute;
-  padding: 10px;
+  padding: 56px 20px 56px 20px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  margin-top: -35px;
 }
 
 
@@ -95,4 +100,9 @@
 
 .linkToTop:hover {
   color: #4b6dff;
+}
+
+.newLinkToTop {
+  text-decoration: underline;
+  cursor: pointer;
 }

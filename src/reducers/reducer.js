@@ -4,7 +4,7 @@ import {
   GET_CHART_DATA_SUCCESS,
   POST_NEW_USER_SUCCESS,
   POST_NEW_USER_FAIL,
-  LOGIN_SUCCESS,
+  // LOGIN_SUCCESS,
   SET_AUTH_TOKEN
 } from "../actions/actions";
 
@@ -29,11 +29,11 @@ const initialState = {
 
 export const choreReducer = (state = initialState, action) => {
 
-  if (action.type === LOGIN_SUCCESS) {
-    return Object.assign({}, state, {
-      isLoggedin: true
-    })
-  }
+  // if (action.type === LOGIN_SUCCESS) {
+  //   return Object.assign({}, state, {
+  //     isLoggedin: true
+  //   })
+  // }
 
   if (action.type === SET_AUTH_TOKEN) {
     console.log(action.authToken)

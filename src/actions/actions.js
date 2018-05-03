@@ -1,5 +1,5 @@
 import jwtDecode from "jwt-decode"
-import {saveAuthToken} from '../local-storage';
+import {saveAuthToken, clearAuthToken} from '../local-storage';
 const API_BASE_URL = "http://localhost:8080";
 
 export const EXPAND_MENU = "EXPAND_MENU";
@@ -102,18 +102,28 @@ export const login = credentials => {
 const storeAuthInfo = (authToken, dispatch) => {
     const decodedToken = jwtDecode(authToken);
     dispatch(setAuthToken(authToken));
-    dispatch(loginSuccess(decodedToken.user));
+    // dispatch(loginSuccess(decodedToken.user));
     saveAuthToken(authToken);
 };
 
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
-export const loginSuccess = currentUser => ({
-    type: LOGIN_SUCCESS,
-    currentUser
-});
+// export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
+// export const loginSuccess = currentUser => ({
+//     type: LOGIN_SUCCESS,
+//     currentUser
+// });
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 export const setAuthToken = authToken => ({
     type: SET_AUTH_TOKEN,
     authToken
+});
+
+export const logout = (dispatch) => {
+  clearAuthToken()
+  dispatch(logoutSuccess())
+}
+
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS"
+export const logoutSuccess = () => ({
+    type: LOGOUT_SUCCESS,
 });
