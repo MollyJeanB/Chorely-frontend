@@ -2,12 +2,19 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styles from "../componentStyles/NavDrawer.css"
 import {connect} from "react-redux"
-import {expandMenu} from "../actions/actions"
+import {expandMenu, logout} from "../actions/actions"
 
 export class NavDrawer extends Component {
-  onClick() {
+
+  menuToggle() {
     this.props.dispatch(expandMenu())
   }
+
+  logOut() {
+    this.props.dispatch(logout())
+  }
+
+
 render() {
 
   let containerClasses = [styles.drawerContainer]
@@ -17,9 +24,9 @@ render() {
 
   return(
           <div className={containerClasses.join(' ')}>
-            <Link onClick={() => {this.onClick()}} className={styles.navLink} to="/">This Week</Link>
-            <Link onClick={() => {this.onClick()}} className={styles.navLink} to="/stats">Household Stats</Link>
-            <Link onClick={() => {this.onClick()}} className={styles.navLink} to="/">Log Out</Link>
+            <Link onClick={() => {this.menuToggle()}} className={styles.navLink} to="/">This Week</Link>
+            <Link onClick={() => {this.menuToggle()}} className={styles.navLink} to="/stats">Household Stats</Link>
+            <Link onClick={() => {this.logOut()}} className={styles.navLink} to="/">Log Out</Link>
           </div>
   )
 }

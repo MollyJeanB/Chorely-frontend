@@ -1,7 +1,11 @@
 import {
   EXPAND_MENU,
   CHANGE_COLOR,
-  GET_CHART_DATA_SUCCESS
+  GET_CHART_DATA_SUCCESS,
+  POST_NEW_USER_SUCCESS,
+  POST_NEW_USER_FAIL,
+  LOGIN_FAIL,
+  SET_AUTH_TOKEN
 } from "../actions/actions";
 
 import {
@@ -30,10 +34,38 @@ const initialState = {
 };
 
 export const choreReducer = (state = initialState, action) => {
+
+  if (action.type === LOGIN_FAIL) {
+    console.log("ran in reducer")
+    return Object.assign({}, state, {
+      loginFail: true
+    })
+  }
+
+  if (action.type === SET_AUTH_TOKEN) {
+    return Object.assign({}, state, {
+      authToken: action.authToken,
+      isLoggedin: true
+    })
+  }
+
   if (action.type === EXPAND_MENU) {
     return Object.assign({}, state, {
       drawerOpen: !state.drawerOpen
     });
+  }
+
+  if (action.type === POST_NEW_USER_SUCCESS) {
+    return Object.assign({}, state, {
+      successMessage: true,
+      newUserName: action.values.username
+    })
+  }
+
+  if (action.type === POST_NEW_USER_FAIL) {
+    return Object.assign({}, state, {
+      failMessage: true
+    })
   }
 
 

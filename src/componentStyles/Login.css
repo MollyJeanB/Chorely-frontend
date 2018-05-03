@@ -1,7 +1,13 @@
-
-/* .loginOut {
+.passwordValidateMessage,
+.usernameValidateMessage {
+  position: absolute;
   background: red;
-} */
+  font-size: 13px;
+  color: white;
+  padding: 3px;
+  margin-top: -20px;
+  left: 60px;
+}
 
 .loginContain {
   background: white;
@@ -49,6 +55,18 @@
   font-size: 14px;
   margin: 10px 5px;
 }
+
+.loginFailMessage {
+  background: red;
+  width: 310px;
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  padding: 7px;
+  left: 5px;
+  top: 10px;
+}
+
 
 .demoInfo {
   padding: 4px;
