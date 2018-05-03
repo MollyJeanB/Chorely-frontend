@@ -18,6 +18,15 @@
   position: absolute;
 }
 
+.nameDidIt {
+  text-align: center;
+  font-size: 11px;
+  width: 67px;
+  margin: 25px 0 0 2px;
+  color: white;
+  position: absolute;
+}
+
 .personField {
   font-family: "Raleway", sans-serif;
   font-size: 12px;
@@ -40,6 +49,11 @@
   }
 
   .clickMessage {
+    width: 70px;
+    margin: 30px 0 0 4px;
+  }
+
+  .nameDidIt {
     width: 70px;
     margin: 30px 0 0 4px;
   }

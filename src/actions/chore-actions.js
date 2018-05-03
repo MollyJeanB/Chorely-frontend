@@ -53,6 +53,7 @@ export const deleteChoreSuccess = id => ({
 export const updateChore = state => {
   return (dispatch, getState) => {
     let authToken = getState().chart.authToken
+
     fetch(`${API_BASE_URL}/chores/${state.id}`, {
       method: "put",
       body: JSON.stringify(state),

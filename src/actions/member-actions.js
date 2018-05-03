@@ -19,7 +19,6 @@ export const postMember = values => {
       }
     })
     .then(response => {
-      console.log(response)
       return response.json()
     }
     )
