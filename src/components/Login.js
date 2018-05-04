@@ -25,6 +25,7 @@ class Login extends Component {
     handleSubmit(event) {
       event.preventDefault()
       let credentials = this.state
+      //frontend validators
       if (credentials.username.trim() === "") {
         this.setState({
           usernameValidate: "Username required"
@@ -33,8 +34,10 @@ class Login extends Component {
         this.setState({
           passwordValidate: "Password required"
         })
+            //if all inputs valid, dispatch login with credentials from the state (set by change in inputs)
       } else {
         this.props.dispatch(login(credentials))
+        //reset inputs
         this.setState({
           username: "",
           password: "",
@@ -59,6 +62,7 @@ class Login extends Component {
       usernameValidationMessage = <div className={styles.usernameValidateMessage}>{this.state.usernameValidate}</div>
     }
 
+//get message from props in reducer if new user fails to post
     if (this.props.loginFail) {
       loginFailMessage = <div className={styles.loginFailMessage}>Authentication failed. Please check your credentials and try again.</div>
     }

@@ -1,5 +1,6 @@
-// const API_BASE_URL = "http://localhost:8080";
 const {API_BASE_URL} = require("../config")
+
+//ajax calls for the chores CRUD operations and passing responses onto the reducer
 
 export const POST_CHORE_SUCCESS = "POST_CHORE_SUCCESS";
 export const postChoreSuccess = values => ({

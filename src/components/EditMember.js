@@ -17,17 +17,21 @@ constructor(props) {
   }
 }
 
+//set state when input changes
   handleInput(event) {
     this.setState({
       name: event.target.value
     })
   }
 
+
   editMember(event) {
     event.preventDefault()
     const values = this.state
+    //validator
     if (values.name.trim() === "") {
       this.showValidator()
+      //dispatch updatMember with values in the state
     } else {
       values.color = this.props.color
       this.props.dispatch(updateMember(values));

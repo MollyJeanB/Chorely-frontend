@@ -21,6 +21,8 @@ export class ChoreList extends React.Component {
       formComponent = <ChoreForm toggleForm={this.toggleForm.bind(this)} />;
     }
 
+    //if no chores in chart yet, show explanatory message so user knows how to interact with the tool
+
     let noChoresYet;
     if (this.props.chores.length === 0) {
       noChoresYet = (

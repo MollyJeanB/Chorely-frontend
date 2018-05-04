@@ -1,6 +1,6 @@
-
-// const API_BASE_URL = "http://localhost:8080";
 const {API_BASE_URL} = require("../config")
+
+//ajax calls for the completions CRUD operations and passing responses onto the reducer
 
 export const POST_COMPLETION_SUCCESS = "POST_COMPLETION_SUCCESS";
 export const postCompletionSuccess = values => ({

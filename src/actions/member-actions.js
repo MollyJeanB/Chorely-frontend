@@ -1,5 +1,6 @@
-// const API_BASE_URL = "http://localhost:8080";
 const {API_BASE_URL} = require("../config")
+
+//ajax calls for the household members CRUD operations and passing responses onto the reducer
 
 export const POST_MEMBER_SUCCESS = "POST_MEMBER_SUCCESS";
 export const postMemberSuccess = values => ({

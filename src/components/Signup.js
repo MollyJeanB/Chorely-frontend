@@ -30,6 +30,7 @@ class Signup extends Component {
     handleSubmit(event) {
       event.preventDefault()
       let credentials = this.state
+      //frontend validators
       if (hasWhiteSpace(credentials.username)) {
         this.setState({
           usernameValidate: "Username cannot contain spaces"
@@ -51,6 +52,7 @@ class Signup extends Component {
           passwordValidate: "Password must be at least 7 characters"
         })
       }
+      //if all inputs valid, dispatch post new user with credentials from the state (set by change in inputs)
       else {
         this.props.dispatch(postNewUser(credentials))
         this.setState({
@@ -70,6 +72,7 @@ class Signup extends Component {
     let postFail;
     let successDirect;
 
+//if user posted successfully to database, give success message and prompt them to log in 
     if (this.props.successMessage) {
       successDirect = (
         <div className={styles.welcomeMessage}>Welcome, {this.props.newUserName}!
@@ -78,6 +81,7 @@ class Signup extends Component {
       )
     }
 
+//get message from props in reducer if new user fails to post
     if (this.props.failMessage) {
       postFail = <div className={styles.postFailMessage}>Username is already taken</div>
     }
