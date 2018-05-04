@@ -5,7 +5,7 @@ export default {
 
   green: "#80CC1C",
 
-  yellow: "#FFCE00",
+  yellow: "#F9A602",
 
   brightBlue: "#00B6FF",
 
