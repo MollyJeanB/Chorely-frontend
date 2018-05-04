@@ -5,6 +5,9 @@ import {shallow} from "enzyme";
 import configure from "../setupTests"
 import store from "../store";
 import {Provider} from "react-redux";
+// import {saveAuthToken, clearAuthToken} from '../local-storage';
+const localStorage = "localStorage"
+
 
 describe("NavBarMobile", () => {
   it("Renders without crashing", () => {

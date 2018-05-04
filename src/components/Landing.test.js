@@ -1,18 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import NavDrawer from './NavDrawer';
+import Landing from './Member';
 import {shallow} from "enzyme";
-import configure from "../setupTests";
+import configure from "../setupTests"
 import store from "../store";
 import {Provider} from "react-redux";
 
-
-describe("NavDrawer", () => {
+describe("Landing", () => {
   it("Renders without crashing", () => {
     shallow(
-      <Provider store={store}>
-        <NavDrawer />
-      </Provider>
+    <Provider store={store}>
+      <Landing />
+    </Provider>
     )
   })
 })
