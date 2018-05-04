@@ -1,5 +1,6 @@
 import {saveAuthToken, clearAuthToken} from '../local-storage';
-const API_BASE_URL = "http://localhost:8080";
+// const API_BASE_URL = "http://localhost:8080";
+const {API_BASE_URL} = require("../config")
 
 export const EXPAND_MENU = "EXPAND_MENU";
 export const expandMenu = drawerOpen => ({

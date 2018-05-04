@@ -1,4 +1,5 @@
-const API_BASE_URL = "http://localhost:8080";
+// const API_BASE_URL = "http://localhost:8080";
+const {API_BASE_URL} = require("../config")
 
 export const POST_CHORE_SUCCESS = "POST_CHORE_SUCCESS";
 export const postChoreSuccess = values => ({

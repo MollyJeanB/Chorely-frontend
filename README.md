@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Introduction
 
-Whether you live with roommates, family members, or a pack of woodland gnomes, one of the most challenging things about sharing a living space is figuring out how to divvy up the household chores.
+Whether you live with roommates, family members, or a pack of woodland gnomes, one of the most challenging things about sharing a living space is figuring out how to divvy up the household chores. Chorely is a simple, visual chore chart app that gamifies household chores and shows who's doing what. 
 
 ![Desktop and mobile view of app](screenshots/app-views.png)
 
