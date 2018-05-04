@@ -33,7 +33,7 @@ export class ChoreList extends React.Component {
           </div>
           <p className={styles.explainText}><b>Your household</b> hasn't created any chores yet! To begin your list, click the "Add Chore" button above.</p>
           <p className={styles.explainText}><b>Give the chore</b> a name, then decide how many times it should be done each week and how many points it should be worth (based on the difficulty or grodiness of the chore—you decide).</p>
-          <p className={styles.explainText}><b>When you complete</b> a chore, get points by clicking on one of the circles inside the chore and selecting your name from the dropdown menu. Happy tidying!</p>
+          <p className={styles.explainText}><b>When you</b> complete a chore, get points by clicking on one of the circles inside the chore and selecting your name from the dropdown menu. Happy tidying!</p>
         </div>
 
 
