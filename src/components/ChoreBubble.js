@@ -123,10 +123,16 @@ export class ChoreBubble extends React.Component {
     if (this.props.completion) {
       thisMember = this.getMember(this.props.completion.memberId)
       selectedId = thisMember.id
-      const memberName = thisMember.name
       bubbleStyle = {
         backgroundColor: Colors[thisMember.color]
       }
+
+    }
+
+    if (this.props.completion && !this.state.dropdownDisplay) {
+      thisMember = this.getMember(this.props.completion.memberId)
+      selectedId = thisMember.id
+      const memberName = thisMember.name
       clickMessage = <div className={styles.nameDidIt}>{memberName} <br />did it!</div>
     }
 

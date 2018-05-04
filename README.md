@@ -1,6 +1,6 @@
 # Chorely
 
-A responsive web app that gamifies household chores and creates a visual record or who's doing what. Built with React and Redux. Work in progress.
+A responsive web app that gamifies household chores and creates a visual record or who's doing what. Built with React and Redux. Work in progress. See a live demo [here](https://chorely.netlify.com/).
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). Chorely's server side code (built with Node.js and MongoDB) can be found in [this repository.](https://github.com/MollyJeanB/ChorelyApp-api)
 

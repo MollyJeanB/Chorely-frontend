@@ -106,6 +106,7 @@ class Signup extends Component {
             className={styles.signupInput}
             placeholder="Fun House"
             onChange={e => this.handleInput(e, "houseName")}
+            maxLength="25"
             value={this.state.houseName}
             ></input>
             <label className={styles.signupLabel}>Username</label>
@@ -115,6 +116,7 @@ class Signup extends Component {
             type="text"
             className={styles.signupInput}
             placeholder="FunHouse"
+            maxLength="25"
             onChange={e => this.handleInput(e, "username")}
             value={this.state.username}
             ></input>
@@ -124,6 +126,7 @@ class Signup extends Component {
             id="password"
             type="password"
             className={styles.signupInput}
+            maxLength="25"
             placeholder="•••••••••"
             onChange={e => this.handleInput(e, "password")}
             value={this.state.password}
