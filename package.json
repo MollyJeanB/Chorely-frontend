@@ -64,7 +64,7 @@
       "src/**/*.{js,jsx,mjs}"
     ],
     "setupFiles": [
-      "./__setups__/<rootDir>/config/polyfills.js"
+      "<rootDir>/config/polyfills.js"
     ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
