@@ -5,10 +5,22 @@
   z-index: -2;
 }
 
+.membersHeading {
+  display: none;
+}
+
 @media only screen and (min-width: 640px) {
   .membersContainer {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .membersHeading {
+    display: block;
+    color: #262828;
+    text-align: center;
+    font-weight: 500;
+    padding-top: 8px;
+    font-size: 20px;
   }
 }

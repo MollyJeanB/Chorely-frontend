@@ -11,7 +11,8 @@ describe("Member", () => {
     shallow(
     <Provider store={store}>
       <Member />
-    </Provider> 
+    </Provider>
     )
   })
+
 })

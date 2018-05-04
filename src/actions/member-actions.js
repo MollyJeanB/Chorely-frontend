@@ -63,7 +63,6 @@ export const updateMember = state => {
       }
     })
     .then(response => {
-      console.log(response)
       return response.json()
     }
     )

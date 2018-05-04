@@ -63,7 +63,6 @@ export const updateChore = state => {
       }
     })
     .then(response => {
-      console.log(response)
       return response.json()
     }
     )

@@ -27,6 +27,7 @@ const members = memberKeys.map((memberKey, index) => {
     return (
       <div className={styles.membersContainer}>
         <div className={styles.membersContainerInner}>
+          <h2 className={styles.membersHeading}>Household Members</h2>
           <AddMember />
           {members}
         </div>

@@ -20,7 +20,6 @@ export class EditChore extends React.Component {
     this.setState({
       [key]: event.target.value
     })
-      console.log(event.target.value, this.state)
   }
 
   editChore(event) {

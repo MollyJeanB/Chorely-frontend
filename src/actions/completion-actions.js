@@ -63,7 +63,6 @@ export const updateCompletion = (id, memberId) => {
       }
     })
     .then(response => {
-      console.log(response)
       return response.json()
     }
     )

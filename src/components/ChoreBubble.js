@@ -23,12 +23,14 @@ export class ChoreBubble extends React.Component {
     });
   }
 
+//helper function to get a member from props, given the id
   getMember(id) {
     return this.props.members.find(
       m => m.id === id
     )
   }
 
+//for chore completions, create, update, and delete are fired from a single dropdown menu within the Chore Bubble
   changeCompletion(event) {
     const memberId = event.target.value
     const choreId = this.state.id
@@ -39,33 +41,56 @@ export class ChoreBubble extends React.Component {
     else if (memberId === "undo" && !this.props.completion) {
       console.log("cancelled")
     }
+
+    //if user selects "undo" from the dropdown, delete the completion
     else if (memberId === "undo") {
+      //find the member associated with the completion
       const memberToUpdate = this.getMember(this.props.completion.memberId)
+      //points to decrement from the member's score
       const pointsObjMinus = {weekPoints: memberToUpdate.weekPoints - this.state.pointValue}
+      //data object to send to API
       const updateMemberDataExisting = { ...memberToUpdate, ...pointsObjMinus}
+      //dispatch action to delete the completion
       this.props.dispatch(deleteCompletion(this.props.completion.id))
+      //dispatch action to decrement the member's score by the point value of the chore
       this.props.dispatch(updateMember(updateMemberDataExisting))
     }
+    //if the user selects a household member from the dropdown and the chore bubble is not already associated with a completion, create a new completion
     else if (!this.props.completion) {
+      //get member from input
       const memberToScore = this.getMember(memberId)
+      //points to increment the member's score
       const pointsObj = {weekPoints: memberToScore.weekPoints + this.state.pointValue}
+      //data object to send to API
       const updateMemberDataNew = { ...memberToScore, ...pointsObj}
+      //dispatch action to create completion
       this.props.dispatch(postCompletion(memberId, choreId))
+      //dispatch action to increment member's score
       this.props.dispatch(updateMember(updateMemberDataNew))
     }
+    //the only remaining case is updating the completion (as in, the chore bubble was already filled in, and now it has been switched to another person)
     else {
+      //member id to update completion data
       const updateData = {memberId: memberId}
+      //get member from input
       const memberToScore = this.getMember(memberId)
+      //get previous member associated with completion
       const memberToUpdate = this.getMember(this.props.completion.memberId)
+      //points to be incremented for the new member completing the chore
       const pointsObj = {weekPoints: memberToScore.weekPoints + this.state.pointValue}
+      //points to be decremented from the member previously associated with the chore
       const pointsObjMinus = {weekPoints: memberToUpdate.weekPoints - this.state.pointValue}
       const updateMemberDataNew = { ...memberToScore, ...pointsObj}
       const updateMemberDataExisting = { ...memberToUpdate, ...pointsObjMinus}
+      //dispatch action to udate the completion with the new member id
       this.props.dispatch(updateCompletion(this.props.completion.id, updateData))
+      //dispatch action to increment score of new member
       this.props.dispatch(updateMember(updateMemberDataNew))
+      //dispatch action to decrement score of previous member
       this.props.dispatch(updateMember(updateMemberDataExisting))
 
     }
+    //hide dropdown after any possible selection
     this.setState({
       dropdownDisplay: false
     })

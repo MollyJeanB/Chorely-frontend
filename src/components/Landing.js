@@ -16,7 +16,6 @@ class Landing extends Component {
 
   toggleLogin(event) {
     event.preventDefault()
-    console.log("toggle fired")
     this.setState({
       loginDisplay: !this.state.loginDisplay
     })

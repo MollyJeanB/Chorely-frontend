@@ -1,7 +1,5 @@
 import React from "react";
-// import ReactDOM from 'react-dom';
 import { choreReducer } from "./reducer";
-import { expandMenu, showMemberForm } from "../actions/actions";
 import configure from "../setupTests";
 
 describe("choreReducer", () => {

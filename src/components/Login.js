@@ -60,7 +60,6 @@ class Login extends Component {
     }
 
     if (this.props.loginFail) {
-      console.log("in component")
       loginFailMessage = <div className={styles.loginFailMessage}>Authentication failed. Please check your credentials and try again.</div>
     }
 

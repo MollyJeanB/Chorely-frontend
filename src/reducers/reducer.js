@@ -27,6 +27,7 @@ import {
  } from "../actions/completion-actions"
 
 const initialState = {
+  //right now resetTime is hardcoded. A future version of the app will include a weekly reset in which the completions and scores for the week reset while the chores and members remain in the chart. Overall scores will be tallied on the stats page, which is also a future feature
   resetTime: "Sunday at 5pm",
   members: {},
   chores: {},
@@ -36,7 +37,6 @@ const initialState = {
 export const choreReducer = (state = initialState, action) => {
 
   if (action.type === LOGIN_FAIL) {
-    console.log("ran in reducer")
     return Object.assign({}, state, {
       loginFail: true
     })
@@ -79,7 +79,6 @@ export const choreReducer = (state = initialState, action) => {
   }
 
   if (action.type === DELETE_MEMBER_SUCCESS) {
-    console.log(state)
     let memberArray = [...state.members]
     let deletedIndex = memberArray.findIndex(item => item.id === action.id);
    memberArray.splice(deletedIndex, 1);

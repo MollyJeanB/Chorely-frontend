@@ -1,4 +1,3 @@
-// import jwtDecode from "jwt-decode"
 import {saveAuthToken, clearAuthToken} from '../local-storage';
 const API_BASE_URL = "http://localhost:8080";
 
@@ -24,7 +23,6 @@ export const getChartDataSuccess = values => ({
 export const getChartData = values => {
   return (dispatch, getState) => {
     let authToken = getState().chart.authToken
-    console.log(authToken)
     fetch(`${API_BASE_URL}/`, {
       method: "get",
       body: JSON.stringify(values),
@@ -56,7 +54,6 @@ export const postNewUser = credentials => {
       }
     })
     .then(res => {
-      console.log(res)
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }
@@ -94,7 +91,6 @@ export const login = credentials => {
       }
     })
     .then(res => {
-      console.log(res)
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }
@@ -105,7 +101,6 @@ export const login = credentials => {
     .catch(err => {
       console.log(err)
       dispatch(loginFail())
-      console.log("called in actions")
     })
   }
 }
@@ -116,17 +111,9 @@ export const loginFail = () => ({
 })
 
 const storeAuthInfo = (authToken, dispatch) => {
-    // const decodedToken = jwtDecode(authToken);
     dispatch(setAuthToken(authToken));
-    // dispatch(loginSuccess(decodedToken.user));
     saveAuthToken(authToken);
 };
-
-// export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
-// export const loginSuccess = currentUser => ({
-//     type: LOGIN_SUCCESS,
-//     currentUser
-// });
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 export const setAuthToken = authToken => ({

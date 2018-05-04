@@ -26,8 +26,39 @@
   background-color: rgba(61, 80, 153, 1);
 }
 
+.chartExplainBox {
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+  color: #262828;
+  border-radius: 25px;
+  background: rgba(194, 194, 195, .3);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.explainText {
+  padding: 5px;
+}
+
+.iconContain {
+  margin: 0 auto;
+  width: 60px;
+}
+
+.choreIcon {
+  width: 60px;
+
+}
+
 @media only screen and (min-width: 640px) {
   .resetContainer {
     padding-top: 30px;
   }
+
+  .chartExplainBox {
+    width: 60%;
+  }
+
+
 }
