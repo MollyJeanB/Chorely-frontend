@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Introduction
 
-Whether you live with roommates, family members, or a pack of woodland gnomes, one of the most challenging things about sharing a living space is figuring out how to divvy up the household chores. Chorely is a simple, visual chore chart app that gamifies household chores and shows who's doing what.
+Whether you live with roommates, family members, or a pack of woodland gnomes, one of the most challenging things about sharing a living space is figuring out how to divvy up the household chores. Chorely is a simple, visual chore chart app that shows who's doing what awards points to chore heroes.
 
 ![Desktop and mobile view of app](screenshots/app-views.png)
 
@@ -34,6 +34,7 @@ View server code [this repository.](https://github.com/MollyJeanB/ChorelyApp-api
 
 * Household stats tracking: pie charts shows who's doing which chores the most often
 * Weekly chart reset: clears out the chore completions and weekly score (overall score to be retained in the stats section)
+* Text and email reminders for household members
 
 ## Attribution
 
