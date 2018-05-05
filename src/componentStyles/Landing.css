@@ -2,7 +2,7 @@
 
 .introSection {
   height: 400px;
-  width: 100vw;
+  width: 100%;
   background: rgba(185, 233, 254, 1);
   position: relative;
 }
@@ -23,7 +23,7 @@
 }
 
 .explainSection {
-  width: 100vw;
+  width: 100%;
 }
 
 .explainBlock {
@@ -39,7 +39,7 @@ box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
 
 .signupSection {
   height: 400px;
-  width: 100vw;
+  width: 100%;
   background: rgba(185, 233, 254, 1);
   display: flex;
   justify-content: center;
