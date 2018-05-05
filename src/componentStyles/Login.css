@@ -53,7 +53,7 @@
   background: #4b6dff;
   color: white;
   font-size: 14px;
-  margin: 10px 5px;
+  margin: 10px 5px 5px 5px;
 }
 
 .loginFailMessage {
@@ -61,10 +61,8 @@
   width: 310px;
   color: white;
   font-size: 14px;
-  position: absolute;
   padding: 7px;
-  left: 5px;
-  top: 10px;
+  margin-left: 5px;
 }
 
 

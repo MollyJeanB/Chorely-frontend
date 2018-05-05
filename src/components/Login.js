@@ -3,6 +3,11 @@ import styles from "../componentStyles/Login.css"
 import { connect } from "react-redux";
 import { login } from "../actions/actions"
 
+function hasWhiteSpace(string) {
+  return string.indexOf(" ") >= 0;
+}
+
+
 class Login extends Component {
 
   constructor(props) {
@@ -26,7 +31,15 @@ class Login extends Component {
       event.preventDefault()
       let credentials = this.state
       //frontend validators
-      if (credentials.username.trim() === "") {
+      if (hasWhiteSpace(credentials.username)) {
+        this.setState({
+          usernameValidate: "Username cannot contain spaces"
+        })
+      } else if (hasWhiteSpace(credentials.password)) {
+        this.setState({
+          passwordValidate: "Password cannot contain spaces"
+        })
+      } else if (credentials.username.trim() === "") {
         this.setState({
           usernameValidate: "Username required"
         })
@@ -75,11 +88,11 @@ class Login extends Component {
 
     return (
       <div className={slideDown}>
-        {loginFailMessage}
         <div className={styles.demoBox}>
           <p className={styles.demoInfo}>To see a demo account, use these credentials:</p>
           <p className={styles.demoInfo}> Username: <b>OurHouse</b>  |  Password: <b>chore1234</b></p>
         </div>
+        {loginFailMessage}
         <form className={styles.formContain} onSubmit={this.handleSubmit}>
             <label className={styles.loginLabel}>Username</label>
             {usernameValidationMessage}
