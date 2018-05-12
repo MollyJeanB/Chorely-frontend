@@ -6,16 +6,8 @@ import NavBar from "./NavBar"
 import NavBarMobile from "./NavBarMobile"
 import {connect } from "react-redux"
 import {getChartData} from "../actions/actions"
-// import Spinner from "react-spinkit"
 
 class Chart extends React.Component {
-
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     loading: true
-  //   }
-  // }
 
 componentDidMount() {
   this.props.dispatch(getChartData())
@@ -27,8 +19,14 @@ componentDidMount() {
  let choreSection;
  if (this.props.chartLoading) {
    console.log("loading")
-   spinner = <div className={styles.loadTest}>LOAD</div>
-   // <Spinner name="double-bounce" />
+   spinner = (
+     <div className={styles.spinBox}>
+       <div className={styles.spinner}>
+         <div className={styles.doubleBounce1}></div>
+         <div className={styles.doubleBounce2}></div>
+       </div>     
+     </div>
+   )
  }
 
  if (!this.props.chartLoading) {
@@ -51,15 +49,6 @@ componentDidMount() {
 
 }
 
-
-// export default connect (state => {
-// return {
-//     chores: state.chores,
-//     members: state.members,
-//     completions: state.completions,
-//     loading: (state.chores === undefined)
-//   }
-// }) (Chart)
 
 export const mapStateToProps = state => ({
   chores: state.chart.chores,

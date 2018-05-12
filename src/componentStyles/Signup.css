@@ -4,11 +4,22 @@
   text-align: center;
   color: white;
   padding: 3px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   left: 0;
   right: 0;
   width: 250px;
+}
+
+.loadingIndicator {
+  position: absolute;
+  background: #4b6dff;
+  text-align: center;
+  color: white;
+  padding: 3px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 200px;
 }
 
 .passwordValidateMessage,

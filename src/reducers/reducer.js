@@ -34,7 +34,7 @@ const initialState = {
   chartLoading: true,
   members: {},
   chores: {},
-  completions: {},
+  completions: {}
 };
 
 export const choreReducer = (state = initialState, action) => {

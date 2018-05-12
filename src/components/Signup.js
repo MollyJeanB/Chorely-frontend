@@ -75,7 +75,7 @@ class Signup extends Component {
     let loading;
 
     if (this.props.loading) {
-      loading = <div>Loading</div>
+      loading = <div className={styles.loadingIndicator}>Loading...</div>
     }
 
 //if user posted successfully to database, give success message and prompt them to log in
@@ -104,11 +104,11 @@ class Signup extends Component {
     return (
       <div className={styles.signupContain}>
           {successDirect}
-          {loading}
         <p className={styles.introPar}>Make an account for your household & let the games begin!</p>
         <p className={styles.demoInfo}>To see a demo account, <span className={styles.linkToTop} onClick={(e) => this.props.goToLogin(e)}>login</span> at the top of the page with these credentials:</p>
         <p className={styles.demoInfo}> Username: <b>OurHouse</b>  |  Password: <b>chore1234</b></p>
         {postFail}
+        {loading}
         <form className={styles.formContain} onSubmit={this.handleSubmit}>
           <label className={styles.signupLabel}>House Name</label>
           <input
