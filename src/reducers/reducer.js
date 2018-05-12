@@ -7,7 +7,8 @@ import {
   LOGIN_FAIL,
   SET_AUTH_TOKEN,
   LOADING,
-  CHART_LOADING
+  CHART_LOADING,
+  LOGIN_LOADING
 } from "../actions/actions";
 
 import {
@@ -80,6 +81,12 @@ export const choreReducer = (state = initialState, action) => {
   if (action.type === CHART_LOADING) {
     return Object.assign({}, state, {
       chartLoading: action.value
+    })
+  }
+
+  if (action.type === LOGIN_LOADING) {
+    return Object.assign({}, state, {
+      loginLoading: action.value
     })
   }
 

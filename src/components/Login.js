@@ -7,7 +7,6 @@ function hasWhiteSpace(string) {
   return string.indexOf(" ") >= 0;
 }
 
-
 class Login extends Component {
 
   constructor(props) {
@@ -66,6 +65,11 @@ class Login extends Component {
     let passwordValidationMessage;
     let usernameValidationMessage;
     let loginFailMessage;
+    let loginLoadingMessage;
+
+    if (this.props.loginLoading) {
+      loginLoadingMessage = <div className={styles.loginLoading}>Loading...</div>
+    }
 
     if (this.state.passwordValidate !== "") {
       passwordValidationMessage = <div className={styles.passwordValidateMessage}>{this.state.passwordValidate}</div>
@@ -92,6 +96,7 @@ class Login extends Component {
           <p className={styles.demoInfo}>To see a demo account, use these credentials:</p>
           <p className={styles.demoInfo}> Username: <b>OurHouse</b>  |  Password: <b>chore1234</b></p>
         </div>
+        {loginLoadingMessage}
         {loginFailMessage}
         <form className={styles.formContain} onSubmit={this.handleSubmit}>
             <label className={styles.loginLabel}>Username</label>
@@ -123,7 +128,8 @@ class Login extends Component {
 }
 
 export const mapStateToProps = state => ({
-  loginFail: state.chart.loginFail
+  loginFail: state.chart.loginFail,
+  loginLoading: state.chart.loginLoading
 })
 
 export default connect(mapStateToProps)(Login)

@@ -18,19 +18,17 @@ componentDidMount() {
  let memberSection;
  let choreSection;
  if (this.props.chartLoading) {
-   console.log("loading")
    spinner = (
      <div className={styles.spinBox}>
        <div className={styles.spinner}>
          <div className={styles.doubleBounce1}></div>
          <div className={styles.doubleBounce2}></div>
-       </div>     
+       </div>
      </div>
    )
  }
 
  if (!this.props.chartLoading) {
-   console.log(this.props)
    memberSection = <MemberList {...this.props} />
    choreSection =   <ChoreList {...this.props} />
 
@@ -46,7 +44,6 @@ componentDidMount() {
         </div>
       )
   }
-
 }
 
 

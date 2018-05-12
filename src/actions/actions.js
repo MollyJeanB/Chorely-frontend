@@ -59,6 +59,12 @@ export const loading = value => ({
   value
 })
 
+export const LOGIN_LOADING = "LOGIN_LOADING"
+export const loginLoading = value => ({
+  type: LOGIN_LOADING,
+  value
+})
+
 export const postNewUser = credentials => {
   return (dispatch) => {
     dispatch(loading(true))
@@ -101,6 +107,7 @@ export const postNewUserFail = () => ({
 
 export const login = credentials => {
   return (dispatch) => {
+    dispatch(loginLoading(true))
     fetch(`${API_BASE_URL}/auth/login`, {
       method: "post",
       body: JSON.stringify(credentials),
@@ -109,6 +116,7 @@ export const login = credentials => {
       }
     })
     .then(res => {
+      dispatch(loginLoading(false))
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }
@@ -119,6 +127,7 @@ export const login = credentials => {
     .catch(err => {
       console.log(err)
       dispatch(loginFail())
+      dispatch(loginLoading(false))
     })
   }
 }

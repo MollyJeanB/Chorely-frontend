@@ -65,6 +65,16 @@
   margin-left: 5px;
 }
 
+.loginLoading {
+  width: 310px;
+  color: white;
+  font-size: 14px;
+  padding: 7px;
+  margin-left: 5px;
+  background: rgba(61, 80, 153, 1);
+  text-align: center;
+}
+
 
 .demoInfo {
   padding: 4px;

@@ -41,3 +41,5 @@ View server code [this repository.](https://github.com/MollyJeanB/ChorelyApp-api
 * Chore icons by [Surang](https://www.flaticon.com/authors/surang) via [Flaticon](https://www.flaticon.com/).
 
 * House icon by [Smashicons](https://www.flaticon.com/authors/smashicons) via Flaticon.
+
+* Chart loading indicator by [Tobias Sahlin](http://tobiasahlin.com/spinkit/)

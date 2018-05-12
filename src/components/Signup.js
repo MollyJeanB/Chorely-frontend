@@ -138,7 +138,7 @@ class Signup extends Component {
             type="password"
             className={styles.signupInput}
             maxLength="25"
-            placeholder="•••••••••"
+            placeholder="•••••••••••"
             onChange={e => this.handleInput(e, "password")}
             value={this.state.password}
             ></input>
