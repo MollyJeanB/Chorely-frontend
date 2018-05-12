@@ -7,6 +7,7 @@ describe("choreReducer", () => {
     const state = choreReducer(undefined, { type: "__UNKNOWN" });
     expect(state).toEqual({
       resetTime: "Sunday at 5pm",
+      chartLoading: true,
       members: {},
       chores: {},
       completions: {}
