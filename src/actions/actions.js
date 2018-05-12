@@ -1,7 +1,7 @@
 import {saveAuthToken, clearAuthToken} from '../local-storage';
 const {API_BASE_URL} = require("../config")
 
-//actions for mobile menu changes, color changes to member, GET request for all data on load, and auth ajax calls 
+//actions for mobile menu changes, color changes to member, GET request for all data on load, and auth ajax calls
 
 export const EXPAND_MENU = "EXPAND_MENU";
 export const expandMenu = drawerOpen => ({
@@ -41,13 +41,27 @@ export const getChartData = values => {
       })
       .then(all => {
         dispatch(getChartDataSuccess(all));
+        dispatch(chartLoading(false))
       })
       .catch(err => console.log(err))
   };
 };
 
+export const CHART_LOADING = "CHART_LOADING"
+export const chartLoading = value => ({
+  type: CHART_LOADING,
+  value
+})
+
+export const LOADING = "LOADING"
+export const loading = value => ({
+  type: LOADING,
+  value
+})
+
 export const postNewUser = credentials => {
   return (dispatch) => {
+    dispatch(loading(true))
     fetch(`${API_BASE_URL}/users`, {
       method: "post",
       body: JSON.stringify(credentials),
@@ -64,10 +78,12 @@ export const postNewUser = credentials => {
     )
     .then(data => {
         dispatch(postNewUserSuccess(data))
+        dispatch(loading(false))
     })
     .catch((err) => {
       console.log(err)
       dispatch(postNewUserFail())
+      dispatch(loading(false))
     })
   }
 }

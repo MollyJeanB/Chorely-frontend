@@ -5,7 +5,9 @@ import {
   POST_NEW_USER_SUCCESS,
   POST_NEW_USER_FAIL,
   LOGIN_FAIL,
-  SET_AUTH_TOKEN
+  SET_AUTH_TOKEN,
+  LOADING,
+  CHART_LOADING
 } from "../actions/actions";
 
 import {
@@ -29,6 +31,7 @@ import {
 const initialState = {
   //right now resetTime is hardcoded. A future version of the app will include a weekly reset in which the completions and scores for the week reset while the chores and members remain in the chart. Overall scores will be tallied on the stats page, which is also a future feature
   resetTime: "Sunday at 5pm",
+  chartLoading: true,
   members: {},
   chores: {},
   completions: {},
@@ -68,6 +71,17 @@ export const choreReducer = (state = initialState, action) => {
     })
   }
 
+  if (action.type === LOADING) {
+    return Object.assign({}, state, {
+      loading: action.value
+    })
+  }
+
+  if (action.type === CHART_LOADING) {
+    return Object.assign({}, state, {
+      chartLoading: action.value
+    })
+  }
 
   if (action.type === DELETE_CHORE_SUCCESS) {
     let choreArray = [...state.chores]

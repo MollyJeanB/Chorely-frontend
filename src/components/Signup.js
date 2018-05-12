@@ -60,7 +60,8 @@ class Signup extends Component {
           username: "",
           password: "",
           passwordValidate: "",
-          usernameValidate: ""
+          usernameValidate: "",
+          loading: true
       })
     }
   }
@@ -71,8 +72,13 @@ class Signup extends Component {
     let usernameValidationMessage;
     let postFail;
     let successDirect;
+    let loading;
 
-//if user posted successfully to database, give success message and prompt them to log in 
+    if (this.props.loading) {
+      loading = <div>Loading</div>
+    }
+
+//if user posted successfully to database, give success message and prompt them to log in
     if (this.props.successMessage) {
       successDirect = (
         <div className={styles.welcomeMessage}>Welcome, {this.props.newUserName}!
@@ -98,6 +104,7 @@ class Signup extends Component {
     return (
       <div className={styles.signupContain}>
           {successDirect}
+          {loading}
         <p className={styles.introPar}>Make an account for your household & let the games begin!</p>
         <p className={styles.demoInfo}>To see a demo account, <span className={styles.linkToTop} onClick={(e) => this.props.goToLogin(e)}>login</span> at the top of the page with these credentials:</p>
         <p className={styles.demoInfo}> Username: <b>OurHouse</b>  |  Password: <b>chore1234</b></p>
@@ -145,7 +152,8 @@ class Signup extends Component {
 export const mapStateToProps = state => ({
   successMessage: state.chart.successMessage,
   newUserName: state.chart.newUserName,
-  failMessage: state.chart.failMessage
+  failMessage: state.chart.failMessage,
+  loading: state.chart.loading
 })
 
 export default connect(mapStateToProps)(Signup)
