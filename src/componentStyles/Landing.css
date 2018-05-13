@@ -1,7 +1,7 @@
 
 
 .introSection {
-  height: 400px;
+  height: 280px;
   width: 100%;
   background: rgba(185, 233, 254, 1);
   position: relative;
@@ -18,7 +18,7 @@
   font-weight: 700;
   font-size: 28px;
   text-align: center;
-  padding: 5px 10px 5px 10px;
+  padding: 5px 15px;
   color: #262828;
 }
 
@@ -101,6 +101,10 @@ box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
 }
 
 @media only screen and (min-width: 640px) {
+
+  .introSection {
+    height: 400px;
+  }
 
   .question {
     font-size: 30px;
