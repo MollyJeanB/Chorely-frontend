@@ -37,6 +37,8 @@
     "promise": "8.0.1",
     "raf": "3.4.0",
     "react": "^16.2.0",
+    "react-chartjs": "^1.2.0",
+    "react-chartjs-2": "^2.7.2",
     "react-dev-utils": "^5.0.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
