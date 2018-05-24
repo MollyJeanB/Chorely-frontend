@@ -1,8 +1,8 @@
 import React from "react"
 import { connect } from "react-redux";
 import styles from "../componentStyles/ChorePieChart.css"
-import {PieChart} from 'react-easy-chart';
 import Colors from "../colors"
+import ReactSvgPieChart from "react-svg-piechart"
 
 export class ChorePieChart extends React.Component {
 
@@ -12,7 +12,7 @@ export class ChorePieChart extends React.Component {
     let membersArray = this.props.members
     let allData = membersArray.reduce((acc, item) => {
       let memberObject = {
-        key: item.name,
+        title: item.name,
         color: Colors[item.color],
         value: 0,
         id: item.id
@@ -36,7 +36,7 @@ export class ChorePieChart extends React.Component {
       const percentage = Math.round((member.value / this.props.completions.length) * 100)
       return (
         <div key={index} className={styles.bullets}>
-          <div className={styles.dot} style={{backgroundColor: member.color}}></div><div className={styles.percentageDescribe}>{member.key} does it {percentage}% of the time</div>
+          <div className={styles.dot} style={{backgroundColor: member.color}}></div><div className={styles.percentageDescribe}>{member.title} does it {percentage}% of the time</div>
         </div>
       )
     })
@@ -47,11 +47,9 @@ export class ChorePieChart extends React.Component {
         <div className={styles.pieChartBox}>
           {percentageList}
           <div className={styles.pieWrap}>
-            <PieChart
-              size={280}
-              innerHoleSize={140}
-              data={data}
-              padding={10}
+             <ReactSvgPieChart
+               data={data}
+               expandOnHover
              />
           </div>
         </div>

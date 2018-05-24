@@ -2,7 +2,6 @@ import {
   EXPAND_MENU,
   CHANGE_COLOR,
   GET_CHART_DATA_SUCCESS,
-  // GET_STATS_DATA_SUCCESS,
   POST_NEW_USER_SUCCESS,
   POST_NEW_USER_FAIL,
   LOGIN_FAIL,
@@ -31,13 +30,10 @@ import {
  } from "../actions/completion-actions"
 
 const initialState = {
-  //right now resetTime is hardcoded. A future version of the app will include a weekly reset in which the completions and scores for the week reset while the chores and members remain in the chart. Overall scores will be tallied on the stats page, which is also a future feature
-  resetTime: "Sunday at 5pm",
   chartLoading: true,
   members: {},
   chores: {},
   completions: {},
-  // statsCompletions: {}
 };
 
 export const choreReducer = (state = initialState, action) => {
@@ -193,13 +189,6 @@ if (action.type === CHANGE_COLOR) {
     })
   }
 
-  // if (action.type === GET_STATS_DATA_SUCCESS) {
-  //   return Object.assign({}, state, {
-  //     members: action.values.members,
-  //     chores: action.values.chores,
-  //     statsCompletions: action.values.completions
-  //   })
-  // }
 
   return state;
 };
