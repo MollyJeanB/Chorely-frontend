@@ -22,12 +22,12 @@ export const getChartDataSuccess = values => ({
   values
 })
 
-export const getChartData = values => {
+export const getChartData = (lastWeek) => {
   return (dispatch, getState) => {
     let authToken = getState().chart.authToken
-    fetch(`${API_BASE_URL}/`, {
+    const lastWeek = lastWeek ? "?lastWeek=1" : ""
+    fetch(`${API_BASE_URL}/${lastWeek}`, {
       method: "get",
-      body: JSON.stringify(values),
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${authToken}`
@@ -46,6 +46,8 @@ export const getChartData = values => {
       .catch(err => console.log(err))
   };
 };
+
+
 
 export const CHART_LOADING = "CHART_LOADING"
 export const chartLoading = value => ({

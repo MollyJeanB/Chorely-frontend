@@ -50,6 +50,7 @@ export class ChoreList extends React.Component {
         completions={this.props.completions.filter(comp => comp.choreId === this.props.chores[choreKey].id)}
         members={this.props.members}
        />;
+
     });
 
     return (

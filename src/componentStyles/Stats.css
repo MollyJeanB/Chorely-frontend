@@ -1,34 +1,26 @@
-.statsContainer {
-  margin-top: 110px;
-  margin-bottom: 20px;
-  font-size: 30px;
-text-align: center;
-font-weight: 500;
-color: #262828;
+
+
+.chartPageContain {
+  margin-top: 60px;
 }
 
-.iconContain {
-  display: inline-block;
-  margin: 15px;
-}
+.statsHeader {
+  padding: 10px;
+  text-align: center;
+  color: #262828;
 
-.iconBox {
-  display: flex;
-  justify-content: center;
 }
-
-.choreIcon {
-  height: 80px;
-}
-
 @media only screen and (min-width: 640px) {
 
-  .choreIcon {
-    height: 128px;
-  }
+.pieChartContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 
-  .iconContain {
-    margin: 20px;
-  }
+}
 
+@media only screen and (min-width: 1200px) {
+  .pieChartContainer {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
