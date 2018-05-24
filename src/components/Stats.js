@@ -4,17 +4,17 @@ import NavBar from "./NavBar"
 import NavBarMobile from "./NavBarMobile"
 import ChorePieChart from "./ChorePieChart"
 import { connect } from "react-redux";
-import {getChartData} from "../actions/actions"
+import {getStatsData} from "../actions/actions"
 
 export class Stats extends React.Component {
 
   componentDidMount() {
-    this.props.dispatch(getChartData())
+    this.props.dispatch(getStatsData())
   }
 
 
   render() {
-  
+
   const choreKeys = Object.keys(this.props.chores)
     const pieCharts = choreKeys.map((choreKey, index) => {
       return <ChorePieChart

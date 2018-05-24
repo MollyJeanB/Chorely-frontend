@@ -2,6 +2,7 @@ import {
   EXPAND_MENU,
   CHANGE_COLOR,
   GET_CHART_DATA_SUCCESS,
+  // GET_STATS_DATA_SUCCESS,
   POST_NEW_USER_SUCCESS,
   POST_NEW_USER_FAIL,
   LOGIN_FAIL,
@@ -35,7 +36,8 @@ const initialState = {
   chartLoading: true,
   members: {},
   chores: {},
-  completions: {}
+  completions: {},
+  // statsCompletions: {}
 };
 
 export const choreReducer = (state = initialState, action) => {
@@ -190,6 +192,14 @@ if (action.type === CHANGE_COLOR) {
       completions: action.values.completions
     })
   }
+
+  // if (action.type === GET_STATS_DATA_SUCCESS) {
+  //   return Object.assign({}, state, {
+  //     members: action.values.members,
+  //     chores: action.values.chores,
+  //     statsCompletions: action.values.completions
+  //   })
+  // }
 
   return state;
 };

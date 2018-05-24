@@ -11,6 +11,7 @@ describe("choreReducer", () => {
       members: {},
       chores: {},
       completions: {}
+      // statsCompletions: {}
     });
   });
 });
