@@ -5,6 +5,7 @@ import styles from "../componentStyles/Member.css";
 import { connect } from "react-redux";
 import Colors from "../colors";
 import { deleteMember } from "../actions/member-actions";
+import { deleteCompletion } from "../actions/completion-actions"
 
 export class Member extends React.Component {
   state = {
@@ -41,11 +42,19 @@ export class Member extends React.Component {
   }
 
   removeUser(event, id) {
+    console.log(this.props.completions)
+    for (let i=0; i < this.props.completions.length; i++) {
+      let completion = this.props.completions[i]
+      if (id === completion.memberId) {
+        this.props.dispatch(deleteCompletion(completion.id))
+      }
+    }
     this.props.dispatch(deleteMember(id));
     this.setState({
       warnDisplay: false
     });
   }
+
 
   render() {
     const { id, color, weekPoints, name } = this.props;
@@ -128,4 +137,10 @@ export class Member extends React.Component {
   }
 }
 
-export default connect(null)(Member);
+export const mapStateToProps = state => ({
+  members: state.chart.members,
+  chores: state.chart.chores,
+  completions: state.chart.completions
+});
+
+export default connect(mapStateToProps)(Member);

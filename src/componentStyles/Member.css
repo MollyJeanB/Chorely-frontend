@@ -59,7 +59,7 @@
   margin: 5px;
 }
 
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 680px) {
   .personContainer {
     height: 180px;
     position: relative;

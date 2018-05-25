@@ -3,7 +3,6 @@
   padding: 8px;
   position: absolute;
   width: 100vw;
-  top: 44px;
   z-index: 5;
 }
 
@@ -52,10 +51,4 @@
   font-size: 12px;
   left: 13px;
   padding: 2px;
-}
-
-@media only screen and (min-width: 640px) {
-  .formBox {
-    top: 59px;
-  }
 }

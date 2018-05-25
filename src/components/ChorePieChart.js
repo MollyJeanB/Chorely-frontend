@@ -55,7 +55,19 @@ export class ChorePieChart extends React.Component {
         </div>
       )
     } else {
-      chartArea = <div className={styles.noneYet}>No Completions Yet</div>
+      chartArea = (
+        <div className={styles.pieChartBox}>
+          <div className={styles.noneYet}>No Completions Yet</div>
+          <div className={styles.emptyChart}>
+            <img
+              className={styles.choreIcon}
+              alt="Dish soap and dishes icon"
+              src={require("../images/spray.png")} />
+          </div>
+
+        </div>
+      )
+
     }
 
     return (

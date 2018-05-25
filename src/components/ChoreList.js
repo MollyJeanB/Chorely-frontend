@@ -59,16 +59,21 @@ export class ChoreList extends React.Component {
         <div className={styles.resetContainer}>
           This chart shows chore completions from the last 7 days. To see more a detailed chore history, check out the <Link className={styles.internalNavLink} to="/stats"> Household Stats</Link> page.
         </div>
-        <button
-          className={styles.addChore}
-          onClick={() => {
-            this.toggleForm();
-          }}
-        >
-          Add Chore
-        </button>
+        <div className={styles.listTop}>
+          {formComponent}
+          <div className={styles.choreButtonContainer}>
+            <button
+              className={styles.addChore}
+              onClick={() => {
+                this.toggleForm();
+              }}
+            >
+              Add Chore
+            </button>
+          </div>
+        </div>
+
         {noChoresYet}
-        {formComponent}
         {chores}
       </div>
     );

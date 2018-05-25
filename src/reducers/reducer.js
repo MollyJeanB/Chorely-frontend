@@ -33,7 +33,7 @@ const initialState = {
   chartLoading: true,
   members: {},
   chores: {},
-  completions: {},
+  completions: {}
 };
 
 export const choreReducer = (state = initialState, action) => {
@@ -97,21 +97,21 @@ export const choreReducer = (state = initialState, action) => {
        });
   }
 
-  if (action.type === DELETE_MEMBER_SUCCESS) {
-    let memberArray = [...state.members]
-    let deletedIndex = memberArray.findIndex(item => item.id === action.id);
-   memberArray.splice(deletedIndex, 1);
-       return Object.assign({}, state, {
-         members: memberArray
-       });
-  }
-
   if (action.type === DELETE_COMPLETION_SUCCESS) {
     let completionArray = [...state.completions]
     let deletedIndex = completionArray.findIndex(item => item.id === action.id);
    completionArray.splice(deletedIndex, 1);
        return Object.assign({}, state, {
          completions: completionArray
+       });
+  }
+
+  if (action.type === DELETE_MEMBER_SUCCESS) {
+    let memberArray = [...state.members]
+    let deletedIndex = memberArray.findIndex(item => item.id === action.id);
+   memberArray.splice(deletedIndex, 1);
+       return Object.assign({}, state, {
+         members: memberArray
        });
   }
 
