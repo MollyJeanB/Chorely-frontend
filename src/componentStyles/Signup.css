@@ -34,7 +34,8 @@
 
 .welcomeMessage {
   background: #4b6dff;
-  width: 100vw;
+  width: 100%;
+
   text-align: center;
   color: white;
   position: absolute;

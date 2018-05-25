@@ -1,6 +1,6 @@
 .membersContainer {
   margin-top: 60px;
-  width: 100vw;
+  width: 100%;
   position: relative;
   z-index: -2;
 }

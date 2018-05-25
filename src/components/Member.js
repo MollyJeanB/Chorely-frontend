@@ -51,7 +51,7 @@ export class Member extends React.Component {
     this.setState({
       warnDisplay: false
     });
-    setTimeout(this.props.dispatch(deleteMember(id)), 1000);
+    setTimeout(this.props.dispatch(deleteMember(id)), 2000);
   }
 
 

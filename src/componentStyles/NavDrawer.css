@@ -4,7 +4,7 @@
   height: 160px;
   position: fixed;
   top: 60px;
-  left: -100vw;
+  left: -100%;
   border-top: 1px solid white;
   background-color: rgba(151, 171, 255, 1);
   -webkit-transition: .4s;
