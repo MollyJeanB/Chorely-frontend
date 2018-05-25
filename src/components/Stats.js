@@ -25,12 +25,20 @@ export class Stats extends React.Component {
        />;
     });
 
+    let noneYet;
+    if (this.props.chores < 1) {
+      noneYet=(<div className={styles.noneYet}>No stats to display yet!</div>)
+    }
+
+
+
     return (
       <div>
         <NavBar />
         <NavBarMobile />
         <div className={styles.chartPageContain}>
           <h2 className={styles.statsHeader}>Who does each chore the most?</h2>
+          {noneYet}
           <div className={styles.pieChartContainer}>
             {pieCharts}
           </div>
