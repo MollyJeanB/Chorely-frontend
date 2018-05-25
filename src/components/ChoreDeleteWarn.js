@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "../componentStyles/DeleteWarn.css";
+import styles from "../componentStyles/ChoreDeleteWarn.css";
 import { connect } from "react-redux";
 
-export class DeleteWarn extends React.Component {
+export class ChoreDeleteWarn extends React.Component {
   render() {
     return (
       <div className={styles.warnContain}>
@@ -10,7 +10,7 @@ export class DeleteWarn extends React.Component {
         <div className={styles.buttonContain}>
           <button
             className={styles.deleteButton}
-            onClick={e => this.props.removeUser(e)}
+            onClick={e => this.props.removeChore(e)}
           >
             Delete
           </button>
@@ -27,8 +27,7 @@ export class DeleteWarn extends React.Component {
 }
 
 export const mapStateToProps = state => ({
-  members: state.chart.members,
-  completions: state.chart.completions
+  chores: state.chart.chores
 });
 
-export default connect(mapStateToProps)(DeleteWarn);
+export default connect(mapStateToProps)(ChoreDeleteWarn);

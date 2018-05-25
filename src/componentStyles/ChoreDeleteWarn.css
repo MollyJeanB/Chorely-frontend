@@ -1,0 +1,32 @@
+.warnContain {
+  position: absolute;
+  z-index: 5;
+  width: 150px;
+  background: #cc4014;
+  padding: 6.5px;
+  top: 0;
+  display: inline;
+}
+
+.message {
+  color: white;
+  text-align: center;
+
+}
+
+.buttonContain {
+  margin-left: 15px;
+}
+
+.deleteButton,
+.cancelButton {
+  background: white;
+  color: #cc4014;
+  margin: 10px 6px 5px;
+  display: inline;
+}
+
+.deleteButton:hover,
+.cancelButton:hover {
+  background: #c2c2c3;
+}

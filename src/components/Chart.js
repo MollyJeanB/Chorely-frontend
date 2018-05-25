@@ -7,11 +7,11 @@ import NavBarMobile from "./NavBarMobile"
 import {connect } from "react-redux"
 import {getChartData} from "../actions/actions"
 
+
 class Chart extends React.Component {
 
 componentDidMount() {
-  let lastWeek = true
-  this.props.dispatch(getChartData(lastWeek))
+  this.props.dispatch(getChartData())
 }
   render() {
 

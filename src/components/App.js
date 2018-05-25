@@ -12,17 +12,22 @@ class App extends Component {
   render() {
 
 //if logged in (auth token in browser), show chore chart with user's data on the "/" route. Otherwise show landing page
-    let component;
+    let component,
+    statsComponent;
     if (this.props.isLoggedin) {
       component = Chart
-    } else {component = Landing}
+      statsComponent = Stats
+    } else {
+      component = Landing
+      statsComponent = Landing
+    }
 
     return (
       <Router>
         <div className={styles.fontAll}>
             <div>
               <Route exact path="/" component={component} />
-              <Route exact path="/stats" component={Stats} />
+              <Route exact path="/stats" component={statsComponent} />
             </div>
         </div>
       </Router>

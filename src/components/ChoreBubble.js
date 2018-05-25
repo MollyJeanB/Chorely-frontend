@@ -149,7 +149,6 @@ export class ChoreBubble extends React.Component {
     if (this.props.completion) {
       thisMember = this.getMember(this.props.completion.memberId)
       selectedId = thisMember.id
-      console.log(selectedId)
       bubbleStyle = {
         backgroundColor: Colors[thisMember.color]
       }

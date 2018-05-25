@@ -4,11 +4,13 @@ import ChoreBubble from "./ChoreBubble";
 import EditChore from "./EditChore"
 import { connect } from "react-redux";
 import { deleteChore } from "../actions/chore-actions"
+import ChoreDeleteWarn from "./ChoreDeleteWarn"
 
 export class Chore extends React.Component {
 
 state = {
-  formDisplay: false
+  formDisplay: false,
+  warnDisplay: false
 }
 
 toggleForm(event, id) {
@@ -17,8 +19,17 @@ toggleForm(event, id) {
   });
 }
 
+toggleWarn(event) {
+  this.setState({
+    warnDisplay: !this.state.warnDisplay
+  });
+}
+
 removeChore(event, id) {
   this.props.dispatch(deleteChore(id));
+  this.setState({
+    warnDisplay: false
+  });
 }
 
 bubbleMaker() {
@@ -64,6 +75,18 @@ bubbleMaker() {
         toggleForm={this.toggleForm.bind(this)} />;
     }
 
+    let warnComponent;
+    if (this.state.warnDisplay) {
+      warnComponent = (
+        <ChoreDeleteWarn
+          removeChore={e => {
+            this.removeChore(e, id);
+          }}
+          toggleWarn={this.toggleWarn.bind(this)}
+        />
+      );
+    }
+
     let infoBox;
     if (!this.state.formDisplay) {
       infoBox =
@@ -85,7 +108,7 @@ bubbleMaker() {
                   </div>
                   <div
                     className={styles.trashButton}
-                    onClick={e => this.removeChore(e, id)}
+                    onClick={e => this.toggleWarn(e)}
                     >
                     <img
                       className={styles.trashIcon}
@@ -103,6 +126,7 @@ bubbleMaker() {
         <div className={styles.choreInfoInterior}>
           {infoBox}
           {formComponent}
+          {warnComponent}
           {choreBubbles}
         </div>
       </div>

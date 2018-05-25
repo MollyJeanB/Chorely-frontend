@@ -101,6 +101,7 @@
   left: 12px;
   bottom: 9px;
   font-size: 18px;
+  background: none;
 }
 
 .closeButton:hover {

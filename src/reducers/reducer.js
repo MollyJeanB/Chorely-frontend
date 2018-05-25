@@ -12,6 +12,12 @@ import {
 } from "../actions/actions";
 
 import {
+  DELETE_COMPLETION_SUCCESS,
+  POST_COMPLETION_SUCCESS,
+  UPDATE_COMPLETION_SUCCESS,
+ } from "../actions/completion-actions"
+
+import {
   POST_MEMBER_SUCCESS,
   DELETE_MEMBER_SUCCESS,
   UPDATE_MEMBER_SUCCESS
@@ -22,12 +28,6 @@ import {
   DELETE_CHORE_SUCCESS,
   UPDATE_CHORE_SUCCESS
 } from "../actions/chore-actions"
-
-import {
-  POST_COMPLETION_SUCCESS,
-  UPDATE_COMPLETION_SUCCESS,
-  DELETE_COMPLETION_SUCCESS
- } from "../actions/completion-actions"
 
 const initialState = {
   chartLoading: true,

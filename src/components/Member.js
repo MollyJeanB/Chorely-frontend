@@ -42,17 +42,16 @@ export class Member extends React.Component {
   }
 
   removeUser(event, id) {
-    console.log(this.props.completions)
     for (let i=0; i < this.props.completions.length; i++) {
       let completion = this.props.completions[i]
       if (id === completion.memberId) {
         this.props.dispatch(deleteCompletion(completion.id))
       }
     }
-    this.props.dispatch(deleteMember(id));
     this.setState({
       warnDisplay: false
     });
+    setTimeout(this.props.dispatch(deleteMember(id)), 1000);
   }
 
 

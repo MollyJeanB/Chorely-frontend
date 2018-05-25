@@ -22,16 +22,10 @@ export const getChartDataSuccess = values => ({
   values
 })
 
-// export const GET_STATS_DATA_SUCCESS = "GET_STATS_DATA_SUCCESS";
-// export const getStatsDataSuccess = values => ({
-//   type: GET_STATS_DATA_SUCCESS,
-//   values
-// })
 
 export const getChartData = () => {
   return (dispatch, getState) => {
     let authToken = getState().chart.authToken
-    // const lastWeek = lastWeek ? "?lastWeek=1" : ""
     fetch(`${API_BASE_URL}/?lastWeek=1`, {
       method: "get",
       headers: {

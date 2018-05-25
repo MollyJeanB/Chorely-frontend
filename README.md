@@ -43,3 +43,5 @@ View server code [this repository.](https://github.com/MollyJeanB/ChorelyApp-api
 * House icon by [Smashicons](https://www.flaticon.com/authors/smashicons) via Flaticon.
 
 * Chart loading indicator by [Tobias Sahlin](http://tobiasahlin.com/spinkit/)
+
+* Pie charts created with [react-svg-piechart](https://github.com/xuopled/react-svg-piechart)

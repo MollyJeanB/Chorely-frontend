@@ -1,0 +1,23 @@
+.footerContain {
+  background: rgba(194, 194, 195, 0.75);
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.creditText {
+  text-align: center;
+  color: #262828;
+  font-size: 14px;
+}
+
+.portfolioLink,
+.portfolioLink:visited {
+  color: #262828;
+}
+
+.portfolioLink:hover {
+  color: #4b6dff;
+}

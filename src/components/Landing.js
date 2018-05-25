@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import styles from "../componentStyles/Landing.css"
 import Signup from "./Signup"
 import Login from "./Login"
+import Footer from "./Footer"
 
 class Landing extends Component {
 
@@ -100,6 +101,7 @@ class Landing extends Component {
             goToLogin={this.goToLogin.bind(this)}
            />
         </section>
+        <Footer />
       </div>
     )
   }
