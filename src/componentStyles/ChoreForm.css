@@ -1,4 +1,6 @@
-.formBox {
+
+
+.formAreaContain {
   background: #a5b6ff;
   padding: 8px;
   position: absolute;
@@ -51,4 +53,12 @@
   font-size: 12px;
   left: 13px;
   padding: 2px;
+}
+
+@media only screen and (min-width: 680px) {
+  .formBox {
+    margin: 0 auto;
+    width: 680px;
+    position: relative;
+  }
 }
