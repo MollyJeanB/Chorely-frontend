@@ -6,9 +6,10 @@
 .resetContainer {
   text-align: center;
   padding: 15px 15px 10px 15px;
-  width: 100%;
+  max-width: 680px;;
   margin: 0 auto;
   color: #262828;
+  line-height: 24px;
 }
 
 .addChore {
@@ -40,6 +41,7 @@
 
 .explainText {
   padding: 5px;
+  line-height: 22px;
 }
 
 .iconContain {
@@ -49,8 +51,16 @@
 
 .choreIcon {
   width: 60px;
-
 }
+
+.internalNavLink, .internalNavLink:visited {
+  color: #262828;
+}
+
+.internalNavLink:hover {
+  color: #4b6dff
+}
+
 
 @media only screen and (min-width: 640px) {
   .resetContainer {
@@ -60,6 +70,11 @@
   .chartExplainBox {
     width: 60%;
   }
-
-
+}
+@media only screen and (min-width: 680px) {
+  .choreButtonContainer {
+    margin: 0 auto;
+    width: 680px;
+    position: relative;
+  }
 }

@@ -3,6 +3,7 @@ import styles from "../componentStyles/ChoreList.css";
 import { connect } from "react-redux";
 import ChoreForm from "./ChoreForm";
 import Chore from "./Chore";
+import { Link } from "react-router-dom";
 
 export class ChoreList extends React.Component {
   state = {
@@ -50,23 +51,29 @@ export class ChoreList extends React.Component {
         completions={this.props.completions.filter(comp => comp.choreId === this.props.chores[choreKey].id)}
         members={this.props.members}
        />;
+
     });
 
     return (
       <div className={styles.choreListContainer}>
         <div className={styles.resetContainer}>
-          Chore Chart Resets on {this.props.resetTime}
+          This chart shows chore completions from the last 7 days. To see more a detailed chore history, check out the <Link className={styles.internalNavLink} to="/stats"> Household Stats</Link> page.
         </div>
-        <button
-          className={styles.addChore}
-          onClick={() => {
-            this.toggleForm();
-          }}
-        >
-          Add Chore
-        </button>
+        <div className={styles.listTop}>
+          {formComponent}
+          <div className={styles.choreButtonContainer}>
+            <button
+              className={styles.addChore}
+              onClick={() => {
+                this.toggleForm();
+              }}
+            >
+              Add Chore
+            </button>
+          </div>
+        </div>
+
         {noChoresYet}
-        {formComponent}
         {chores}
       </div>
     );
@@ -74,7 +81,6 @@ export class ChoreList extends React.Component {
 }
 
 export const mapStateToProps = state => ({
-  resetTime: state.chart.resetTime,
   members: state.chart.members,
   chores: state.chart.chores,
   completions: state.chart.completions

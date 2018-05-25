@@ -22,12 +22,18 @@ export const getChartDataSuccess = values => ({
   values
 })
 
-export const getChartData = values => {
+// export const GET_STATS_DATA_SUCCESS = "GET_STATS_DATA_SUCCESS";
+// export const getStatsDataSuccess = values => ({
+//   type: GET_STATS_DATA_SUCCESS,
+//   values
+// })
+
+export const getChartData = () => {
   return (dispatch, getState) => {
     let authToken = getState().chart.authToken
-    fetch(`${API_BASE_URL}/`, {
+    // const lastWeek = lastWeek ? "?lastWeek=1" : ""
+    fetch(`${API_BASE_URL}/?lastWeek=1`, {
       method: "get",
-      body: JSON.stringify(values),
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${authToken}`
@@ -46,6 +52,30 @@ export const getChartData = values => {
       .catch(err => console.log(err))
   };
 };
+
+export const getStatsData = () => {
+  return (dispatch, getState) => {
+    let authToken = getState().chart.authToken
+    fetch(`${API_BASE_URL}/`, {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${authToken}`
+      }
+    })
+      .then(res => {
+        if (!res.ok) {
+          return Promise.reject(res.statusText);
+        }
+        return res.json();
+      })
+      .then(all => {
+        dispatch(getChartDataSuccess(all));
+      })
+      .catch(err => console.log(err))
+  };
+};
+
 
 export const CHART_LOADING = "CHART_LOADING"
 export const chartLoading = value => ({

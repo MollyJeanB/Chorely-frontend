@@ -45,7 +45,7 @@ button,
 
 button {
   padding: 2px;
-  background: none;
+  background: rgba(194, 194, 195, .7);
   font-size: 12px;
   color: rgba(61, 80, 153, 1);
   position: relative;
@@ -140,7 +140,13 @@ button:hover {
   background-color: rgba(61, 80, 153, 1);
 }
 
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 680px) {
+
+  button {
+    background: none;
+  }
+
+
   .formBox {
     top: 115px;
     left: 0px;

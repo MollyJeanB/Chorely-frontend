@@ -10,7 +10,8 @@ import {getChartData} from "../actions/actions"
 class Chart extends React.Component {
 
 componentDidMount() {
-  this.props.dispatch(getChartData())
+  let lastWeek = true
+  this.props.dispatch(getChartData(lastWeek))
 }
   render() {
 

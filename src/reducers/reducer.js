@@ -30,8 +30,6 @@ import {
  } from "../actions/completion-actions"
 
 const initialState = {
-  //right now resetTime is hardcoded. A future version of the app will include a weekly reset in which the completions and scores for the week reset while the chores and members remain in the chart. Overall scores will be tallied on the stats page, which is also a future feature
-  resetTime: "Sunday at 5pm",
   chartLoading: true,
   members: {},
   chores: {},
@@ -99,21 +97,21 @@ export const choreReducer = (state = initialState, action) => {
        });
   }
 
-  if (action.type === DELETE_MEMBER_SUCCESS) {
-    let memberArray = [...state.members]
-    let deletedIndex = memberArray.findIndex(item => item.id === action.id);
-   memberArray.splice(deletedIndex, 1);
-       return Object.assign({}, state, {
-         members: memberArray
-       });
-  }
-
   if (action.type === DELETE_COMPLETION_SUCCESS) {
     let completionArray = [...state.completions]
     let deletedIndex = completionArray.findIndex(item => item.id === action.id);
    completionArray.splice(deletedIndex, 1);
        return Object.assign({}, state, {
          completions: completionArray
+       });
+  }
+
+  if (action.type === DELETE_MEMBER_SUCCESS) {
+    let memberArray = [...state.members]
+    let deletedIndex = memberArray.findIndex(item => item.id === action.id);
+   memberArray.splice(deletedIndex, 1);
+       return Object.assign({}, state, {
+         members: memberArray
        });
   }
 
@@ -190,6 +188,7 @@ if (action.type === CHANGE_COLOR) {
       completions: action.values.completions
     })
   }
+
 
   return state;
 };

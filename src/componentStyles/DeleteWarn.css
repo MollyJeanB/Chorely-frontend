@@ -31,7 +31,7 @@
   background: #c2c2c3;
 }
 
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 680px) {
   .warnContain {
     top: 38px;
     left: 18px;

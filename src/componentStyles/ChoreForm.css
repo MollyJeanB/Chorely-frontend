@@ -1,9 +1,10 @@
-.formBox {
+
+
+.formAreaContain {
   background: #a5b6ff;
   padding: 8px;
   position: absolute;
   width: 100vw;
-  top: 44px;
   z-index: 5;
 }
 
@@ -54,8 +55,10 @@
   padding: 2px;
 }
 
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 680px) {
   .formBox {
-    top: 59px;
+    margin: 0 auto;
+    width: 680px;
+    position: relative;
   }
 }

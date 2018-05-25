@@ -120,14 +120,6 @@ export class ChoreBubble extends React.Component {
     bubbleStyle = {},
     dropdownDisplay = this.state.dropdownDisplay
 
-    if (this.props.completion) {
-      thisMember = this.getMember(this.props.completion.memberId)
-      selectedId = thisMember.id
-      bubbleStyle = {
-        backgroundColor: Colors[thisMember.color]
-      }
-
-    }
 
     if (this.props.completion && !this.state.dropdownDisplay) {
       thisMember = this.getMember(this.props.completion.memberId)
@@ -154,6 +146,16 @@ export class ChoreBubble extends React.Component {
       ;
     }
 
+    if (this.props.completion) {
+      thisMember = this.getMember(this.props.completion.memberId)
+      selectedId = thisMember.id
+      console.log(selectedId)
+      bubbleStyle = {
+        backgroundColor: Colors[thisMember.color]
+      }
+
+    }
+
     return (
       <div
         className={styles.bubbleCircle}
@@ -172,6 +174,7 @@ export class ChoreBubble extends React.Component {
 export const mapStateToProps = state => ({
   members: state.chart.members,
   chores: state.chart.chores,
+  completions: state.chart.completions
 });
 
 export default connect(mapStateToProps)(ChoreBubble);

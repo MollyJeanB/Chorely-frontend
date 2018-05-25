@@ -30,13 +30,14 @@
 
 .iconBox {
   position: absolute;
-  top: 5px;
+  top: 2px;
   left: 10px;
 }
 
 .editIcon,
 .trashIcon {
   height: 18px;
+  margin: 2px;
 }
 
 .editIcon:hover,
@@ -44,9 +45,16 @@
   height: 20px;
 }
 
-@media only screen and (min-width: 840px) {
+
+@media only screen and (min-width: 680px) {
   .choreBubbleContainer {
-    margin-left: 35px;
+    margin-left: 0;
+  }
+
+  .choreInfoInterior {
+    margin: 0 auto;
+    width: 680px;
+    position: relative;
   }
 
 }

@@ -41,7 +41,7 @@
   z-index: 5;
 }
 
-@media only screen and (min-width: 840px) {
+@media only screen and (min-width: 680px) {
   .bubbleCircle {
     height: 80px;
     width: 80px;

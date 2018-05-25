@@ -1,0 +1,58 @@
+.pieChartBox {
+width: 280px;
+margin: 0 auto;
+padding-bottom: 20px
+}
+
+.dot {
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  display: inline-block;
+  margin: 2px;
+}
+
+.percentageDescribe {
+  display: inline-block;
+  margin: 2px;
+  font-size: 14px;
+}
+
+.bullets {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.choreTitle {
+  text-align: center;
+  color: #262828;
+  padding: 5px;
+}
+
+.pieWrap {
+  width: 280px;
+  margin: 0 auto;
+}
+
+.noneYet {
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.emptyChart {
+  width: 254.55px;
+  height: 254.55px;
+  margin: 0 auto;
+  border-radius: 100%;
+  background: rgba(194, 194, 195, .4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 45px;
+}
+
+.choreIcon {
+  height: 100px;
+}

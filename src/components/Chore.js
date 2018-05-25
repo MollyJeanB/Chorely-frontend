@@ -100,9 +100,11 @@ bubbleMaker() {
 
     return (
       <div className={styles.choreContainer} key={id}>
-        {infoBox}
-        {formComponent}
-        {choreBubbles}
+        <div className={styles.choreInfoInterior}>
+          {infoBox}
+          {formComponent}
+          {choreBubbles}
+        </div>
       </div>
     );
   }
