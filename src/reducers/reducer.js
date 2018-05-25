@@ -109,9 +109,14 @@ export const choreReducer = (state = initialState, action) => {
   if (action.type === DELETE_MEMBER_SUCCESS) {
     let memberArray = [...state.members]
     let deletedIndex = memberArray.findIndex(item => item.id === action.id);
+    let completionsArray = state.completions
+    let completionsUpdated = completionsArray.filter(completion => {
+        return (memberArray[deletedIndex].id !== completion.memberId)
+    })
    memberArray.splice(deletedIndex, 1);
        return Object.assign({}, state, {
-         members: memberArray
+         members: memberArray,
+         completions: completionsUpdated
        });
   }
 

@@ -5,7 +5,6 @@ import styles from "../componentStyles/Member.css";
 import { connect } from "react-redux";
 import Colors from "../colors";
 import { deleteMember } from "../actions/member-actions";
-import { deleteCompletion } from "../actions/completion-actions"
 
 export class Member extends React.Component {
   state = {
@@ -42,16 +41,10 @@ export class Member extends React.Component {
   }
 
   removeUser(event, id) {
-    for (let i=0; i < this.props.completions.length; i++) {
-      let completion = this.props.completions[i]
-      if (id === completion.memberId) {
-        this.props.dispatch(deleteCompletion(completion.id))
-      }
-    }
     this.setState({
       warnDisplay: false
     });
-    setTimeout(this.props.dispatch(deleteMember(id)), 2000);
+    this.props.dispatch(deleteMember(id));
   }
 
 
