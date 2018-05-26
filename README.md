@@ -32,8 +32,6 @@ View server code [this repository.](https://github.com/MollyJeanB/ChorelyApp-api
 
 ## Future Features
 
-* Household stats tracking: pie charts shows who's doing which chores the most often
-* Weekly chart reset: clears out the chore completions and weekly score (overall score to be retained in the stats section)
 * Text and email reminders for household members
 
 ## Attribution
